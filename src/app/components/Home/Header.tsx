@@ -7,26 +7,43 @@ import { useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import { useRouter, usePathname } from 'next/navigation'
-import { Texturina } from "next/font/google";
 
 const Header = () => {
-    const path: string = usePathname()
+    const path = usePathname()
 
     const [isSearch, setIsSearch] = useState<boolean>(false)
+
+    const checkRoute = (path: string, url: string) => {
+        return path === url
+    }
 
     const handleSearch = () => {
         setIsSearch(true)
     }
     return (
         <MUIBox sx={{
-            backgroundColor:'#fff',
-            display:'flex',
-            alignItems:'center',
-            justifyContent:'space-between',
-            borderBottom: 'solid 1px black',
-            px:'50px'
+            px:'10px'
         }}>
-            <MUITypography sx={{fontFamily:'Jost', fontWeight:'500', fontSize:'28px'}}>HAISAM.</MUITypography>
+            <MUIBox sx={{
+                   display:'flex',
+                   alignItems:'center',
+                   justifyContent:'space-between',
+                    // px:'50px',
+                    // borderBottom: '1px solid #56676D',
+                    borderBottom:'1.5px solid rgba(0,0,0,.12)'
+            }}>
+            <MUITypography sx={{fontFamily:'Jost', fontWeight:'500', fontSize:'24px'}}>
+                <MUILink 
+                    sx={{
+                        textDecoration:'none',
+                        border:'none',
+                        color: style.TEXT_COLOR_NORMAL,
+                        ml:'50px'
+                    }}
+                     href='/'>
+                    HAISAM.
+                </MUILink>
+            </MUITypography>
             <MUIBox sx={{
                 display:'flex',
                 justifyContent:'space-around',
@@ -38,50 +55,56 @@ const Header = () => {
                         <MUIBox sx={{
                             px:'16px',
                             fontWeight:'500',
-                            fontSize:'14px',
                             height:'90px',
                             display:'flex',
                             alignItems:'center',
-                            fontFamily:'Roboto Mono',
                             fontWeigth:'bold',
-                            '.MuiBox-root::before':{
-                                height: '0px',
+                            position:'relative',
+                            '.MuiLink-root:before':{
+                                content:'""',
+                                height: checkRoute(item.link, path) ? 'calc(100% + 15px) !important': '0px',
+                                backgroundColor: checkRoute(item.link, path) ? 'black !important': '',
+                                clipPath: checkRoute(item.link, path) ? 'polygon(100% 0, 100% 100%, 0 calc(100% - 15px), 0 0)': '',
+                                position:'absolute',
+                                top:'0px',
+                                right:'0px',
+                                left:'0px',
                             },
+
                             ':hover':{
                                 cursor:'pointer',
-                                '.MuiBox-root::before': {
-                                    height: 'calc(100% + 30px) !important',
-                                    backgroundColor:`${style.HEADER_HOVER_COLOR} !important`,
+                                px:'16px',
+                                '.MuiLink-root::before': {
+                                    content:'""',
+                                    width:'100%',
+                                    height: 'calc(100% + 15px) !important',
+                                    backgroundColor:checkRoute(item.link, path) ? `${style.HEADER_ACTIVE_COLOR}` :`${style.HEADER_HOVER_COLOR}`,
                                     clipPath: 'polygon(100% 0, 100% 100%, 0 calc(100% - 15px), 0 0)',
-                                    zIndex:'1',
-                                    px:'16px',
-                                    transition: 'height 0.3s linear'
+                                    transition: 'height 0.3s'
                                 }
                              
-                            },
-                            // 'a':{
-                            //     '.active':{
-                            //         height: 'calc(100% + 30px)',
-                            //         cursor:'pointer',
-                            //         backgroundColor:'#000 !important',
-                            //         clipPath: 'polygon(100% 0, 100% 100%, 0 calc(100% - 15px), 0 0)',
-                            //         zIndex:'1',
-                            //     }
-                            // }         
+                            }, 
                         }} 
-                            
+                            className="unfocus"
                             key={index}
                         >
                             <MUILink sx={{
                                 display: isSearch ? 'none' :  'flex',
                                 alignItems:'center',
-                                color: style.TEXT_COLOR_NORMAL
+                                color: checkRoute(item.link, path) ? '#ffffff' : style.TEXT_COLOR_NORMAL,
                                 }}
                                 underline="none" 
                                 href={item.link}
                                 className="active"
                             >
-                                {item.name}
+                                    <MUITypography sx={{
+                                        fontFamily:'Roboto Mono',
+                                        fontSize:'12px',
+                                        fontWeight:'500',
+                                        zIndex:'10',
+                                    }}>
+                                        {item.name}
+                                    </MUITypography>
                             </MUILink>
                         </MUIBox>
                     )
@@ -92,24 +115,31 @@ const Header = () => {
                     '.MuiSvgIcon-root:hover':{
                         cursor:'pointer'
                     },
+                    '.MuiInputBase-root:before, .MuiInputBase-root:after':{
+                        display:'none'
+                    },
                     '.MuiInputBase-input':{
-                        padding: '0px',
-                        fontFamily:'Jost',
-                        border:'none',
-                    }
+                        textAlign:'right'
+                    },
                     }}>
                     {isSearch ? (
                         <>
-                            <MUITextField variant="standard" placeholder="nhập thông tin"/>
-                            <CloseIcon onClick={() => setIsSearch(false)} />
+                            <MUITextField sx={{
+                                width:'160px',
+                                textAlign:'right'
+                            }} variant="standard" placeholder="nhập thông tin"/>
+                            <CloseIcon sx={{mx:'5px'}} onClick={() => setIsSearch(false)} />
                         </>
                     ): (
-                        <SearchIcon onClick={handleSearch} />
+                        <SearchIcon sx={{
+                            mr: '50px', 
+                            ml: '10px'
+                        }}onClick={handleSearch} />
                     )}
                 </MUIBox>
 
             </MUIBox>
-
+            </MUIBox>
         </MUIBox>
     )
 }

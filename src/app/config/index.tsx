@@ -1,7 +1,9 @@
 export const style = {
     TEXT_COLOR_NORMAL: '#222222',
     TEXT_COLOR_TITLE: '#343842',
-    HEADER_HOVER_COLOR: '#fcf1e5'
+    HEADER_HOVER_COLOR: '#fcf1e5',
+    HEADER_ACTIVE_COLOR: '#000000',
+    TEXT_COLOR_FOOTER: '#353535',
 }
 
 export const headerData = [
