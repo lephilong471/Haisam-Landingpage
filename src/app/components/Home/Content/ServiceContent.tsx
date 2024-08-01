@@ -2,12 +2,14 @@
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import React from "react";
 import styled from "styled-components";
-import { MUITypography } from "@/app/components/MUI";
+import { MUIBox, MUITypography } from "@/app/components/MUI";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import Link from "next/link";
+import AddIcon from "@mui/icons-material/Add";
 
 interface CharacterProps {
    delay: number;
+   animate?: boolean;
 }
 
 const ServiceContentStyled = styled(Box)`
@@ -25,28 +27,61 @@ const ServiceContentStyled = styled(Box)`
    }
 `;
 
-const Character = styled("span")<CharacterProps>(({ delay }) => ({
+const Character = styled("span")<CharacterProps>(({ delay, animate }) => ({
    display: "inline-block",
-   opacity: 1,
-   transform: "translateX(0px) translateZ(0);",
+   opacity: 0,
+   transform: "translateX(50px) translateZ(0);",
    transition: `opacity 1s, transform 2s cubic-bezier(.26,-.14,0,1.01)`,
    transitionDelay: `${delay}ms`,
    "&.visible": {
-      opacity: 0,
-      transform: "translateX(200px)",
+      opacity: 1,
+      transform: "translateX(10px)",
    },
 }));
 
 const ServiceContent = () => {
    const text = ["Logistic", "Capabilities"];
+   const dataSection: any = [
+      {
+         title: "Warehousing and Distribution",
+      },
+      {
+         title: "E-commerce Logistics",
+      },
+
+      {
+         title: "Freight Forwarding",
+      },
+      {
+         title: "Last-Mile Delivery",
+      },
+      {
+         title: "Supply Chain Management",
+      },
+
+      {
+         title: "Cold Chain Logistics",
+      },
+   ];
+
    let startDelay = 0;
    return (
       <ServiceContentStyled>
          <Box className="container mx-auto">
             <Grid container spacing={2}>
-               <Grid item md={7}>
-                  <Box sx={{ display: "flex", justifyContent: "start", alignItems: "center", marginBottom:'35px'  }}>
-                     <Link href={"/pages/service"} style={{ textDecoration: "none", display: "inline-block"}}>
+               <Grid item md={7.3}>
+                  <Box
+                     sx={{
+                        display: "flex",
+                        justifyContent: "start",
+                        alignItems: "center",
+                        marginBottom: "35px",
+                        "&:hover .icon-service": {
+                           ml: "5px",
+                        },
+                     }}
+                  >
+                     <Link href={"/pages/service"} style={{ textDecoration: "none", display: "inline-block" }}>
                         <MUITypography
                            fontSize={20}
                            fontWeight={500}
@@ -82,7 +117,7 @@ const ServiceContent = () => {
                            All service
                         </MUITypography>
                      </Link>
-                     <ArrowOutwardRoundedIcon />
+                     <ArrowOutwardRoundedIcon className="icon-service" />
                   </Box>
                   <Box pb={4}>
                      <MUITypography
@@ -97,8 +132,6 @@ const ServiceContent = () => {
                            if (index !== wordIndex) {
                               startDelay = word.length * 60 + 60;
                            }
-                           console.log("word", startDelay, word);
-
                            return (
                               <span key={wordIndex} className="word-holder" style={{ whiteSpace: "nowrap" }}>
                                  {word.split("").map((char: any, charIndex: number) => {
@@ -115,6 +148,7 @@ const ServiceContent = () => {
                                                 ? startDelay
                                                 : startDelay + charIndex * 60
                                           }
+                                          className="visible"
                                        >
                                           {char}
                                        </Character>
@@ -125,9 +159,66 @@ const ServiceContent = () => {
                         })}
                      </MUITypography>
                   </Box>
-                  <Divider />
+                  <Divider sx={{ mb: "20px" }} />
+                  <MUIBox>
+                     <MUITypography
+                        variant="h2"
+                        fontSize={"32px"}
+                        fontWeight={400}
+                        fontFamily={"Jost"}
+                        sx={{ mb: "20px" }}
+                     >
+                        Delivering Possibilities, On Time
+                     </MUITypography>
+                     <MUITypography fontWeight={500} fontFamily={"Jost"} color={"#56676d"} letterSpacing={"0.1em"}>
+                        At Logistica, we are more than just a logistics company – we are the architects of seamless
+                        supply chains, the navigators of global trade, and the enablers of business growth.
+                     </MUITypography>
+                  </MUIBox>
+                  <MUIBox sx={{ display: "flex", justifyContent: "start", gap: "20px", mt: 2 }}>
+                     <ul style={{ padding: 0, listStyleType: "none" }}>
+                        {dataSection.map((item: any, index: number) =>
+                           index % 2 === 0 ? (
+                              <li key={index}>
+                                 <Link
+                                    href={"#"}
+                                    style={{
+                                       textDecoration: "none",
+                                       display: "flex",
+                                       alignItems: "center",
+                                       gap: "5px",
+                                       color: "#56676d",
+                                    }}
+                                 >
+                                    <AddIcon /> <MUITypography>{item.title}</MUITypography>
+                                 </Link>
+                              </li>
+                           ) : null
+                        )}
+                     </ul>
+                     <ul style={{ padding: 0, listStyleType: "none" }}>
+                        {dataSection.map((item: any, index: number) =>
+                           index % 2 !== 0 ? (
+                              <li key={index}>
+                                 <Link
+                                    href={"#"}
+                                    style={{
+                                       textDecoration: "none",
+                                       display: "flex",
+                                       alignItems: "center",
+                                       color: "#56676d",
+                                       gap: "5px",
+                                    }}
+                                 >
+                                    <AddIcon /> <MUITypography>{item.title}</MUITypography>
+                                 </Link>
+                              </li>
+                           ) : null
+                        )}
+                     </ul>
+                  </MUIBox>
                </Grid>
-               <Grid item md={5}>
+               <Grid item md={4}>
                   b
                </Grid>
             </Grid>
