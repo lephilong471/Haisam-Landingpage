@@ -8,11 +8,11 @@ const Footer = () => {
             alignItems:'center',
             justifyContent:'center',
             width:'100%',
+            position:'fixed',
             bottom:'0px',
-            position:'fixed'
         }}>
             <MUITypography sx={{
-                fontFamily:'Roboto Mono',
+                fontFamily:'Montserrat',
                 fontSize: '12px',
                 fontWeight:'bold',
                 color: style.TEXT_COLOR_FOOTER,

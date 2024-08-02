@@ -18,7 +18,8 @@ const Contact = () => {
                 return(
                     <MUITypography 
                         sx={{
-                            fontFamily:'Roboto Mono',
+                            fontFamily:'Montserrat',
+                            fontWeight:'600',
                             color: style.TEXT_COLOR_TITLE,
                             transitionDelay: `${index * 60}ms`,
                             opacity: animate ? '1' : '0',
