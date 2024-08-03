@@ -32,18 +32,17 @@ const Header = () => {
                display: "flex",
                alignItems: "center",
                justifyContent: "space-between",
+               // px:'50px',
+               // borderBottom: '1px solid #56676D',
                borderBottom: "1.5px solid rgba(0,0,0,.12)",
             }}
          >
             <MUITypography sx={{ fontFamily: "Jost", fontWeight: "500", fontSize: "24px" }}>
                <MUILink
                   sx={{
-                     textDecoration: "none !important",
+                     textDecoration: "none",
                      border: "none",
                      color: style.TEXT_COLOR_NORMAL,
-                     ':hover':{
-                        color:style.TEXT_COLOR_NORMAL
-                     }
                   }}
                   href="/"
                >
@@ -103,20 +102,16 @@ const Header = () => {
                               display: isSearch ? "none" : "flex",
                               alignItems: "center",
                               color: checkRoute(item.link, path) ? "#ffffff" : style.TEXT_COLOR_NORMAL,
-                              textDecoration:'none !important',
-                              ':hover':{
-                                 color:checkRoute(item.link, path) ? "#ffffff" : style.TEXT_COLOR_NORMAL,
-                              }
                            }}
-                      
+                           underline="none"
                            href={item.link}
                            className="active"
                         >
                            <MUITypography
                               sx={{
-                                 fontFamily: "Montserrat",
+                                 fontFamily: "Roboto Mono",
                                  fontSize: "12px",
-                                 fontWeight: "600",
+                                 fontWeight: "500",
                                  zIndex: "10",
                               }}
                            >
@@ -138,7 +133,6 @@ const Header = () => {
                      },
                      ".MuiInputBase-input": {
                         textAlign: "right",
-                        color: style.TEXT_COLOR_NORMAL,
                      },
                   }}
                >
