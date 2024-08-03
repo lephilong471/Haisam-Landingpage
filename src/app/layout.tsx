@@ -54,7 +54,7 @@ export default function RootLayout({
          <body className={inter.className}>
             <Box
                style={{
-                  // backgroundImage: `url(${BgImg.src})`,
+                  backgroundImage: `url(${BgImg.src})`,
                   height: "100vh",
                   minHeight: "100vh",
                   maxHeight: "100%",
