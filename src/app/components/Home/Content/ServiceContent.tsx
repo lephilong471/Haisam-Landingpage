@@ -6,7 +6,12 @@ import { MUIBox, MUITypography } from "@/app/components/MUI";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import Link from "next/link";
 import AddIcon from "@mui/icons-material/Add";
-
+import "splitting/dist/splitting.css";
+import "splitting/dist/splitting-cells.css";
+import Splitting from "splitting";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { gsap } from "gsap";
 interface CharacterProps {
    delay: number;
 }
@@ -25,34 +30,26 @@ const ServiceContentStyled = styled(Box)`
    .word-holder span {
       display: inline-block;
    }
-   .visible{
-      animation: mymove 1s;
+
+   .splitting .char {
+      animation: slide-in 1s cubic-bezier(0.5, 0, 0.5, 1) both;
+      animation-delay: calc(60ms * var(--char-index));
    }
-   @keyframes mymove {
+
+   @keyframes slide-in {
       from {
-         opacity: 1;
-         transform: translateX(0px) translateZ(0);
-         transition: opacity 1s, transform 2s cubic-bezier(0.26, -0.14, 0, 1.01);
-      }
-      to {
-         opacity: 0,
-         transform: translateX(50px);
-         transition: opacity 1s, transform 2s cubic-bezier(0.26, -0.14, 0, 1.01);
+         transform: translateX(100px);
+         opacity: 0;
       }
    }
 `;
 
-const Character = styledCp("span")<CharacterProps>(({ delay }) => ({
-   display: "inline-block",
-   opacity: 0,
-   transform: "translateX(50px) translateZ(0)",
-   transition: `opacity 1s, transform 2s cubic-bezier(.26,-.14,0,1.01)`,
-   transitionDelay: `${delay}ms`,
-   "&.visible": {
-      opacity: 1,
-      transform: "translateX(0px)",
-   },
-}));
+const Character = styledCp("span")`
+  
+   .splitting .char {
+      animation: slide-in 1s cubic-bezier(0.5, 0, 0.5, 1) both;
+      animationDelay: calc(60ms * var(--char-index))
+   }`;
 
 const text = ["Logistic", "Capabilities"];
 const dataSection: any = [
@@ -78,18 +75,26 @@ const dataSection: any = [
    },
 ];
 const ServiceContent = () => {
-   const [isMount, setMount] = useState(false);
    useEffect(() => {
-      setMount(true);
+      Splitting();
+      AOS.init();
+      gsap.from(".char", {
+         opacity: 1,
+         duration: 1.5,
+         stagger: 0.06, // Delay between each character
+      });
    }, []);
 
-   let startDelay = 0;
+   // let startDelay = 0;
    return (
       <ServiceContentStyled>
          <Box className="container mx-auto">
             <Grid container spacing={2}>
                <Grid item md={7.3}>
                   <Box
+                     data-aos="fade-up"
+                     data-aos-delay="300"
+                     data-aos-duration="2000"
                      sx={{
                         display: "flex",
                         justifyContent: "start",
@@ -138,7 +143,22 @@ const ServiceContent = () => {
                      </Link>
                      <ArrowOutwardRoundedIcon className="icon-service" />
                   </Box>
-                  <Box pb={4}>
+                  <Box data-splitting="chars">
+                     {text.map((item, index) => (
+                        <MUITypography
+                           key={index}
+                           variant="h1"
+                           fontSize={114}
+                           fontWeight={700}
+                           lineHeight={"1em"}
+                           letterSpacing={"-0.04em"}
+                           className="word-holder"
+                        >
+                           {item}
+                        </MUITypography>
+                     ))}
+                  </Box>
+                  {/* <Box pb={4}>
                      <MUITypography
                         variant="h1"
                         fontSize={114}
@@ -167,7 +187,6 @@ const ServiceContent = () => {
                                                 ? startDelay
                                                 : startDelay + charIndex * 60
                                           }
-                                          className={`${isMount} && visible`}
                                        >
                                           {char}
                                        </Character>
@@ -177,10 +196,13 @@ const ServiceContent = () => {
                            );
                         })}
                      </MUITypography>
-                  </Box>
+                  </Box> */}
                   <Divider sx={{ mb: "20px" }} />
                   <MUIBox>
                      <MUITypography
+                        data-aos="fade-up"
+                        data-aos-delay="250"
+                        data-aos-duration="1500"
                         variant="h2"
                         fontSize={"32px"}
                         fontWeight={400}
@@ -189,7 +211,15 @@ const ServiceContent = () => {
                      >
                         Delivering Possibilities, On Time
                      </MUITypography>
-                     <MUITypography fontWeight={500} fontFamily={"Jost"} color={"#56676d"} letterSpacing={"0.1em"}>
+                     <MUITypography
+                        fontWeight={500}
+                        fontFamily={"Jost"}
+                        color={"#56676d"}
+                        letterSpacing={"0.1em"}
+                        data-aos="fade-up"
+                        data-aos-delay="250"
+                        data-aos-duration="1500"
+                     >
                         At Logistica, we are more than just a logistics company – we are the architects of seamless
                         supply chains, the navigators of global trade, and the enablers of business growth.
                      </MUITypography>

@@ -13,9 +13,12 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.6",
     "@mui/material": "^5.16.6",
+    "aos": "^3.0.0-beta.6",
+    "gsap": "^3.12.5",
     "next": "14.2.5",
     "react": "^18",
     "react-dom": "^18",
+    "splitting": "^1.1.0",
     "styled-components": "^6.1.12"
   },
   "devDependencies": {
