@@ -1,7 +1,7 @@
 "use client";
-import { Box, Divider, Grid, Typography } from "@mui/material";
-import React from "react";
-import styled from "styled-components";
+import { Box, Divider, Grid, styled } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import styledCp from "styled-components";
 import { MUIBox, MUITypography } from "@/app/components/MUI";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import Link from "next/link";
@@ -9,10 +9,10 @@ import AddIcon from "@mui/icons-material/Add";
 
 interface CharacterProps {
    delay: number;
-   animate?: boolean;
 }
 
 const ServiceContentStyled = styled(Box)`
+   margin-top: 500px;
    background: #fff;
    padding: 8% 0px;
 
@@ -25,44 +25,63 @@ const ServiceContentStyled = styled(Box)`
    .word-holder span {
       display: inline-block;
    }
+   .visible{
+      animation: mymove 1s;
+   }
+   @keyframes mymove {
+      from {
+         opacity: 1;
+         transform: translateX(0px) translateZ(0);
+         transition: opacity 1s, transform 2s cubic-bezier(0.26, -0.14, 0, 1.01);
+      }
+      to {
+         opacity: 0,
+         transform: translateX(50px);
+         transition: opacity 1s, transform 2s cubic-bezier(0.26, -0.14, 0, 1.01);
+      }
+   }
 `;
 
-const Character = styled("span")<CharacterProps>(({ delay, animate }) => ({
+const Character = styledCp("span")<CharacterProps>(({ delay }) => ({
    display: "inline-block",
    opacity: 0,
-   transform: "translateX(50px) translateZ(0);",
+   transform: "translateX(50px) translateZ(0)",
    transition: `opacity 1s, transform 2s cubic-bezier(.26,-.14,0,1.01)`,
    transitionDelay: `${delay}ms`,
    "&.visible": {
       opacity: 1,
-      transform: "translateX(10px)",
+      transform: "translateX(0px)",
    },
 }));
 
+const text = ["Logistic", "Capabilities"];
+const dataSection: any = [
+   {
+      title: "Warehousing and Distribution",
+   },
+   {
+      title: "E-commerce Logistics",
+   },
+
+   {
+      title: "Freight Forwarding",
+   },
+   {
+      title: "Last-Mile Delivery",
+   },
+   {
+      title: "Supply Chain Management",
+   },
+
+   {
+      title: "Cold Chain Logistics",
+   },
+];
 const ServiceContent = () => {
-   const text = ["Logistic", "Capabilities"];
-   const dataSection: any = [
-      {
-         title: "Warehousing and Distribution",
-      },
-      {
-         title: "E-commerce Logistics",
-      },
-
-      {
-         title: "Freight Forwarding",
-      },
-      {
-         title: "Last-Mile Delivery",
-      },
-      {
-         title: "Supply Chain Management",
-      },
-
-      {
-         title: "Cold Chain Logistics",
-      },
-   ];
+   const [isMount, setMount] = useState(false);
+   useEffect(() => {
+      setMount(true);
+   }, []);
 
    let startDelay = 0;
    return (
@@ -148,7 +167,7 @@ const ServiceContent = () => {
                                                 ? startDelay
                                                 : startDelay + charIndex * 60
                                           }
-                                          className="visible"
+                                          className={`${isMount} && visible`}
                                        >
                                           {char}
                                        </Character>
