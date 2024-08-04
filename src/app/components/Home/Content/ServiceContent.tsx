@@ -5,16 +5,12 @@ import { MUIBox, MUIGrid, MUITypography } from "@/app/components/MUI";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import Link from "next/link";
 import AddIcon from "@mui/icons-material/Add";
-import "splitting/dist/splitting.css";
-import "splitting/dist/splitting-cells.css";
+
 import Splitting from "splitting";
 import AOS from "aos";
-import "aos/dist/aos.css";
-import { gsap } from "gsap";
 import CardItem from "./CardItem";
 
 const ServiceContentStyled = styled(Box)`
-   margin-top: 500px;
    background: #fff;
    padding: 8% 0px;
 
@@ -83,11 +79,6 @@ const ServiceContent = () => {
    useEffect(() => {
       Splitting();
       AOS.init();
-      // gsap.from(".char", {
-      //    opacity: 1,
-      //    duration: 1.5,
-      //    stagger: 0.06, // Delay between each character
-      // });
    }, []);
 
    // let startDelay = 0;

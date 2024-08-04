@@ -14,15 +14,15 @@ const CardItem = (props) => {
             sx={{
                textShadow: "none",
                color: "transparent !important",
-               "-webkitTextStrokeWidth": 1,
-               "-webkitTextStrokeColor": "#333",
+               WebkitTextStrokeWidth: 1,
+               WebkitTextStrokeColor: "#333",
             }}
          >
             <CountUp start={0} end={props.percent} duration={5} enableScrollSpy={true} scrollSpyOnce={true}>
                {({ countUpRef }) => (
-                  <div>
+                  <span>
                      <span ref={countUpRef} />%
-                  </div>
+                  </span>
                )}
             </CountUp>
          </MUITypography>
