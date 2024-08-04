@@ -7,7 +7,27 @@ import { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { useRouter, usePathname } from "next/navigation";
+import styled from "styled-components";
 
+const AnimateStyled = styled(MUIBox)`
+   @keyframes search-text-fadein{
+      0%{
+         opacity: 0
+      }
+      100%{
+         opacity: 1
+      }
+   }
+
+   @keyframes search-text-fadeout{
+      0%{
+         opacity: 1
+      }
+      100%{
+         opacity: 0
+      }
+   }
+`
 const Header = () => {
    const path = usePathname();
 
@@ -17,9 +37,6 @@ const Header = () => {
       return path === url;
    };
 
-   const handleSearch = () => {
-      setIsSearch(true);
-   };
    return (
       <MUIBox
          sx={{
@@ -142,21 +159,32 @@ const Header = () => {
                      },
                   }}
                >
-                  {isSearch ? (
-                     <>
-                        <MUITextField
-                           sx={{
-                              width: "160px",
-                              textAlign: "right",
-                           }}
-                           variant="standard"
-                           placeholder="nhập thông tin"
-                        />
-                        <CloseIcon sx={{ mx: "5px" }} onClick={() => setIsSearch(false)} />
-                     </>
-                  ) : (
-                     <SearchIcon onClick={handleSearch} />
-                  )}
+                  <AnimateStyled>
+                     {isSearch ? (
+                        <>
+                           <MUITextField
+                              sx={{
+                                 width: "160px",
+                                 textAlign: "right",
+                                 animation: isSearch ? 'search-text-fadein 0.8s': 'search-text-fadeout 0.8s',
+                                 'input::placeholder':{
+                                    color: style.TEXT_COLOR_TITLE,
+                                    opacity:'1',
+                                    fontWeight: '500',
+                                    fontFamily:'Montserrat',
+                                    fontSize:'14px'
+                                 }
+                              }}
+                              variant="standard"
+                              placeholder="nhập thông tin"
+                              
+                           />
+                           <CloseIcon sx={{ mx: "5px" }} onClick={() => setIsSearch(false)} />
+                        </>
+                     ) : (
+                        <SearchIcon sx={{ ml: "8px" }} onClick={() => setIsSearch(true)} />
+                     )}
+                  </AnimateStyled>
                </MUIBox>
             </MUIBox>
          </MUIBox>
