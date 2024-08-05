@@ -48,12 +48,13 @@ const SplittingText = ({props}) => {
             // margin: '10% 15% 4% 0%',
             // padding: '0% 14% 6% 0%',
             // borderBottom: `1px solid ${style.TEXT_HIGHLIGHT_COLOR}`
+            pb:'20px',
         }} data-splitting="chars">
             {props.map((item: string, index: number) => {
             return (
                 <MUITypography
                     variant="h1"
-                    fontSize={116}
+                    fontSize={114}
                     fontWeight={700}
                     lineHeight={"1em"}
                     letterSpacing={"-0.04em"}
