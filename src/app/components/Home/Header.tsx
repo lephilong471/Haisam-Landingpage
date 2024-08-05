@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import styled from "styled-components";
 import { PATH } from "@/app/config/routes";
 

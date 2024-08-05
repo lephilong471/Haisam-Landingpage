@@ -1,17 +1,14 @@
 "use client";
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import { MUIBox, MUITypography, MUIGrid, MUILink, MUITextField, MUIButton } from "../components/MUI";
 import styled from "styled-components";
-import {style} from '@/app/config'
-import "splitting/dist/splitting.css";
-import "splitting/dist/splitting-cells.css";
-import "aos/dist/aos.css";
-import Splitting from "splitting";
+import {style, FONT_FAMILY} from '@/app/config'
+
 import AOS from "aos";
 
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded'
 import TwitterIcon from '@mui/icons-material/Twitter'
-import YoutubeIcon from '@mui/icons-material/Youtube'
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 import * as Yup from 'yup';
 import { useFormik } from "formik";
@@ -19,33 +16,15 @@ import { useFormik } from "formik";
 import SubFooter from "../components/Home/SubFooter";
 import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 
+import dynamic from 'next/dynamic';
+const SplittingText= dynamic(() => import('../components/Home/Content/SplittingText'), {
+  ssr: false
+});
+
 const ContentStyled = styled(MUIBox)`
-
    p{
-      font-family: 'Montserrat';
+      font-family: ${FONT_FAMILY.MONTSERRAT};
       color: ${style.TEXT_COLOR_GENERAL}
-   }
-
-   .word-holder {
-      display: inline-flex;
-      margin-right: 10px;
-      font-family: "Montserrat";
-   }
-
-   .word-holder span {
-      display: inline-block;
-   }
-
-   .splitting .char {
-      animation: slide-in 1s cubic-bezier(0.5, 0, 0.5, 1) both;
-      animation-delay: calc(60ms * var(--char-index));
-   }
-
-   @keyframes slide-in {
-      from {
-         transform: translateX(100px);
-         opacity: 0;
-      }
    }
 `
 const Contact = () => {
@@ -72,7 +51,6 @@ const Contact = () => {
       }})
 
    useEffect(() => {
-      Splitting();
       AOS.init();
    },[])
 
@@ -84,8 +62,8 @@ const Contact = () => {
                sx={{
                   pb: '5%'
                }}>
-               <MUIGrid item md={7}>
-                  <MUIBox sx={{
+               <MUIGrid item md={7} xs={12}>
+                  {/* <MUIBox sx={{
                      margin: '10% 15% 4% 0%',
                      padding: '0% 14% 6% 0%',
                      borderBottom: `1px solid ${style.TEXT_HIGHLIGHT_COLOR}`
@@ -106,7 +84,8 @@ const Contact = () => {
                            </MUITypography>
                         )
                      })}
-                  </MUIBox>
+                  </MUIBox> */}
+                  <SplittingText props={text}/>
                   <MUIBox
                      data-aos="fade-up"
                      data-aos-delay="300"
@@ -149,20 +128,25 @@ const Contact = () => {
                         <TwitterIcon />
                      </MUILink>
                      <MUILink href="#">
-                        <YoutubeIcon />
+                        <YouTubeIcon />
                      </MUILink>
                   </MUIBox>
                </MUIGrid>
-               <MUIGrid item md={5}>
+               <MUIGrid item md={5} xs={12}>
                   <MUIBox sx={{
                      p: '8%',
                      '.MuiTextField-root':{
                         py:'15px',
+                        'input, textarea':{
+                           px:'14px',
+                           fontFamily: FONT_FAMILY.MONTSERRAT,
+                           fontWeight: '500'
+                        },
                         'input::placeholder, textarea::placeholder':{
-                           fontFamily:'Montserrat',
+                           fontFamily:FONT_FAMILY.MONTSERRAT,
                            fontWeight:'500',
                            fontSize:'14px',
-                        }
+                        },
                      },
                      '.Mui-error':{
                         fontWeight: '500',
@@ -188,9 +172,9 @@ const Contact = () => {
                            onBlur={myForm.handleBlur}
                            onChange={myForm.handleChange}
                            error={myForm.touched.name && Boolean(myForm.errors.name)}
-                           helperText={myForm.touched.name && (
+                           helperText={myForm.touched.name && Boolean(myForm.errors.name) && (
                               <>
-                                 <WarningRoundedIcon /> {myForm.errors.email}
+                                 <WarningRoundedIcon /> {myForm.errors.name}
                               </>
                            )}
 
@@ -204,7 +188,7 @@ const Contact = () => {
                            onBlur={myForm.handleBlur}
                            onChange={myForm.handleChange}
                            error={myForm.touched.email && Boolean(myForm.errors.email)}
-                           helperText={myForm.touched.email && (
+                           helperText={myForm.touched.email && Boolean(myForm.errors.email) && (
                               <>
                                  <WarningRoundedIcon /> {myForm.errors.email}
                               </>
@@ -217,7 +201,7 @@ const Contact = () => {
                            variant="standard"
                            onChange={myForm.handleChange}
                            error={myForm.touched.content && Boolean(myForm.errors.content)}
-                           helperText={myForm.touched.content && (
+                           helperText={myForm.touched.content && Boolean(myForm.errors.content) && (
                               <>
                                  <WarningRoundedIcon /> {myForm.errors.email}
                               </>
@@ -238,7 +222,7 @@ const Contact = () => {
                               background:style.TEXT_COLOR_GENERAL,
                               borderRadius:'20px',
                               textTransform:'none',
-                              fontFamily:'Montserrat'
+                              fontFamily:'inherit'
                            }}
                            >Submit
                         </MUIButton>
