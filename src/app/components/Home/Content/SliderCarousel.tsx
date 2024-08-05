@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination, Navigation, Autoplay } from "swiper/modules";
 import { MUIBox } from "@/app/components/MUI";
@@ -10,6 +10,7 @@ import CarouselShipFly from "@/public/images/slider/carousel-container-ship-flyi
 import CarouselTrainTrack from "@/public/images/slider/carousel-train-track-with-blue-container-top.jpg";
 import CarouselTransportation from "@/public/images/slider/carousel-transportation-logistics.jpg";
 import ImageSvg from "react-inlinesvg";
+import AOS from "aos";
 
 const SliderCarouselStyled = styled("div")`
    width: 100%;
@@ -68,8 +69,16 @@ const dataCarousel = [
 ];
 
 const SliderCarousel = () => {
+   useEffect(() => {
+      AOS.init();
+   }, []);
    return (
-      <SliderCarouselStyled>
+      <SliderCarouselStyled //
+         data-aos="fade-up"
+         data-aos-delay="0"
+         data-aos-duration="1000"
+         data-aos-once="true"
+      >
          <Swiper
             modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
             effect="coverflow"

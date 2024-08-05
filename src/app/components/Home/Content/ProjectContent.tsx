@@ -12,7 +12,6 @@ import { PATH } from "@/app/config/routes";
 import SliderProject from "./SliderProject";
 
 const ProjectContentStyled = styled("div")`
-   padding-bottom: 10%;
    .splitting .char {
       animation: slide-in 1s cubic-bezier(0.5, 0, 0.5, 1) both;
       animation-delay: calc(60ms * var(--char-index));

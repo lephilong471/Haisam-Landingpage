@@ -19,6 +19,13 @@ const AboutContentStyled = styled("div")`
       animation-delay: calc(60ms * var(--char-index));
    }
 
+   @keyframes slide-in {
+      from {
+         transform: translateX(100px);
+         opacity: 0;
+      }
+   }
+
    .tabs-custom {
       border: none !important;
       outline: none !important;
@@ -146,6 +153,7 @@ const AboutContent = () => {
                   lineHeight={"2em"}
                   sx={{
                      position: "relative",
+                     textTransform: "capitalize",
                      "&::after": {
                         content: '""',
                         position: "absolute",
