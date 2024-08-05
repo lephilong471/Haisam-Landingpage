@@ -9,6 +9,8 @@ import AddIcon from "@mui/icons-material/Add";
 import Splitting from "splitting";
 import AOS from "aos";
 import CardItem from "./CardItem";
+import { FONT_FAMILY, style } from "@/app/config";
+import { PATH } from "@/app/config/routes";
 
 const ServiceContentStyled = styled(Box)`
    background: #fff;
@@ -102,12 +104,12 @@ const ServiceContent = () => {
                         },
                      }}
                   >
-                     <Link href={"/pages/service"} style={{ textDecoration: "none", display: "inline-block" }}>
+                     <Link href={PATH.SERVICE} style={{ textDecoration: "none", display: "inline-block" }}>
                         <MUITypography
                            fontSize={20}
                            fontWeight={500}
-                           fontFamily={"Jost"}
-                           color={"#203556"}
+                           fontFamily={FONT_FAMILY.JOST}
+                           color={style.TEXT_COLOR_GENERAL}
                            lineHeight={"2em"}
                            sx={{
                               position: "relative",
@@ -129,7 +131,7 @@ const ServiceContent = () => {
                                  left: 0,
                                  width: "0%",
                                  height: "2px",
-                                 backgroundColor: `#203556`,
+                                 backgroundColor: `${style.TEXT_COLOR_GENERAL}`,
                                  transition: `background-color .25s ease-in-out, width .36s cubic-bezier(.51,.5,.07,.99)`,
                                  backfaceVisibility: "hidden",
                               },
@@ -204,14 +206,14 @@ const ServiceContent = () => {
                         variant="h2"
                         fontSize={"32px"}
                         fontWeight={400}
-                        fontFamily={"Jost"}
+                        fontFamily={FONT_FAMILY.JOST}
                         sx={{ mb: "20px" }}
                      >
                         Delivering Possibilities, On Time
                      </MUITypography>
                      <MUITypography
                         fontWeight={500}
-                        fontFamily={"Jost"}
+                        fontFamily={FONT_FAMILY.JOST}
                         color={"#56676d"}
                         letterSpacing={"0.1em"}
                         data-aos="fade-up"

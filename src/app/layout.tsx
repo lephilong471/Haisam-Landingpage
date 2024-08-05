@@ -8,6 +8,8 @@ import "swiper/css/parallax";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
+import "swiper/css/effect-cards";
+import "swiper/css/effect-coverflow";
 
 //style splitting
 import "splitting/dist/splitting.css";

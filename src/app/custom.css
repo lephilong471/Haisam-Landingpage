@@ -12,3 +12,8 @@ a {
   text-decoration: none !important;
   /* color: inherit !important; */
 }
+
+.splitting .char {
+  animation: slide-in 1s cubic-bezier(0.5, 0, 0.5, 1) both;
+  animation-delay: calc(60ms * var(--char-index));
+}

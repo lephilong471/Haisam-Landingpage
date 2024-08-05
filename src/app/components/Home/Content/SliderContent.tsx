@@ -155,7 +155,7 @@ const Slider = () => {
                      ></Box>
                      <Box
                         sx={{
-                           maskImage: `url(${MaskOverlay.src})`,
+                           maskImage: { xs: "", lg: `url(${MaskOverlay.src})` },
                            maskPosition: "left",
                            maskSize: "contain",
                            maskRepeat: "no-repeat",
@@ -280,7 +280,7 @@ const Slider = () => {
                   gap: "16px",
                }}
             >
-               <Link href={"#"} style={{ color: "inherit"}}>
+               <Link href={"#"} style={{ color: "inherit" }}>
                   <MUITypography
                      textTransform={"uppercase"}
                      letterSpacing={"2px"}
@@ -291,7 +291,7 @@ const Slider = () => {
                      Facebook
                   </MUITypography>
                </Link>
-               <Link href={"#"} style={{ color: "inherit"}}>
+               <Link href={"#"} style={{ color: "inherit" }}>
                   <MUITypography
                      textTransform={"uppercase"}
                      letterSpacing={"2px"}
@@ -302,7 +302,7 @@ const Slider = () => {
                      Twitter
                   </MUITypography>
                </Link>
-               <Link href={"#"} style={{ color: "inherit"}}>
+               <Link href={"#"} style={{ color: "inherit" }}>
                   <MUITypography
                      textTransform={"uppercase"}
                      letterSpacing={"2px"}
