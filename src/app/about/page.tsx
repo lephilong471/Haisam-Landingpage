@@ -1,5 +1,5 @@
 "use client"
-import { MUIBox, MUIGrid } from "../components/MUI"
+import { MUIBox, MUIGrid, MUIIconButton } from "../components/MUI"
 // import {style, FONT_FAMILY} from '@/app/config'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCards } from 'swiper/modules';
@@ -33,23 +33,31 @@ const SliderCarouselStyled = styled("div")`
    }
 
    .custom-nav {
-      width: 100%;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 10;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+//       width: 100%;
+//       position: absolute;
+//       top: 50%;
+//       transform: translateY(-50%);
+//       z-index: 10;
+//       display: flex;
+//       align-items: center;
+//       justify-content: space-between;
+        display: flex;
+
    }
-   .custom-prev {
-      position: absolute;
-      left: 30px;
+   .custom-prev, .custom-next {
+      width: 35px;
+      cursor:pointer;
    }
-   .custom-next {
-      position: absolute;
-      right: 30px;
+
+   .mySwiper .swiper-slide:nth-last-child(1){
+        transform: translateX(calc(-1* 0* 24px)) translateY(calc(-1* 0* 24px)) !important;
    }
+//     .mySwiper .swiper-slide:nth-child(2){
+//         transform: translate3d(15%, 0, 0) !important
+//    }
+//     .mySwiper .swiper-slide:nth-child(3){
+//         transform: translate3d(20%, 0, 0) !important
+//    }
 `;
 
 const About = () => {
@@ -70,24 +78,25 @@ const About = () => {
                             nextEl: ".custom-next",
                             prevEl: ".custom-prev",
                          }}
-                         autoplay={{
-                            delay: 2000,
-                            disableOnInteraction: false,
-                         }}
-                        coverflowEffect={{
-                            rotate: 0,
-                            slideShadows: false,
-                        }}
-                        creativeEffect= {{
-                            prev: {
-                              // will set `translateZ(-400px)` on previous slides
-                              translate: [0, 0, -400],
-                            },
-                            next: {
-                              // will set `translateX(100%)` on next slides
-                              translate: ['100%', 0, 0],
-                            },
-                          }}
+                
+                        //  autoplay={{
+                        //     delay: 2000,
+                        //     disableOnInteraction: false,
+                        //  }}
+                        // coverflowEffect={{
+                        //     rotate: 0,
+                        //     slideShadows: true,
+                        // }}
+                        // creativeEffect= {{
+                        //     prev: {
+                        //       // will set `translateZ(-400px)` on previous slides
+                        //       translate: [0, 0, -400],
+                        //     },
+                        //     next: {
+                        //       // will set `translateX(100%)` on next slides
+                        //       translate: ['100%', 0, 0],
+                        //     },
+                        //   }}
                     >
                         <SwiperSlide>
                             <MUIBox
@@ -98,7 +107,7 @@ const About = () => {
                                     backgroundRepeat: "no-repeat",
                                     zIndex: "1",
                                     width: "100%",
-                                    height: "400px",
+                                    height: "300px",
                                 }}
                             />
                         </SwiperSlide>
@@ -111,7 +120,7 @@ const About = () => {
                                     backgroundRepeat: "no-repeat",
                                     zIndex: "1",
                                     width: "100%",
-                                    height: "400px",
+                                    height: "300px",
                                 }}
                             />
                         </SwiperSlide>
@@ -124,18 +133,18 @@ const About = () => {
                                     backgroundRepeat: "no-repeat",
                                     zIndex: "1",
                                     maxWidth: '100%',
-                                    height: "400px",
+                                    height: "300px",
                             }}
                             />
                         </SwiperSlide>
                     </Swiper>
                     <MUIBox className="custom-nav">
-                    <MUIBox className="custom-prev" sx={{ cursor: "pointer", color: "#fff", width: "60px" }}>
-                        <ImageSvg src="/images/icons/ArrowBackRoundedIcon.svg" />
-                    </MUIBox>
-                    <MUIBox className="custom-next" sx={{ cursor: "pointer", color: "#fff", width: "60px" }}>
-                        <ImageSvg src="/images/icons/ArrowForwardRoundedIcon.svg" />
-                    </MUIBox>
+                        <MUIBox className="custom-prev">
+                            <ImageSvg src="/images/icons/ArrowBackRoundedIcon.svg" />
+                        </MUIBox>
+                        <MUIBox className="custom-next">
+                            <ImageSvg src="/images/icons/ArrowForwardRoundedIcon.svg" />
+                        </MUIBox>
                     </MUIBox>
                 </MUIGrid>
             </MUIGrid>
