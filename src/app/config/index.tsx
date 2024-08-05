@@ -11,11 +11,14 @@ export const style = {
    SOCIAL_ICON_COLOR: "#061B506E",
    TEXT_COLOR_ERROR: "#D63637",
    TEXT_COLOR_SUB_FOOTER: "#313131",
+   TEXT_LIST_EXPAND_COLOR: '#56676D'
 };
 export const FONT_FAMILY = {
    JOST: "Jost",
    OUTFIT: "Outfit",
+   MONTSERRAT: "Montserrat"
 };
+
 export const headerData = [
    {
       name: "TRANG CHỦ",

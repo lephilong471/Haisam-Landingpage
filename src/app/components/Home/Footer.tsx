@@ -18,7 +18,7 @@ const Footer = () => {
                 color: style.TEXT_COLOR_FOOTER,
                 py:'22px',
             }}>
-                ©2024 HAISAM - QUÃNG NGÃI
+                ©2024 HAISAM - QUÃNG NINH
             </MUITypography>
         </MUIBox>
     )
