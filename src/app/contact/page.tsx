@@ -11,7 +11,7 @@ import AOS from "aos";
 
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded'
 import TwitterIcon from '@mui/icons-material/Twitter'
-import YoutubeIcon from '@mui/icons-material/Youtube'
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 import * as Yup from 'yup';
 import { useFormik } from "formik";
@@ -149,7 +149,7 @@ const Contact = () => {
                         <TwitterIcon />
                      </MUILink>
                      <MUILink href="#">
-                        <YoutubeIcon />
+                        <YouTubeIcon />
                      </MUILink>
                   </MUIBox>
                </MUIGrid>
