@@ -10,7 +10,7 @@ import CarouselTruck from "@/public/images/slider/truck.jpg";
 import CarouselFuturistic from "@/public/images/slider/futuristic-truck.jpg";
 import CarouselGlobal from "@/public/images/slider/global-logistic-airplane.jpg";
 import ImageSvg from "react-inlinesvg";
-import Image from "next/image";
+// import Image from "next/image";
 import { FONT_FAMILY } from "@/app/config";
 import Link from "next/link";
 import AOS from "aos";

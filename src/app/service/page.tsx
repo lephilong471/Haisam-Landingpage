@@ -1,7 +1,5 @@
 "use client"
-import React, {useState, useEffect} from "react";
-import ServiceContent from "../components/Home/Content/ServiceContent";
-
+import React, {useState} from "react";
 import { 
    MUIBox,
    MUIListItemButton, 
