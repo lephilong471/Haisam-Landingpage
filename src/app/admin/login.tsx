@@ -3,7 +3,8 @@ import { MUIBox, MUITextField, MUIButton, MUITypography } from "@/app/components
 import {style } from '@/app/config'
 import { useFormik } from "formik"
 import * as Yup from 'yup'
-import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
+
+import { adminLoginApi } from "../api/auth/action"
 
 const AdminLogin = () => {
     const errorMessage = Yup.object().shape({
@@ -12,16 +13,48 @@ const AdminLogin = () => {
     });
   
     const myForm = useFormik({
-      initialValues: {
-         username: '',
-         password: '',
-         submit: null,
-      },
+        initialValues: {
+          username: '',
+          password: '',
+        },
+        validationSchema: errorMessage,
+        onSubmit: (values, helpers) => {
+            adminLoginApi(values)
+                .then((res) => console.log(res))
+                .catch((error) => console.log(error))
 
-      validationSchema: errorMessage,
-      onSubmit: (values, helpers) => {
-         console.log(values)
-      }})
+        //   store
+        //   .dispatch(
+        //     registerUser({
+        //       fullname: values.fullname,
+        //       username: values.username,
+        //       email: values.email,
+        //       password: values.password
+        //     })
+        //   )
+        //   .unwrap()
+        //   .then(() => {
+        //     setAlert({
+        //       state: 'success',
+        //       message: 'Register Successfully!'
+        //     })
+        //     router.push(PATH.HOME);
+        //   })
+        //   .catch(err => {
+        //     setAlert({
+        //       state:'error',
+        //       message:'Invalid Register Information!'
+        //     })
+        //     setTimeout(()=> setAlert({
+        //       state:'',
+        //       message:''
+        //     }),2500)
+        //     helpers.setStatus({ success: false });
+        //     helpers.setErrors({ submit: err.message });
+        //     helpers.setSubmitting(false);
+        //   })
+        //   .finally(() => { })
+        }})
       
     return (
         <MUIBox sx={{
@@ -95,28 +128,30 @@ const AdminLogin = () => {
                             size="small" 
                             label='Tên người dùng' 
                             type='text'
+                            name='username'
                             onBlur={myForm.handleBlur}
                             onChange={myForm.handleChange}
-                            error={myForm.touched.username && Boolean(myForm.errors.username)}
-                            helperText={myForm.touched.username && Boolean(myForm.errors.username) && (
-                            <>
-                                <WarningRoundedIcon /> {myForm.errors.username}
-                            </>
-                            )}
+                            // error={myForm.touched.username && Boolean(myForm.errors.username)}
+                            // helperText={myForm.touched.username && Boolean(myForm.errors.username) && (
+                            // <>
+                            //     <WarningRoundedIcon /> {myForm.errors.username}
+                            // </>
+                            // )}
                             />
                         <MUITextField  
                             variant='outlined' 
                             size='small' 
                             label='Mật khẩu' 
                             type='password' 
+                            name='password'
                             onBlur={myForm.handleBlur}
                             onChange={myForm.handleChange}
-                            error={myForm.touched.password && Boolean(myForm.errors.password)}
-                            helperText={myForm.touched.password && Boolean(myForm.errors.password) && (
-                            <>
-                                <WarningRoundedIcon /> {myForm.errors.password}
-                            </>
-                            )}
+                            // error={myForm.touched.password && Boolean(myForm.errors.password)}
+                            // helperText={myForm.touched.password && Boolean(myForm.errors.password) && (
+                            // <>
+                            //     <WarningRoundedIcon /> {myForm.errors.password}
+                            // </>
+                            // )}
                         />
                         <MUIBox>
                             <MUIButton variant='contained' type='submit'>

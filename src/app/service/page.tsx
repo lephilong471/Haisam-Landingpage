@@ -29,6 +29,7 @@ const ContentStyled = styled(MUIBox)`
 const ImageStyled = styled.img`
    max-width: 100%;
    padding: 10px;
+   width: 100%;
    // @keyframes image-animation{
    //    0%{
    //       transform: translate3d(0px, 100px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1)
@@ -297,7 +298,7 @@ const Service = () => {
                         data-aos-duration="3000"
                         src='/images/loaded-container-cargo-ship-is-seen-front-as-it-speeds-ocean-generative-ai-1300x1097.jpg' 
                         alt=''
-                     ></ImageStyled>
+                     />
                   </MUIGrid>
 
                   <MUIGrid 
@@ -411,12 +412,12 @@ const Service = () => {
                         justifyContent: 'center'
                      }}
                   >
-                       <ImageStyled
+                     <ImageStyled
                         data-aos="fade-up"
                         data-aos-duration="3000"
-                           src='/images/aerial-top-view-container-cargo-ship-with-contrail-ocean-ship-carrying-container.jpg' 
+                        src='/images/aerial-top-view-container-cargo-ship-with-contrail-ocean-ship-carrying-container.jpg' 
                         alt=''
-                     ></ImageStyled>
+                     />
                   </MUIGrid>
                </MUIGrid>
          </MUIBox>
