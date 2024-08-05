@@ -11,6 +11,7 @@ import AboutProgress from "./AboutProgress";
 import { FONT_FAMILY, style } from "@/app/config";
 import { PATH } from "@/app/config/routes";
 import AboutSlider from "./AboutSlider";
+
 import dynamic from "next/dynamic";
 const SplittingText = dynamic(() => import("@/app/components/Home/Content/SplittingText"), {ssr: false});
 
@@ -177,7 +178,7 @@ const AboutContent = () => {
             </Link>
             <ArrowOutwardRoundedIcon className="icon-about" />
          </MUIBox>
-         <SplittingText props={['WHY','CHOOSE', 'US']} />
+         <SplittingText props={['Why','Choose', 'Us']} />
          {/* <MUIBox pb={3}>
             <MUITypography
                variant="h1"

@@ -20,7 +20,7 @@ import "aos/dist/aos.css";
 
 import Header from "@/app/components/Home/Header";
 import { Box } from "@mui/material";
-import Footer from "./components/Home/Footer";
+// import Footer from "./components/Home/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -81,7 +81,7 @@ export default function RootLayout({
                <Header />
                {children}
             </Box>
-            <Footer />
+            {/* <Footer /> */}
          </body>
       </html>
    );

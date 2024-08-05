@@ -22,32 +22,9 @@ const SplittingText= dynamic(() => import('../components/Home/Content/SplittingT
 });
 
 const ContentStyled = styled(MUIBox)`
-
    p{
-      font-family: 'Montserrat';
-      color: ${style.TEXT_COLOR_GENERAL}
-   }
-
-   .word-holder {
-      display: inline-flex;
-      margin-right: 10px;
       font-family: ${FONT_FAMILY.MONTSERRAT};
-   }
-
-   .word-holder span {
-      display: inline-block;
-   }
-
-   .splitting .char {
-      animation: slide-in 1s cubic-bezier(0.5, 0, 0.5, 1) both;
-      animation-delay: calc(60ms * var(--char-index));
-   }
-
-   @keyframes slide-in {
-      from {
-         transform: translateX(100px);
-         opacity: 0;
-      }
+      color: ${style.TEXT_COLOR_GENERAL}
    }
 `
 const Contact = () => {
