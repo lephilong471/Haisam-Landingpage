@@ -4,12 +4,15 @@ import { MUIBox, MUITypography } from "@/app/components/MUI";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import Link from "next/link";
 import AOS from "aos";
-import Splitting from "splitting";
+// import Splitting from "splitting";
 import styled from "styled-components";
 import { Divider } from "@mui/material";
 import { FONT_FAMILY, style } from "@/app/config";
 import { PATH } from "@/app/config/routes";
 import SliderProject from "./SliderProject";
+
+import dynamic from "next/dynamic";
+const SplittingText = dynamic(()=>import("@/app/components/Home/Content/SplittingText"),{ssr: false})
 
 const ProjectContentStyled = styled("div")`
    padding-bottom: 10%;
@@ -28,7 +31,7 @@ const ProjectContentStyled = styled("div")`
 
 const ProjectContent = () => {
    useEffect(() => {
-      Splitting();
+      // Splitting();
       AOS.init();
    }, []);
 
@@ -36,7 +39,7 @@ const ProjectContent = () => {
       <ProjectContentStyled>
          <MUIBox className="container">
             <MUIBox sx={{ marginTop: { md: "20%", lg: "80px" }, marginBottom: { md: "1%", lg: "50px" } }}>
-               <MUITypography
+               {/* <MUITypography
                   pb={3}
                   fontFamily={FONT_FAMILY.OUTFIT}
                   variant="h1"
@@ -48,7 +51,8 @@ const ProjectContent = () => {
                   data-splitting="chars"
                >
                   Logistics Triumphs
-               </MUITypography>
+               </MUITypography> */}
+               <SplittingText props={['Logistics', 'Triumphs']} />
                <Divider />
                <MUIBox
                   data-aos="fade-up"
