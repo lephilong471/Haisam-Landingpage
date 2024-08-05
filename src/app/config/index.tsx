@@ -1,5 +1,9 @@
 import { PATH } from "./routes";
 
+export const JWT = 'accessToken';
+export const API_URL = process.env.NEXT_PUBLIC_API_URL;
+export const LANG = 'lang';
+
 export const style = {
    TEXT_COLOR_NORMAL: "#222222",
    TEXT_COLOR_TITLE: "#343842",
@@ -13,6 +17,7 @@ export const style = {
    TEXT_COLOR_SUB_FOOTER: "#313131",
    TEXT_LIST_EXPAND_COLOR: '#56676D'
 };
+
 export const FONT_FAMILY = {
    JOST: "Jost",
    OUTFIT: "Outfit",

@@ -24,7 +24,7 @@ const SplittingText= dynamic(() => import('../components/Home/Content/SplittingT
 const ContentStyled = styled(MUIBox)`
    p{
       font-family: ${FONT_FAMILY.MONTSERRAT};
-      color: ${style.TEXT_COLOR_GENERAL}
+      color: ${style.TEXT_COLOR_GENERAL};
    }
 `
 const Contact = () => {
