@@ -1,10 +1,24 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-// import "./globals.css";
 import "./custom.css";
 
+//style swiper
+import "swiper/css"; // Core Swiper styles
+import "swiper/css/parallax";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "swiper/css/effect-fade";
+import "swiper/css/effect-cards";
+import "swiper/css/effect-coverflow";
+
+//style splitting
+import "splitting/dist/splitting.css";
+import "splitting/dist/splitting-cells.css";
+
+//style aos
+import "aos/dist/aos.css";
+
 import Header from "@/app/components/Home/Header";
-import BgImg from "@/public/static/bg-image.jpg";
 import { Box } from "@mui/material";
 import Footer from "./components/Home/Footer";
 
