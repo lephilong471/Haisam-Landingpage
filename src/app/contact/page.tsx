@@ -1,23 +1,25 @@
 "use client";
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import { MUIBox, MUITypography, MUIGrid, MUILink, MUITextField, MUIButton } from "../components/MUI";
 import styled from "styled-components";
 import {style, FONT_FAMILY} from '@/app/config'
-import "splitting/dist/splitting.css";
-import "splitting/dist/splitting-cells.css";
-import "aos/dist/aos.css";
-import Splitting from "splitting";
+
 import AOS from "aos";
 
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded'
 import TwitterIcon from '@mui/icons-material/Twitter'
-import YoutubeIcon from '@mui/icons-material/Youtube'
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 import * as Yup from 'yup';
 import { useFormik } from "formik";
 
 import SubFooter from "../components/Home/SubFooter";
 import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
+
+import dynamic from 'next/dynamic';
+const SplittingText= dynamic(() => import('../components/Home/Content/SplittingText'), {
+  ssr: false
+});
 
 const ContentStyled = styled(MUIBox)`
 
@@ -72,7 +74,6 @@ const Contact = () => {
       }})
 
    useEffect(() => {
-      Splitting();
       AOS.init();
    },[])
 
@@ -85,7 +86,7 @@ const Contact = () => {
                   pb: '5%'
                }}>
                <MUIGrid item md={7} xs={12}>
-                  <MUIBox sx={{
+                  {/* <MUIBox sx={{
                      margin: '10% 15% 4% 0%',
                      padding: '0% 14% 6% 0%',
                      borderBottom: `1px solid ${style.TEXT_HIGHLIGHT_COLOR}`
@@ -106,7 +107,8 @@ const Contact = () => {
                            </MUITypography>
                         )
                      })}
-                  </MUIBox>
+                  </MUIBox> */}
+                  <SplittingText props={text}/>
                   <MUIBox
                      data-aos="fade-up"
                      data-aos-delay="300"
@@ -149,7 +151,7 @@ const Contact = () => {
                         <TwitterIcon />
                      </MUILink>
                      <MUILink href="#">
-                        <YoutubeIcon />
+                        <YouTubeIcon />
                      </MUILink>
                   </MUIBox>
                </MUIGrid>

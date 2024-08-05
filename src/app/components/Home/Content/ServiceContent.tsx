@@ -6,11 +6,14 @@ import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import Link from "next/link";
 import AddIcon from "@mui/icons-material/Add";
 
-import Splitting from "splitting";
+// import Splitting from "splitting";
 import AOS from "aos";
 import CardItem from "./CardItem";
 import { FONT_FAMILY, style } from "@/app/config";
 import { PATH } from "@/app/config/routes";
+
+import dynamic from "next/dynamic";
+const SplittingText = dynamic(() => import('@/app/components/Home/Content/SplittingText'),{ssr:false})
 
 const ServiceContentStyled = styled(Box)`
    background: #fff;
@@ -79,7 +82,7 @@ const DataCardPercent = [
 ];
 const ServiceContent = () => {
    useEffect(() => {
-      Splitting();
+      // Splitting();
       AOS.init();
    }, []);
 
@@ -142,7 +145,8 @@ const ServiceContent = () => {
                      </Link>
                      <ArrowOutwardRoundedIcon className="icon-service" />
                   </Box>
-                  <Box data-splitting="chars" pb={4}>
+                  <SplittingText props={text} />
+                  {/* <Box data-splitting="chars" pb={4}>
                      {text.map((item, index) => (
                         <MUITypography
                            key={index}
@@ -156,7 +160,7 @@ const ServiceContent = () => {
                            {item}
                         </MUITypography>
                      ))}
-                  </Box>
+                  </Box> */}
                   {/* <Box pb={4}>
                      <MUITypography
                         variant="h1"

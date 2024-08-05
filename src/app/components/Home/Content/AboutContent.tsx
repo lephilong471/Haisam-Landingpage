@@ -4,13 +4,15 @@ import { MUIBox, MUIGrid, MUITypography } from "@/app/components/MUI";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import Link from "next/link";
 import AOS from "aos";
-import Splitting from "splitting";
+// import Splitting from "splitting";
 import styled from "styled-components";
 import { Divider, Tab, Tabs } from "@mui/material";
 import AboutProgress from "./AboutProgress";
 import { FONT_FAMILY, style } from "@/app/config";
 import { PATH } from "@/app/config/routes";
 import AboutSlider from "./AboutSlider";
+import dynamic from "next/dynamic";
+const SplittingText = dynamic(() => import("@/app/components/Home/Content/SplittingText"), {ssr: false});
 
 const AboutContentStyled = styled("div")`
    min-height: 100vh;
@@ -96,7 +98,7 @@ const AboutContent = () => {
    const [value, setValue] = React.useState(0);
 
    useEffect(() => {
-      Splitting();
+      // Splitting();
       AOS.init();
    }, []);
    const TabPanel = (props: TabPanelProps) => {
@@ -175,7 +177,8 @@ const AboutContent = () => {
             </Link>
             <ArrowOutwardRoundedIcon className="icon-about" />
          </MUIBox>
-         <MUIBox pb={3}>
+         <SplittingText props={['WHY','CHOOSE', 'US']} />
+         {/* <MUIBox pb={3}>
             <MUITypography
                variant="h1"
                fontSize={116}
@@ -188,7 +191,7 @@ const AboutContent = () => {
             >
                Why Choose Us
             </MUITypography>
-         </MUIBox>
+         </MUIBox> */}
          <Divider sx={{ mb: "20px" }} />
          <MUIBox>
             <MUITypography
