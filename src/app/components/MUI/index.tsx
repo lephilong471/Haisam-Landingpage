@@ -19,6 +19,7 @@ import MUIBottomNavigationAction from './MUIBottomNavigationAction';
 import MUISwitch from './MUISwitch';
 import MUILink from './MUILink';
 import MUITextField from './MUITextField'
+import MUICollapse from './MUICollapse';
 
 export {
   MUIBox,
@@ -41,5 +42,6 @@ export {
   MUIBottomNavigationAction,
   MUISwitch,
   MUILink,
-  MUITextField
+  MUITextField,
+  MUICollapse
 };

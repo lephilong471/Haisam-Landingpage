@@ -2,7 +2,7 @@
 import React, {useEffect, useState} from "react";
 import { MUIBox, MUITypography, MUIGrid, MUILink, MUITextField, MUIButton } from "../components/MUI";
 import styled from "styled-components";
-import {style} from '@/app/config'
+import {style, FONT_FAMILY} from '@/app/config'
 import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
 import "aos/dist/aos.css";
@@ -29,7 +29,7 @@ const ContentStyled = styled(MUIBox)`
    .word-holder {
       display: inline-flex;
       margin-right: 10px;
-      font-family: "Montserrat";
+      font-family: ${FONT_FAMILY.MONTSERRAT};
    }
 
    .word-holder span {
@@ -84,7 +84,7 @@ const Contact = () => {
                sx={{
                   pb: '5%'
                }}>
-               <MUIGrid item md={7}>
+               <MUIGrid item md={7} xs={12}>
                   <MUIBox sx={{
                      margin: '10% 15% 4% 0%',
                      padding: '0% 14% 6% 0%',
@@ -153,16 +153,21 @@ const Contact = () => {
                      </MUILink>
                   </MUIBox>
                </MUIGrid>
-               <MUIGrid item md={5}>
+               <MUIGrid item md={5} xs={12}>
                   <MUIBox sx={{
                      p: '8%',
                      '.MuiTextField-root':{
                         py:'15px',
+                        'input, textarea':{
+                           px:'14px',
+                           fontFamily: FONT_FAMILY.MONTSERRAT,
+                           fontWeight: '500'
+                        },
                         'input::placeholder, textarea::placeholder':{
-                           fontFamily:'Montserrat',
+                           fontFamily:FONT_FAMILY.MONTSERRAT,
                            fontWeight:'500',
                            fontSize:'14px',
-                        }
+                        },
                      },
                      '.Mui-error':{
                         fontWeight: '500',
@@ -188,9 +193,9 @@ const Contact = () => {
                            onBlur={myForm.handleBlur}
                            onChange={myForm.handleChange}
                            error={myForm.touched.name && Boolean(myForm.errors.name)}
-                           helperText={myForm.touched.name && (
+                           helperText={myForm.touched.name && Boolean(myForm.errors.name) && (
                               <>
-                                 <WarningRoundedIcon /> {myForm.errors.email}
+                                 <WarningRoundedIcon /> {myForm.errors.name}
                               </>
                            )}
 
@@ -204,7 +209,7 @@ const Contact = () => {
                            onBlur={myForm.handleBlur}
                            onChange={myForm.handleChange}
                            error={myForm.touched.email && Boolean(myForm.errors.email)}
-                           helperText={myForm.touched.email && (
+                           helperText={myForm.touched.email && Boolean(myForm.errors.email) && (
                               <>
                                  <WarningRoundedIcon /> {myForm.errors.email}
                               </>
@@ -217,7 +222,7 @@ const Contact = () => {
                            variant="standard"
                            onChange={myForm.handleChange}
                            error={myForm.touched.content && Boolean(myForm.errors.content)}
-                           helperText={myForm.touched.content && (
+                           helperText={myForm.touched.content && Boolean(myForm.errors.content) && (
                               <>
                                  <WarningRoundedIcon /> {myForm.errors.email}
                               </>
@@ -238,7 +243,7 @@ const Contact = () => {
                               background:style.TEXT_COLOR_GENERAL,
                               borderRadius:'20px',
                               textTransform:'none',
-                              fontFamily:'Montserrat'
+                              fontFamily:'inherit'
                            }}
                            >Submit
                         </MUIButton>
