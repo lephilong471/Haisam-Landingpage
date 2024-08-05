@@ -10,10 +10,10 @@ import { Divider, Tab, Tabs } from "@mui/material";
 import AboutProgress from "./AboutProgress";
 import { FONT_FAMILY, style } from "@/app/config";
 import { PATH } from "@/app/config/routes";
-import AboutSlider from "./AboutSlider";
+// import AboutSlider from "./AboutSlider";
 
 import dynamic from "next/dynamic";
-const SplittingText = dynamic(() => import("@/app/components/Home/Content/SplittingText"), {ssr: false});
+const SplittingText = dynamic(() => import("@/app/components/Home/Content/SplittingText"), { ssr: false });
 
 const AboutContentStyled = styled("div")`
    min-height: 100vh;
@@ -186,7 +186,7 @@ const AboutContent = () => {
             </Link>
             <ArrowOutwardRoundedIcon className="icon-about" />
          </MUIBox>
-         <SplittingText props={['Why','Choose', 'Us']} />
+         <SplittingText props={["Why", "Choose", "Us"]} />
          {/* <MUIBox pb={3}>
             <MUITypography
                variant="h1"
@@ -252,7 +252,8 @@ const AboutContent = () => {
                   data-aos-duration="1500"
                   data-aos-once="true"
                >
-                  <AboutSlider />
+                  {/* <AboutSlider />   */}
+                  about silier
                </MUIGrid>
             </MUIGrid>
          </MUIBox>

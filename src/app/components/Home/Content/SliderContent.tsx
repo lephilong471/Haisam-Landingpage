@@ -121,10 +121,8 @@ const Slider = () => {
                delay: 5000,
                disableOnInteraction: false,
             }}
-            // navigation={true}
             parallax={true}
             speed={600}
-            // direction="vertical"
             style={{ position: "relative" }}
          >
             {DataSlider.map((item, index) => (

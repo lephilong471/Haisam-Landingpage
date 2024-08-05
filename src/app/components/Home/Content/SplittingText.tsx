@@ -1,18 +1,19 @@
-import React, {useEffect} from 'react'
-import { MUIBox, MUITypography } from "../../MUI"
-import { style, FONT_FAMILY } from "../../../config"
-import styled from 'styled-components';
+"use client";
+import React, { useEffect } from "react";
+import { MUIBox, MUITypography } from "../../MUI";
+import { style, FONT_FAMILY } from "../../../config";
+import styled from "styled-components";
 
 import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
 import "aos/dist/aos.css";
 
-import Splitting from "splitting"
+import Splitting from "splitting";
 
 const ContentStyled = styled(MUIBox)`
- p{
-      font-family: 'Montserrat';
-      color: ${style.TEXT_COLOR_GENERAL}
+   p {
+      font-family: "Montserrat";
+      color: ${style.TEXT_COLOR_GENERAL};
    }
 
    .word-holder {
@@ -36,40 +37,42 @@ const ContentStyled = styled(MUIBox)`
          opacity: 0;
       }
    }
-`
-const SplittingText = ({props}) => {
-//    const text = ['Liên', 'Hệ']
-    useEffect(() => {
-        Splitting()
-    })
-    return (
-        <ContentStyled>
-        <MUIBox sx={{
-            // margin: '10% 15% 4% 0%',
-            // padding: '0% 14% 6% 0%',
-            // borderBottom: `1px solid ${style.TEXT_HIGHLIGHT_COLOR}`
-            pb:'20px',
-        }} data-splitting="chars">
+`;
+const SplittingText = ({ props }) => {
+   //    const text = ['Liên', 'Hệ']
+   useEffect(() => {
+      Splitting();
+   });
+   return (
+      <ContentStyled>
+         <MUIBox
+            sx={{
+               // margin: '10% 15% 4% 0%',
+               // padding: '0% 14% 6% 0%',
+               // borderBottom: `1px solid ${style.TEXT_HIGHLIGHT_COLOR}`
+               pb: "20px",
+            }}
+            data-splitting="chars"
+         >
             {props.map((item: string, index: number) => {
-            return (
-                <MUITypography
-                    variant="h1"
-                    fontSize={114}
-                    fontWeight={700}
-                    lineHeight={"1em"}
-                    letterSpacing={"-0.04em"}
-                    className="word-holder"
-                    color={style.TEXT_COLOR_TITLE}
-                    key={index}
-                >
-                    {item}
-                </MUITypography>
-            )
+               return (
+                  <MUITypography
+                     variant="h1"
+                     fontSize={114}
+                     fontWeight={700}
+                     lineHeight={"1em"}
+                     letterSpacing={"-0.04em"}
+                     className="word-holder"
+                     color={style.TEXT_COLOR_TITLE}
+                     key={index}
+                  >
+                     {item}
+                  </MUITypography>
+               );
             })}
-        </MUIBox>
-        </ContentStyled>
+         </MUIBox>
+      </ContentStyled>
+   );
+};
 
-    )
-}
-
-export default SplittingText
+export default SplittingText;

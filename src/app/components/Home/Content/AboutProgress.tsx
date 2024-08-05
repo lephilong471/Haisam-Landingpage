@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { MUIBox, MUITypography } from "@/app/components/MUI";
 import { FONT_FAMILY, style } from "@/app/config";

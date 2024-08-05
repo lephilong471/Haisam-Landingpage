@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { MUIBox, MUITypography } from "../../MUI";
 import { Divider } from "@mui/material";

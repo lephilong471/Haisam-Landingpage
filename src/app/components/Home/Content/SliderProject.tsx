@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay, EffectFade, Parallax } from "swiper/modules";
@@ -10,7 +11,7 @@ import CarouselTruck from "@/public/images/slider/truck.jpg";
 import CarouselFuturistic from "@/public/images/slider/futuristic-truck.jpg";
 import CarouselGlobal from "@/public/images/slider/global-logistic-airplane.jpg";
 import ImageSvg from "react-inlinesvg";
-import Image from "next/image";
+// import Image from "next/image";
 import { FONT_FAMILY, style } from "@/app/config";
 import Link from "next/link";
 import AOS from "aos";
