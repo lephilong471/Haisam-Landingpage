@@ -20,6 +20,10 @@ import MUISwitch from './MUISwitch';
 import MUILink from './MUILink';
 import MUITextField from './MUITextField'
 import MUICollapse from './MUICollapse';
+import MUICardMedia from './MUICardMedia';
+import MUICardActions from './MUICardActions';
+import MUICardContent from './MUICardContent';
+import MUIPopover from './MUIPopover';
 
 export {
   MUIBox,
@@ -43,5 +47,9 @@ export {
   MUISwitch,
   MUILink,
   MUITextField,
-  MUICollapse
+  MUICollapse,
+  MUICardMedia,
+  MUICardActions,
+  MUICardContent,
+  MUIPopover,
 };
