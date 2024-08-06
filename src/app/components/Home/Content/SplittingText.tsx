@@ -4,13 +4,9 @@ import { MUIBox, MUITypography } from "../../MUI";
 import { style, FONT_FAMILY } from "../../../config";
 import styled from "styled-components";
 
-import "splitting/dist/splitting.css";
-import "splitting/dist/splitting-cells.css";
-import "aos/dist/aos.css";
-
 import Splitting from "splitting";
 
-const ContentStyled = styled(MUIBox)`
+const ContentStyled = styled("div")`
    p {
       font-family: "Montserrat";
       color: ${style.TEXT_COLOR_GENERAL};

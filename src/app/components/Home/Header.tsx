@@ -2,7 +2,7 @@
 
 import { MUIBox, MUITypography, MUILink, MUITextField } from "../MUI";
 import { headerData, style } from "@/app/config";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 import styled from "styled-components";
 import { PATH } from "@/app/config/routes";
 
-const AnimateStyled = styled(MUIBox)`
+const AnimateStyled = styled("div")`
    @keyframes search-text-fadein {
       0% {
          opacity: 0;

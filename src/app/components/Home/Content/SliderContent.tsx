@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation, Parallax, EffectFade } from "swiper/modules";
-import { Box } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import { MUIBox, MUITypography } from "@/app/components/MUI";
 import SliderPlane from "@/public/images/slider/transportation-logistics-container-cargo-ship-.jpg";
 import SliderShipPlane from "@/public/images/slider/aerial-view-top.jpg";
@@ -10,7 +10,6 @@ import SliderTruck from "@/public/images/slider/truck.jpg";
 import SliderTrain from "@/public/images/slider/containers-train-railway-station.jpg";
 import MaskOverlay from "@/public/images/slider/side-round-mask.svg";
 import AOS from "aos";
-import styled from "styled-components";
 import Link from "next/link";
 
 const DataSlider = [
@@ -45,7 +44,7 @@ const DataSlider = [
    },
 ];
 
-const SliderStyled = styled("div")`
+const SliderStyled = styled(Box)`
    height: 100vh;
    background: #fff;
 
