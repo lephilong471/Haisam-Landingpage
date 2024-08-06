@@ -4,9 +4,15 @@ import {style } from '@/app/config'
 import { useFormik } from "formik"
 import * as Yup from 'yup'
 
+import WarningRoundedIcon from "@mui/icons-material/WarningRounded"
+
 import { adminLoginApi } from "../api/auth/action"
+import { useEffect } from "react"
 
 const AdminLogin = () => {
+    useEffect(() => {
+       
+    }, [])
     const errorMessage = Yup.object().shape({
         username: Yup.string().required('Trường bắt buộc nhập.'),
         password: Yup.string().required('Trường bắt buộc nhập.'),
@@ -20,9 +26,7 @@ const AdminLogin = () => {
         validationSchema: errorMessage,
         onSubmit: (values, helpers) => {
             adminLoginApi(values)
-                .then((res) => console.log(res))
-                .catch((error) => console.log(error))
-
+            
         //   store
         //   .dispatch(
         //     registerUser({
@@ -131,12 +135,12 @@ const AdminLogin = () => {
                             name='username'
                             onBlur={myForm.handleBlur}
                             onChange={myForm.handleChange}
-                            // error={myForm.touched.username && Boolean(myForm.errors.username)}
-                            // helperText={myForm.touched.username && Boolean(myForm.errors.username) && (
-                            // <>
-                            //     <WarningRoundedIcon /> {myForm.errors.username}
-                            // </>
-                            // )}
+                            error={myForm.touched.username && Boolean(myForm.errors.username)}
+                            helperText={myForm.touched.username && Boolean(myForm.errors.username) && (
+                            <>
+                                <WarningRoundedIcon /> {myForm.errors.username}
+                            </>
+                            )}
                             />
                         <MUITextField  
                             variant='outlined' 
@@ -146,12 +150,12 @@ const AdminLogin = () => {
                             name='password'
                             onBlur={myForm.handleBlur}
                             onChange={myForm.handleChange}
-                            // error={myForm.touched.password && Boolean(myForm.errors.password)}
-                            // helperText={myForm.touched.password && Boolean(myForm.errors.password) && (
-                            // <>
-                            //     <WarningRoundedIcon /> {myForm.errors.password}
-                            // </>
-                            // )}
+                            error={myForm.touched.password && Boolean(myForm.errors.password)}
+                            helperText={myForm.touched.password && Boolean(myForm.errors.password) && (
+                            <>
+                                <WarningRoundedIcon /> {myForm.errors.password}
+                            </>
+                            )}
                         />
                         <MUIBox>
                             <MUIButton variant='contained' type='submit'>
