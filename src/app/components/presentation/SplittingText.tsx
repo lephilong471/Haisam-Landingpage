@@ -6,39 +6,47 @@ import styled from "styled-components";
 
 const StyledSplittingWrapper = styled.div`
    .splitting .char {
-      animation: slide-in 1s cubic-bezier(0.5, 0, 0.5, 1) both;
-      animation-delay: calc(60ms * var(--char-index));
+      opacity: 0;
+      transform: translateX(100px);
+      transition: opacity 1s, transform 1s;
    }
 
-   .animate.splitting .char {
-      animation-play-state: running;
-   }
-
-   @keyframes slide-in {
-      from {
-         transform: translateX(100px);
-         opacity: 0;
-      }
+   .splitting.animate .char {
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: calc(60ms * var(--char-index));
    }
 `;
 
-const SplittingText = forwardRef<HTMLDivElement, { children: React.ReactNode }>(({ children }, ref) => {
+const SplittingText = forwardRef<HTMLDivElement, { children: React.ReactNode }>(({ children }, forwardedRef) => {
    const innerRef = useRef<HTMLDivElement>(null);
-   const targetRef = ref || innerRef;
-   const isIntersecting = useIntersectionObserver(targetRef, { threshold: 0.1 });
+   const targetRef = useRef<HTMLDivElement>(null);
 
    useEffect(() => {
-      if (isIntersecting) {
-         Splitting();
+      if (typeof forwardedRef === "function") {
+         forwardedRef(targetRef.current);
+      } else if (forwardedRef) {
+         forwardedRef.current = targetRef.current;
+      }
+   }, [forwardedRef]);
+
+   const isIntersecting = useIntersectionObserver(targetRef, { threshold: 0.1 });
+   const hasAnimated = useRef(false);
+
+   useEffect(() => {
+      if (isIntersecting && !hasAnimated.current && targetRef.current) {
+         const result = Splitting({ target: targetRef.current, by: "chars" });
+         if (result.length > 0) {
+            setTimeout(() => {
+               targetRef.current?.classList.add("animate");
+            }, 100);
+            hasAnimated.current = true;
+         }
       }
    }, [isIntersecting]);
 
    return (
-      <StyledSplittingWrapper
-         ref={targetRef}
-         data-splitting={isIntersecting ? "chars" : ""}
-         className={isIntersecting ? "splitting chars animate" : ""}
-      >
+      <StyledSplittingWrapper ref={targetRef} className="splitting">
          {children}
       </StyledSplittingWrapper>
    );

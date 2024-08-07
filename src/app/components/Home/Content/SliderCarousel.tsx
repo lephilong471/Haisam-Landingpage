@@ -12,6 +12,15 @@ import CarouselTransportation from "@/public/images/slider/carousel-transportati
 import ImageSvg from "react-inlinesvg";
 import AOS from "aos";
 
+import { BREAK_POINT } from "@/app/config";
+
+import dynamic from "next/dynamic";
+
+const useWindowWidth = dynamic(
+  () => import("@/app/config/hooks/useWindowWidth").then((mod) => mod.default),
+  { ssr: false }
+) as () => number;
+
 const SliderCarouselStyled = styled("div")`
    width: 100%;
    height: 100vh;
@@ -69,9 +78,12 @@ const dataCarousel = [
 ];
 
 const SliderCarousel = () => {
+   const screenWidth = useWindowWidth();
+
    useEffect(() => {
       AOS.init();
    }, []);
+
    return (
       <SliderCarouselStyled //
          data-aos="fade-up"
@@ -84,10 +96,10 @@ const SliderCarousel = () => {
             effect="coverflow"
             loop={true}
             grabCursor={true}
-            slidesPerView={2}
-            spaceBetween={170}
-            centeredSlides={true}
-            initialSlide={2}
+            slidesPerView={screenWidth > BREAK_POINT.MD ? 2 : 1}
+            spaceBetween={screenWidth > BREAK_POINT.MD ? 170 : 50}
+            centeredSlides={screenWidth > BREAK_POINT.MD ? true : false}
+            initialSlide={screenWidth > BREAK_POINT.MD ? 2 : 1}
             // navigation={true}
             navigation={{
                nextEl: ".custom-next",

@@ -11,6 +11,7 @@ import SliderTrain from "@/public/images/slider/containers-train-railway-station
 import MaskOverlay from "@/public/images/slider/side-round-mask.svg";
 import AOS from "aos";
 import Link from "next/link";
+import { FONT_FAMILY } from "@/app/config";
 
 const DataSlider = [
    {
@@ -77,7 +78,7 @@ const SliderStyled = styled(Box)`
    .custom-pagination .divider-active {
       display: block;
       background: white;
-      width: 42px;
+      width: 35px;
       height: 1px;
       position: absolute;
       transform: translateY(-50%);
@@ -152,6 +153,17 @@ const Slider = () => {
                      ></Box>
                      <Box
                         sx={{
+                           background: "rgba(0, 0, 0, 0.3)",
+                           height: "100vh",
+                           minHeight: "100vh",
+                           maxHeight: "100%",
+                           zIndex: "5",
+                           width: "100%",
+                           position: "absolute",
+                        }}
+                     ></Box>
+                     <Box
+                        sx={{
                            maskImage: { xs: "", lg: `url(${MaskOverlay.src})` },
                            maskPosition: "left",
                            maskSize: "contain",
@@ -183,7 +195,7 @@ const Slider = () => {
                            alignItems: "center",
                            width: "100%",
                            height: "100%",
-                           pl: { xs: 0, md: "100px" },
+                           pl: { xs: "15px", md: "100px" },
                         }}
                      >
                         <Box>
@@ -208,14 +220,13 @@ const Slider = () => {
                               data-aos-duration="2000"
                               data-aos-once="true"
                               data-aos-offset="0"
-                              fontSize={78}
                               fontWeight={700}
                               textTransform={"uppercase"}
                               letterSpacing={"-0.1px"}
                               lineHeight={1}
-                              sx={{ maxWidth: "614px" }}
                               py={1.5}
                               data-swiper-parallax="-200"
+                              sx={{ maxWidth: "614px", fontSize: { xs: "35px", md: "60px", xl: "78px" } }}
                            >
                               <span>{item.heading}</span> {item.title}
                            </MUITypography>
@@ -242,16 +253,17 @@ const Slider = () => {
             <MUIBox
                sx={{
                   position: "absolute",
-                  top: "50%",
+                  top: { xs: "auto", sm: "50%" },
+                  bottom: { xs: "0", sm: "auto" },
                   right: 0,
-                  transform: "translateY(-50%)",
+                  transform: { xs: "translateY(-5%)", sm: "translateY(-50%)" },
                   zIndex: "99",
                   background: "transparent",
                   mr: { xs: 0, md: "100px" },
                }}
             >
                <MUIBox
-                  className="custom-pagination"
+                  className="custom-pagination container"
                   style={{
                      display: "flex",
                      alignItems: "end",
@@ -267,14 +279,14 @@ const Slider = () => {
                   top: "auto",
                   left: "0",
                   right: "auto",
-                  bottom: "70px",
+                  bottom: { xs: "30px", sm: "70px" },
                   zIndex: "99",
                   background: "transparent",
-                  ml: { xs: 0, md: "100px" },
+                  ml: { xs: "15px", md: "100px" },
                   color: "white",
                   display: "flex",
                   alignItems: "center",
-                  gap: "16px",
+                  gap: { xs: "8px", md: "16px" },
                }}
             >
                <Link href={"#"} style={{ color: "inherit" }}>
@@ -283,6 +295,7 @@ const Slider = () => {
                      letterSpacing={"2px"}
                      fontSize={14}
                      lineHeight={"1px"}
+                     fontFamily={FONT_FAMILY.JOST}
                      sx={{ wordSpacing: "0px" }}
                   >
                      Facebook
@@ -294,6 +307,7 @@ const Slider = () => {
                      letterSpacing={"2px"}
                      fontSize={14}
                      lineHeight={"1px"}
+                     fontFamily={FONT_FAMILY.JOST}
                      sx={{ wordSpacing: "0px" }}
                   >
                      Twitter
@@ -305,6 +319,7 @@ const Slider = () => {
                      letterSpacing={"2px"}
                      fontSize={14}
                      lineHeight={"1px"}
+                     fontFamily={FONT_FAMILY.JOST}
                      sx={{ wordSpacing: "0px" }}
                   >
                      Instagram

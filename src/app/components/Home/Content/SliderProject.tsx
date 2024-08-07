@@ -192,251 +192,263 @@ const SliderProject = () => {
          data-aos-duration="2000"
          data-aos-once="true"
       >
-         <Swiper
-            modules={[Pagination, Navigation, Autoplay, EffectFade, Parallax]}
-            direction={"vertical"}
-            navigation={{
-               nextEl: ".custom-next",
-               prevEl: ".custom-prev",
-            }}
-            effect="fade"
-            parallax={true}
-            autoplay={{
-               delay: 5000,
-               disableOnInteraction: false,
-            }}
-            loop={true}
-            speed={800}
-            pagination={{
-               el: ".custom-pagination",
-               clickable: true,
-               type: "custom",
-               renderCustom: (swiper, current, total) => {
-                  let bullets = [];
-                  for (let i = 0; i < total; i++) {
-                     bullets.push(
-                        `<span class="${
-                           i === current - 1
-                              ? "swiper-pagination-bullet-active custom-bullet"
-                              : "swiper-pagination-bullet custom-bullet"
-                        }">
+         <MUIBox sx={{ height: { xs: "480px", sm: "708px", md: "506px" } }}>
+            <Swiper
+               modules={[Pagination, Navigation, Autoplay, EffectFade, Parallax]}
+               direction={"vertical"}
+               navigation={{
+                  nextEl: ".custom-next",
+                  prevEl: ".custom-prev",
+               }}
+               effect="fade"
+               parallax={true}
+               autoplay={{
+                  delay: 5000,
+                  disableOnInteraction: false,
+               }}
+               loop={true}
+               speed={800}
+               pagination={{
+                  el: ".custom-pagination",
+                  clickable: true,
+                  type: "custom",
+                  renderCustom: (swiper, current, total) => {
+                     let bullets = [];
+                     for (let i = 0; i < total; i++) {
+                        bullets.push(
+                           `<span class="${
+                              i === current - 1
+                                 ? "swiper-pagination-bullet-active custom-bullet"
+                                 : "swiper-pagination-bullet custom-bullet"
+                           }">
                            <span class="custom-bullet-item"></span>
                         </span>`
-                     );
-                  }
-                  return bullets.join("");
-               },
-            }}
-            style={{ height: "506px" }}
-         >
-            {dataCarousel.map((item, index) => (
-               <SwiperSlide key={index} style={{ position: "relative" }}>
-                  <MUIBox
-                     sx={{
-                        backgroundImage: `url(${item?.image.src})`,
-                        height: "506px",
-                        backgroundPosition: "center",
-                        backgroundSize: "cover",
-                        backgroundRepeat: "no-repeat",
-                        zIndex: "-1",
-                        width: "calc(100% + 50px)",
-                        position: "absolute",
-                        filter: "blur(8px)",
-                     }}
-                  ></MUIBox>
+                        );
+                     }
+                     return bullets.join("");
+                  },
+               }}
+               style={{ height: "100%" }}
+            >
+               {dataCarousel.map((item, index) => (
+                  <SwiperSlide key={index} style={{ position: "relative" }}>
+                     <MUIBox
+                        sx={{
+                           backgroundImage: `url(${item?.image.src})`,
+                           height: { xs: "480px", sm: "708px", md: "506px" },
+                           backgroundPosition: "center",
+                           backgroundSize: "cover",
+                           backgroundRepeat: "no-repeat",
+                           zIndex: "-1",
+                           width: "calc(100% + 50px)",
+                           position: "absolute",
+                           filter: "blur(8px)",
+                        }}
+                     ></MUIBox>
 
-                  <MUIBox
-                     sx={{
-                        backgroundImage: `url(${item?.image.src})`,
-                        height: "506px",
-                        backgroundPosition: "center",
-                        backgroundSize: "cover",
-                        backgroundRepeat: "no-repeat",
-                        zIndex: "1",
-                        width: "100%",
-                        position: "absolute",
-                        left: "20%",
-                        top: "clamp(5.625rem, 8vw, 6.875rem)",
-                        overflow: "hidden",
-                        objectFit: "cover",
-                     }}
-                  ></MUIBox>
+                     <MUIBox
+                        sx={{
+                           backgroundImage: `url(${item?.image.src})`,
+                           height: { xs: "480px", sm: "708px", md: "506px" },
+                           backgroundPosition: "center",
+                           backgroundSize: "cover",
+                           backgroundRepeat: "no-repeat",
+                           zIndex: "1",
+                           width: "100%",
+                           position: "absolute",
+                           left: "20%",
+                           top: "clamp(5.625rem, 8vw, 6.875rem)",
+                           overflow: "hidden",
+                           objectFit: "cover",
+                        }}
+                     ></MUIBox>
 
-                  <MUIBox
-                     sx={{
-                        position: "absolute",
-                        margin: "0 clamp(1.875rem, 15vw, 11.25rem)",
-                        display: "flex",
-                        alignItems: "center",
-                        width: "100%",
-                        height: "100%",
-                        zIndex: "10",
-                        color: "#fff",
-                     }}
-                  >
-                     <MUIBox sx={{ width: "100%" }}>
-                        <MUITypography
-                           data-swiper-parallax-y="-50"
-                           data-swiper-opacity="0"
-                           data-swiper-translate="-50px"
-                           textTransform={"capitalize"}
-                           fontSize={65}
-                           fontWeight={700}
-                           fontFamily={FONT_FAMILY.OUTFIT}
-                           lineHeight={1.3}
-                           pb={4}
-                           sx={{
-                              position: "relative",
-                              width: "60%",
-                              "::after": {
-                                 content: '""',
-                                 display: "block",
-                                 width: "clamp(150px, 100%, 200px)",
-                                 height: "1px",
-                                 background: "#fff",
-                                 position: "absolute",
-                                 top: "-50px",
-                              },
-                              "::before": {
-                                 content: '""',
-                                 display: "block",
-                                 width: "clamp(80px, 100%, 140px)",
-                                 height: "8px",
-                                 background: "#fff",
-                                 position: "absolute",
-                                 top: "-53px",
-                                 borderRadius: "10px",
-                              },
-                           }}
-                        >
-                           {item.title}
-                        </MUITypography>
-                        <MUIBox
-                           data-swiper-parallax-y="-100"
-                           data-swiper-opacity="0"
-                           data-swiper-translate="50px"
-                           sx={{
-                              border: "1.6px solid #fff",
-                              py: 1.5,
-                              px: 4,
-                              display: "inline-block",
-                              borderRadius: "40px",
-                              backgroundSize: "200% 100%",
-                              backgroundImage: "linear-gradient(to right, white 50%, transparent 50%)",
-                              backgroundPosition: "100% 0",
-                              transition: "background-position 0.5s ease-in-out",
+                     <MUIBox
+                        sx={{
+                           background: `rgba(0, 0, 0, 0.3)`,
+                           zIndex: "5",
+                           position: "absolute",
+                           inset: 0,
+                        }}
+                     ></MUIBox>
 
-                              "&:hover": {
-                                 animation: `${slideInAnimation} 0.5s forwards`,
-                                 color: style.TEXT_COLOR_GENERAL,
-                              },
+                     <MUIBox
+                        sx={{
+                           position: "absolute",
+                           margin: "0 clamp(1.875rem, 15vw, 11.25rem)",
+                           display: "flex",
+                           alignItems: "center",
+                           width: "100%",
+                           height: "100%",
+                           zIndex: "10",
+                           color: "#fff",
+                        }}
+                     >
+                        <MUIBox sx={{ width: "100%" }}>
+                           <MUITypography
+                              data-swiper-parallax-y="-50"
+                              data-swiper-opacity="0"
+                              data-swiper-translate="-50px"
+                              textTransform={"capitalize"}
+                              fontWeight={700}
+                              fontFamily={FONT_FAMILY.OUTFIT}
+                              lineHeight={1.3}
+                              pb={4}
+                              sx={{
+                                 fontSize: { xs: "32px", md: "52px", lg: "65px" },
 
-                              "&:not(:hover)": {
-                                 animation: `${slideOutAnimation} 0.5s forwards`,
-                              },
-
-                              "& > *": {
                                  position: "relative",
-                                 zIndex: 1,
-                              },
-                              // background: "linear-gradient(90deg, white  50%, transparent 50%)",
-                              // backgroundSize: "200% 100%",
-                              // backgroundPosition: "right bottom",
-                              // transition: `background-position 0.5s ease`,
-                              // color: "#fff",
-                              // ":hover": {
-                              //    backgroundPosition: "left bottom",
-                              //    color: style.TEXT_COLOR_GENERAL,
-                              // },
-                              // ":not(:hover)": {
-                              //    backgroundPosition: "right bottom",
-                              // },
-                           }}
-                        >
-                           <Link href={"#"} style={{ color: "inherit" }}>
-                              <MUITypography
-                                 fontSize={15}
-                                 fontWeight={400}
-                                 fontFamily={FONT_FAMILY.OUTFIT}
-                                 textTransform={"uppercase"}
-                                 lineHeight={1}
-                                 sx={{
-                                    lineSpacing: "1.2px",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: "10px",
-                                    color: "inherit",
-                                 }}
-                              >
-                                 View project
-                                 <ImageSvg
-                                    src="/images/icons/ArrowForwardRoundedIcon.svg"
-                                    style={{ width: "20px", color: "inherit" }}
-                                 />
-                              </MUITypography>
-                           </Link>
+                                 width: { xs: "60%", md: "50%" },
+                                 "::after": {
+                                    content: '""',
+                                    display: "block",
+                                    width: "clamp(150px, 100%, 200px)",
+                                    height: "1px",
+                                    background: "#fff",
+                                    position: "absolute",
+                                    top: "-50px",
+                                 },
+                                 "::before": {
+                                    content: '""',
+                                    display: "block",
+                                    width: "clamp(80px, 100%, 140px)",
+                                    height: "8px",
+                                    background: "#fff",
+                                    position: "absolute",
+                                    top: "-53px",
+                                    borderRadius: "10px",
+                                 },
+                              }}
+                           >
+                              {item.title}
+                           </MUITypography>
+                           <MUIBox
+                              data-swiper-parallax-y="-100"
+                              data-swiper-opacity="0"
+                              data-swiper-translate="50px"
+                              sx={{
+                                 border: "1.6px solid #fff",
+                                 py: 1.5,
+                                 px: 4,
+                                 display: "inline-block",
+                                 borderRadius: "40px",
+                                 backgroundSize: "200% 100%",
+                                 backgroundImage: "linear-gradient(to right, white 50%, transparent 50%)",
+                                 backgroundPosition: "100% 0",
+                                 transition: "background-position 0.8s ease-in-out",
+
+                                 "&:hover": {
+                                    animation: `${slideInAnimation} 0.8s forwards`,
+                                    color: style.TEXT_COLOR_GENERAL,
+                                 },
+
+                                 "&:not(:hover)": {
+                                    animation: `${slideOutAnimation} 0.8s forwards`,
+                                 },
+
+                                 "& > *": {
+                                    position: "relative",
+                                    zIndex: 1,
+                                 },
+                                 // background: "linear-gradient(90deg, white  50%, transparent 50%)",
+                                 // backgroundSize: "200% 100%",
+                                 // backgroundPosition: "right bottom",
+                                 // transition: `background-position 0.5s ease`,
+                                 // color: "#fff",
+                                 // ":hover": {
+                                 //    backgroundPosition: "left bottom",
+                                 //    color: style.TEXT_COLOR_GENERAL,
+                                 // },
+                                 // ":not(:hover)": {
+                                 //    backgroundPosition: "right bottom",
+                                 // },
+                              }}
+                           >
+                              <Link href={"#"} style={{ color: "inherit" }}>
+                                 <MUITypography
+                                    fontSize={15}
+                                    fontWeight={400}
+                                    fontFamily={FONT_FAMILY.OUTFIT}
+                                    textTransform={"uppercase"}
+                                    lineHeight={1}
+                                    sx={{
+                                       lineSpacing: "1.2px",
+                                       display: "flex",
+                                       alignItems: "center",
+                                       gap: "10px",
+                                       color: "inherit",
+                                    }}
+                                 >
+                                    View project
+                                    <ImageSvg
+                                       src="/images/icons/ArrowForwardRoundedIcon.svg"
+                                       style={{ width: "20px", color: "inherit" }}
+                                    />
+                                 </MUITypography>
+                              </Link>
+                           </MUIBox>
                         </MUIBox>
                      </MUIBox>
-                  </MUIBox>
-                  {/* <Image
+                     {/* <Image
                      src="/images/slider/global-logistic-airplane.jpg"
                      width={1920}
                      height={506}
                      alt=""
                      style={{ width: "100%", height: "506px", zIndex: "-2" }}
                   /> */}
-               </SwiperSlide>
-            ))}
+                  </SwiperSlide>
+               ))}
 
-            <MUIBox
-               sx={{
-                  position: "absolute",
-                  top: "clamp(5.625rem, 8vw, 6.875rem)",
-                  right: 0,
-                  // transform: "translateY(-75%)",
-                  zIndex: "99",
-                  background: "transparent",
-                  mr: { xs: 0, md: "100px" },
-               }}
-            >
                <MUIBox
-                  className="custom-pagination"
-                  style={{
-                     display: "flex",
-                     alignItems: "end",
-                     flexDirection: "column",
-                     justifyContent: "center",
+                  sx={{
+                     position: "absolute",
+                     top: "clamp(5.625rem, 8vw, 6.875rem)",
+                     right: 0,
+                     // transform: "translateY(-75%)",
+                     zIndex: "99",
+                     background: "transparent",
+                     mr: { xs: 0, md: "100px" },
                   }}
-               ></MUIBox>
-            </MUIBox>
+               >
+                  <MUIBox
+                     className="custom-pagination"
+                     style={{
+                        display: "flex",
+                        alignItems: "end",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                     }}
+                  ></MUIBox>
+               </MUIBox>
 
-            <MUIBox className="custom-nav">
-               <MUIBox className="custom-prev" sx={styleTransition}>
-                  <ImageSvg
-                     src="/images/icons/ArrowLeft.svg"
-                     className="icon-first"
-                     style={{ width: "25px", height: "25px" }}
-                  />
-                  <ImageSvg
-                     src="/images/icons/ArrowUp.svg"
-                     className="icon-last"
-                     style={{ width: "25px", height: "25px" }}
-                  />
+               <MUIBox className="custom-nav" sx={{display: {xs:'none', sm:'block'}}}>
+                  <MUIBox className="custom-prev" sx={styleTransition}>
+                     <ImageSvg
+                        src="/images/icons/ArrowLeft.svg"
+                        className="icon-first"
+                        style={{ width: "25px", height: "25px" }}
+                     />
+                     <ImageSvg
+                        src="/images/icons/ArrowUp.svg"
+                        className="icon-last"
+                        style={{ width: "25px", height: "25px" }}
+                     />
+                  </MUIBox>
+                  <MUIBox className="custom-next" sx={styleTransition}>
+                     <ImageSvg
+                        src="/images/icons/ArrowRight.svg"
+                        className="icon-first"
+                        style={{ width: "25px", height: "25px" }}
+                     />
+                     <ImageSvg
+                        src="/images/icons/ArrowDown.svg"
+                        className="icon-last"
+                        style={{ width: "25px", height: "25px" }}
+                     />
+                  </MUIBox>
                </MUIBox>
-               <MUIBox className="custom-next" sx={styleTransition}>
-                  <ImageSvg
-                     src="/images/icons/ArrowRight.svg"
-                     className="icon-first"
-                     style={{ width: "25px", height: "25px" }}
-                  />
-                  <ImageSvg
-                     src="/images/icons/ArrowDown.svg"
-                     className="icon-last"
-                     style={{ width: "25px", height: "25px" }}
-                  />
-               </MUIBox>
-            </MUIBox>
-         </Swiper>
+            </Swiper>
+         </MUIBox>
       </SliderProjectStyled>
    );
 };

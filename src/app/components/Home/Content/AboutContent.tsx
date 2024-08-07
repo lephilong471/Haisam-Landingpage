@@ -13,7 +13,18 @@ import { PATH } from "@/app/config/routes";
 // import AboutSlider from "./AboutSlider";
 
 import dynamic from "next/dynamic";
-const SplittingText = dynamic(() => import("@/app/components/Home/Content/SplittingText"), { ssr: false });
+import CustomCarousel from "./AboutSlider";
+const SplittingText = dynamic(() => import("@/app/components/presentation/SplittingText"), { ssr: false });
+
+// import SliderManger from "@/public/images/slider/manager-engineer-checking.jpg";
+// import SliderContainerPlane from "@/public/images/slider/container-cargo-ship-cargo-plane.jpg";
+// import SliderShip from "@/public/images/slider/ship-with-cargo-container-sea.jpg";
+const slides = [
+   { image: "/images/slider/manager-engineer-checking.jpg", alt: "Slide 1" },
+   { image: "/images/slider/container-cargo-ship-cargo-plane.jpg", alt: "Slide 2" },
+   { image: "/images/slider/ship-with-cargo-container-sea.jpg", alt: "Slide 3" },
+   // Thêm các slide khác nếu cần
+];
 
 const AboutContentStyled = styled("div")`
    min-height: 100vh;
@@ -33,14 +44,9 @@ const AboutContentStyled = styled("div")`
       border: none !important;
       outline: none !important;
       text-decoration: underline;
-      font-size: 22px;
-      font-weight: 500;
-      text-align: left;
-      line-height: 40px;
       letter-spacing: 1px;
       display: inline-block;
       padding: 0;
-      font-family: ${FONT_FAMILY.JOST};
       text-transform: capitalize;
    }
 
@@ -113,7 +119,7 @@ const AboutContent = () => {
       const { children, value, index, ...other } = props;
 
       return (
-         <MUIBox role="tabpanel" px={2} sx={{ display: value !== index ? "none" : "block" }} {...other}>
+         <MUIBox role="tabpanel" px={{ xs: 0, md: 2 }} sx={{ display: value !== index ? "none" : "block" }} {...other}>
             {value === index && (
                <MUITypography
                   color={"rgb(86, 103, 109)"}
@@ -142,19 +148,19 @@ const AboutContent = () => {
                justifyContent: "end",
                alignItems: "center",
                marginBottom: "35px",
-               "&:hover": {
-                  gap: "5px",
+               "&:hover .icon-about": {
+                  transform: "translateX(10px)",
                },
             }}
          >
             <Link href={PATH.ABOUT} style={{ textDecoration: "none", display: "inline-block", cursor: "pointer" }}>
                <MUITypography
-                  fontSize={20}
                   fontWeight={500}
                   fontFamily={FONT_FAMILY.JOST}
                   color={style.TEXT_COLOR_GENERAL}
                   lineHeight={"2em"}
                   sx={{
+                     fontSize: { xs: "16px", md: "20px" },
                      position: "relative",
                      textTransform: "capitalize",
                      "&::after": {
@@ -186,21 +192,20 @@ const AboutContent = () => {
             </Link>
             <ArrowOutwardRoundedIcon className="icon-about" />
          </MUIBox>
-         <SplittingText props={["Why", "Choose", "Us"]} />
-         {/* <MUIBox pb={3}>
+         <MUIBox pb={3}>
             <MUITypography
                variant="h1"
-               fontSize={116}
                fontWeight={700}
                lineHeight={"1em"}
                letterSpacing={"-0.04em"}
                textTransform={"capitalize"}
                data-splitting="chars"
                fontFamily={FONT_FAMILY.OUTFIT}
+               sx={{ fontSize: { xs: "40px", md: "66px", lg: "116px" } }}
             >
-               Why Choose Us
+               <SplittingText>Why choose us</SplittingText>
             </MUITypography>
-         </MUIBox> */}
+         </MUIBox>
          <Divider sx={{ mb: "20px" }} />
          <MUIBox>
             <MUITypography
@@ -208,10 +213,10 @@ const AboutContent = () => {
                data-aos-delay="100"
                data-aos-duration="2000"
                data-aos-once="true"
-               fontSize={32}
                fontWeight={400}
                lineHeight={1}
                variant="h2"
+               sx={{ fontSize: { xs: "18px", md: "20px", lg: "32px" } }}
             >
                We Bridge Distances, We Deliver Dreams
             </MUITypography>
@@ -224,11 +229,28 @@ const AboutContent = () => {
                      data-aos-once="true"
                      data-aos-offset="0"
                      mb={2.5}
-                     sx={{ display: "flex" }}
+                     sx={{ display: { xs: "block", md: "flex" } }}
                   >
                      <Tabs sx={{ overflow: "visible" }} orientation="vertical" value={value} onChange={handleChange}>
                         {dataTabs.map((item, index) => (
-                           <Tab className="tabs-custom" key={index} label={item.title} value={index} />
+                           <Tab
+                              className="tabs-custom"
+                              key={index}
+                              label={
+                                 <MUITypography
+                                    fontFamily={FONT_FAMILY.JOST}
+                                    fontWeight={500}
+                                    sx={{
+                                       textAlign: "left",
+                                       fontSize: { xs: "17px", md: "21px", lg: "22px" },
+                                       lineHeight: { xs: 1.4, md: "40px" },
+                                    }}
+                                 >
+                                    {item.title}
+                                 </MUITypography>
+                              }
+                              value={index}
+                           />
                         ))}
                      </Tabs>
                      {dataTabs.map((item, index) => (
@@ -243,17 +265,9 @@ const AboutContent = () => {
                      ))}
                   </MUIBox>
                </MUIGrid>
-               <MUIGrid
-                  item
-                  xs={12}
-                  md={5}
-                  data-aos="fade-left"
-                  data-aos-delay="200"
-                  data-aos-duration="1500"
-                  data-aos-once="true"
-               >
-                  {/* <AboutSlider />   */}
-                  about silier
+               <MUIGrid item xs={12} md={5} sx={{ display: "flex", justifyContent: "center" }}>
+                  <CustomCarousel slides={slides} />
+                  {/* about silier */}
                </MUIGrid>
             </MUIGrid>
          </MUIBox>

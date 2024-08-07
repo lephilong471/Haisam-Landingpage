@@ -50,19 +50,19 @@ const NewsContent = () => {
                   justifyContent: "end",
                   alignItems: "center",
                   marginBottom: "35px",
-                  "&:hover": {
-                     gap: "5px",
+                  "&:hover .icon-about": {
+                     transform: "translateX(10px)",
                   },
                }}
             >
                <Link href={PATH.ABOUT} style={{ textDecoration: "none", display: "inline-block", cursor: "pointer" }}>
                   <MUITypography
-                     fontSize={20}
                      fontWeight={500}
                      fontFamily={FONT_FAMILY.JOST}
                      color={style.TEXT_COLOR_GENERAL}
                      lineHeight={"2em"}
                      sx={{
+                        fontSize: { xs: "18px", md: "20px" },
                         position: "relative",
                         textTransform: "capitalize",
                         "&::after": {
@@ -97,19 +97,25 @@ const NewsContent = () => {
             <MUIBox pb={3}>
                <MUITypography
                   variant="h1"
-                  fontSize={116}
                   fontWeight={700}
                   lineHeight={"1em"}
                   letterSpacing={"-0.04em"}
                   textTransform={"capitalize"}
                   fontFamily={FONT_FAMILY.OUTFIT}
+                  sx={{ fontSize: { xs: "40px", md: "66px", lg: "116px" } }}
                >
                   <SplittingText>News Highlights</SplittingText>
                </MUITypography>
             </MUIBox>
             <Divider sx={{ mb: "20px" }} />
             <MUIBox data-aos="fade-up" data-aos-delay="50" data-aos-duration="2000" data-aos-once="true">
-               <MUITypography fontSize={32} fontFamily={FONT_FAMILY.JOST} color={style.TEXT_COLOR_TITLE}>
+               <MUITypography
+                  fontFamily={FONT_FAMILY.JOST}
+                  color={style.TEXT_COLOR_TITLE}
+                  sx={{
+                     fontSize: { xs: "18px", md: "20px", lg: "32px" },
+                  }}
+               >
                   Beyond Boundaries: Our Project Narratives
                </MUITypography>
             </MUIBox>
