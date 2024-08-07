@@ -1,9 +1,9 @@
 "use client"
-import React, {useState, useEffect} from "react";
-import { 
+import React, { useState, useEffect } from "react";
+import {
    MUIBox,
-   MUIListItemButton, 
-   MUIListItemText, 
+   MUIListItemButton,
+   MUIListItemText,
    MUICollapse,
    MUIList,
    MUIGrid,
@@ -19,7 +19,7 @@ import { style, FONT_FAMILY } from "../config";
 
 import AOS from "aos";
 import dynamic from "next/dynamic";
-const SplittingText = dynamic(() => import('@/app/components/Home/Content/SplittingText'),{ssr: false})
+const SplittingText = dynamic(() => import('@/app/components/Home/Content/SplittingText'), { ssr: false })
 
 // import Image from "next/image";
 const ContentStyled = styled(MUIBox)`
@@ -46,33 +46,33 @@ const ImageStyled = styled.img`
 const Service = () => {
    useEffect(() => {
       AOS.init()
-   },[])
-   const [expandData, setExpandData] = useState<Array<object>>([[true, false, false],[true, false, false]])
+   }, [])
+   const [expandData, setExpandData] = useState<Array<object>>([[true, false, false], [true, false, false]])
 
 
    const handleExpand = (expand: number, index: number) => {
       setExpandData(
-            prevArr => {
-               let newArr = {...prevArr}
-               if(newArr[expand][index]){
-                  newArr[expand][index] = false
-                  return newArr
-               }
-               else{
-                  newArr[expand] = new Array((Object(prevArr[expand]).length)).fill(false)
-                  newArr[expand][index] = true
-                  return newArr
-               }
+         prevArr => {
+            let newArr = { ...prevArr }
+            if (newArr[expand][index]) {
+               newArr[expand][index] = false
+               return newArr
             }
-         )
+            else {
+               newArr[expand] = new Array((Object(prevArr[expand]).length)).fill(false)
+               newArr[expand][index] = true
+               return newArr
+            }
+         }
+      )
 
-      }
- 
+   }
+
    const listServiceData = [
       'Dịch vụ cho thuê kho', 'Dịch vụ cho thuê xe tải',
       'Dịch vụ vận tải', 'Dịch vụ bốc xếp hàng hóa',
       'Dịch vụ xuất nhập khẩu', 'Dịch vụ ghép hàng đi tỉnh',
-      'Dịch vụ giao hàng','Đại lý hải quan'
+      'Dịch vụ giao hàng', 'Đại lý hải quan'
    ]
    // const listExpandData = [
    //    [
@@ -121,7 +121,7 @@ const Service = () => {
 
          },
          {
-            'title' : 'Dịch vụ vận tải',
+            'title': 'Dịch vụ vận tải',
             'content': 'Công ty Hải Sâm tự hào cung cấp dịch vụ vận tải toàn diện, \
                         đáp ứng mọi nhu cầu vận chuyển của khách hàng. \
                         Với đội ngũ nhân viên giàu kinh nghiệm, cùng số lượng lớn phương tiện vận chuyển, \
@@ -152,7 +152,7 @@ const Service = () => {
       [
          {
             'title': 'Dịch vụ cho thuê xe tải chở hàng',
-            'content':'Công ty Hải Sâm cung cấp dịch vụ cho thuê xe tải chở hàng chuyên nghiệp, \
+            'content': 'Công ty Hải Sâm cung cấp dịch vụ cho thuê xe tải chở hàng chuyên nghiệp, \
                      đáp ứng mọi nhu cầu vận chuyển hàng hóa của khách hàng. \
                      Chúng tôi sở hữu đội xe tải đa dạng về tải trọng và kích thước, từ xe tải nhỏ đến xe container,\
                      phù hợp với mọi loại hàng hóa từ nhỏ lẻ đến cồng kềnh.\
@@ -174,7 +174,7 @@ const Service = () => {
                         so với việc tự đầu tư vào nhân lực và trang thiết bị, đồng thời tối ưu hóa quy trình vận hành.'
          },
          {
-            'title':'Dịch vụ ghép hàng đi tỉnh',
+            'title': 'Dịch vụ ghép hàng đi tỉnh',
             'content': 'Hải Sâm cung cấp dịch vụ ghép hàng đi tỉnh, mang lại giải pháp vận chuyển tiết kiệm và hiệu quả \
                         cho khách hàng có nhu cầu gửi hàng với số lượng nhỏ lẻ. Bằng cách ghép hàng hóa của nhiều khách hàng \
                         trên cùng một chuyến xe, chi phí vận chuyển được chia sẻ, giúp giảm thiểu chi phí cho từng lô hàng nhỏ lẻ. \
@@ -185,7 +185,7 @@ const Service = () => {
                         khỏi các rủi ro hư hỏng.'
          },
          {
-            'title':'Dịch vụ giao hàng',
+            'title': 'Dịch vụ giao hàng',
             'content': 'Hải Sâm cung cấp dịch vụ giao hàng chuyên nghiệp, nhanh chóng và an toàn, \
                         đáp ứng mọi nhu cầu vận chuyển hàng hóa của khách hàng. Với đội ngũ nhân viên chuyên nghiệp, \
                         quy trình làm việc rõ ràng, chúng tôi cam kết mang đến dịch vụ giao hàng tối ưu, \
@@ -196,7 +196,7 @@ const Service = () => {
                         Chúng tôi cung cấp các giải pháp giao hàng đa dạng, bao gồm giao hàng tiêu chuẩn, giao hàng nhanh, và giao hàng siêu tốc. Đội ngũ nhân viên tận tâm và chuyên nghiệp của Hải Sâm luôn sẵn sàng hỗ trợ khách hàng trong mọi khâu từ tiếp nhận đơn hàng, xử lý yêu cầu đến giải đáp thắc mắc, đảm bảo sự hài lòng cao nhất cho khách hàng.'
          },
          {
-            'title':'Đại lý hải quan',
+            'title': 'Đại lý hải quan',
             'content': 'Với vai trò là một đại lý hải quan, Hải Sâm giúp khách hàng giải quyết mọi thủ tục hải quan \
                         một cách nhanh chóng và hiệu quả. Với đội ngũ chuyên gia giàu kinh nghiệm và \
                         hiểu biết sâu sắc về các quy định hải quan, chúng tôi cam kết mang đến cho khách hàng dịch vụ tối ưu, \
@@ -212,60 +212,62 @@ const Service = () => {
    return (
       <ContentStyled>
          <MUIBox className='container mx-auto'>
-            <MUIGrid container sx={{my:'4%'}}>
-               <MUIGrid item md={6} xs={12}>
+            <MUIGrid container sx={{ my: '4%' }}>
+               <MUIGrid item md={12} lg={6} xs={12}>
                   <SplittingText props={['Logistics']} />
-
                </MUIGrid>
-               <MUIGrid 
-                  item 
-                  md={6} 
+               <MUIGrid
+                  item
+                  md={12}
+                  lg={6}
                   xs={12}
                   sx={{
                      display: 'flex',
-                     alignItems:'center'
+                     alignItems: 'center'
                   }}
-                  >
-                  <MUIGrid 
+               >
+                  <MUIGrid
                      container
                      sx={{
-                        '.MuiBox-root':{
-                           display:'flex',
+                        '.MuiBox-root': {
+                           display: 'flex',
                            padding: '1px'
                         },
-                        '.MuiBox-root .MuiTypography-root':{
-                           pl:'5px',
+                        '.MuiBox-root .MuiTypography-root': {
+                           pl: '5px',
                            fontFamily: FONT_FAMILY.MONTSERRAT,
                            fontWeight: 500,
-                        }
-                     }}   
+                        },
+                     }}
                   >
-                     <MUIGrid item md={6} xs={12}>
+                     <MUIGrid item md={6} xs={12} sx={{p:"10px"}}>
                         {listServiceData.map((item, index) => {
                            return (
                               index % 2 === 0 && (
                                  <MUIBox 
+                                    key={index}
                                     data-aos="fade-up"
                                     data-aos-delay="300"
                                     data-aos-duration="2000"
                                  >
-                                    <AddRoundedIcon sx={{color:style.TEXT_COLOR_GENERAL}}/>
+                                    <AddRoundedIcon sx={{ color: style.TEXT_COLOR_GENERAL }} />
                                     <MUITypography color={style.TEXT_COLOR_GENERAL}>{item}</MUITypography>
                                  </MUIBox>
                               )
                            )
                         })}
                      </MUIGrid>
-                     <MUIGrid item md={6} xs={12}>
+                     <MUIGrid item md={6} xs={12} sx={{p:"10px"}}>
                         {listServiceData.map((item, index) => {
                            return (
                               index % 2 !== 0 && (
-                                 <MUIBox    
+                                 <MUIBox 
+                                    key={index}
                                     data-aos="fade-up"
                                     data-aos-delay="300"
                                     data-aos-duration="2000"
                                  >
-                                    <AddRoundedIcon sx={{color: '#202020'}}/><MUITypography color='#0E0E0E'>{item}</MUITypography>
+                                    <AddRoundedIcon sx={{ color: '#202020' }} /><MUITypography color='#0E0E0E'>{item}</MUITypography>
                                  </MUIBox>
                               )
                            )
@@ -274,7 +276,7 @@ const Service = () => {
                   </MUIGrid>
                </MUIGrid>
             </MUIGrid>
-            <MUITypography 
+            <MUITypography
                data-aos="fade-up"
                data-aos-delay="300"
                data-aos-duration="2000"
@@ -282,144 +284,158 @@ const Service = () => {
                color={style.TEXT_COLOR_TITLE}
                fontWeight='500'
                fontFamily={FONT_FAMILY.MONTSERRAT}
+               paddingInline='10px'
             >
                Dịch vụ chính
             </MUITypography>
-            
-               <MUIGrid container>
-                  <MUIGrid 
-                     item 
-                     md={6} 
-                     xs={12}
-                     sx={{justifyContent:'center'}}
-                  >
-                     <ImageStyled
-                        data-aos="fade-up"
-                        data-aos-duration="3000"
-                        src='/images/loaded-container-cargo-ship-is-seen-front-as-it-speeds-ocean-generative-ai-1300x1097.jpg' 
-                        alt=''
-                     />
-                  </MUIGrid>
 
-                  <MUIGrid 
-                     item 
-                     md={6} 
-                     xs={12}
-                     sx={{
-                        '.MuiButtonBase-root':{
-                           p:'4%',
-                           borderBottom: '1px solid #ebebeb',
-                           'svg':{
-                              color: style.TEXT_COLOR_GENERAL
-                           }
+            <MUIGrid container>
+               <MUIGrid
+                  item
+                  lg={6}
+                  md={6}
+                  sx={{ justifyContent: 'center' }}
+               >
+                  <ImageStyled
+                     data-aos="fade-up"
+                     data-aos-duration="3000"
+                     src='/images/loaded-container-cargo-ship-is-seen-front-as-it-speeds-ocean-generative-ai-1300x1097.jpg'
+                     alt=''
+                  />
+               </MUIGrid>
+
+               <MUIGrid
+                  item
+                  md={6}
+                  xs={12}
+                  sx={{
+                     '.MuiCollapse-root': {
+                        transition: 'height 1000ms cubic-bezier(0.4, 0, 0.2, 1) 0ms'
+                     },
+                     '.MuiBox-root .show-content': {
+                        p: '4%',
+                        borderBottom: '1px solid #ebebeb',
+                        display: 'flex',
+                        '&:hover': {
+                           cursor: 'pointer'
                         },
-                        'span':{
-                           fontFamily:FONT_FAMILY.MONTSERRAT,
-                           fontWeight: '500',
-                           color: style.TEXT_LIST_EXPAND_COLOR,
-                           fontSize: '16px',
-                           lineHeight: '28px'
-                        },
-                        '.list-title span':{
-                           fontSize: '18px',
+                        'svg': {
                            color: style.TEXT_COLOR_GENERAL
-                        }
-                        
-                     }}
-                  >
-                     {listExpandData[0].map((item, index) => {
+                        },
+                     },
+                     'span': {
+                        fontFamily: FONT_FAMILY.MONTSERRAT,
+                        fontWeight: '500',
+                        color: style.TEXT_LIST_EXPAND_COLOR,
+                        fontSize: '16px',
+                        lineHeight: '28px'
+                     },
+                     '.list-title span': {
+                        fontSize: '18px',
+                        color: style.TEXT_COLOR_GENERAL
+                     }
+
+                  }}
+               >
+                  {listExpandData[0].map((item, index) => {
                      return (
                         <MUIBox key={index}>
-                           <MUIListItemButton onClick={() => handleExpand(0, index)}>
+                           <MUIBox className='show-content' onClick={() => handleExpand(0, index)}>
                               {/* <MUIListItemIcon>
                                  <InboxIcon />
                               </MUIListItemIcon> */}
                               <MUIListItemText className='list-title' primary={item.title} />
-                              {expandData[0][index] ?  <RemoveRoundedIcon /> : <AddRoundedIcon />}
-                           </MUIListItemButton>
-                           <MUICollapse in={expandData[0][index]} timeout="auto" unmountOnExit>
+                              {expandData[0][index] ? <RemoveRoundedIcon /> : <AddRoundedIcon />}
+                           </MUIBox>
+                           <MUICollapse in={expandData[0][index]} timeout={800} unmountOnExit>
                               <MUIList component="div" disablePadding>
-                                 <MUIListItemText sx={{px: '4%',pt:'4%'}} primary={item.content} />
+                                 <MUIListItemText sx={{ px: '4%', pt: '4%' }} primary={item.content} />
                               </MUIList>
                            </MUICollapse>
                         </MUIBox>
                      )
-                  })}   
-                  </MUIGrid>
+                  })}
                </MUIGrid>
+            </MUIGrid>
+            <MUIGrid
+               container
+               sx={{ mt: '4%' }}
+            >
                <MUIGrid 
-                  container
-                  sx={{mt:'4%'}}
+                  item xs={12} md={6}
+                  paddingInline='4%'
                >
-                     <MUIGrid item md={6}>
-                        <MUITypography 
-                           fontSize="32px"
-                           fontFamily={FONT_FAMILY.MONTSERRAT}
-                           color={style.TEXT_COLOR_TITLE}
-                           fontWeight='500'
-                        >
-                           Dịch vụ khác
-                        </MUITypography>
-                     </MUIGrid>
+                  <MUITypography
+                     fontSize="32px"
+                     fontFamily={FONT_FAMILY.MONTSERRAT}
+                     color={style.TEXT_COLOR_TITLE}
+                     fontWeight='500'
+                  >
+                     Dịch vụ khác
+                  </MUITypography>
                </MUIGrid>
+            </MUIGrid>
 
-               <MUIGrid container>
-                  <MUIGrid item md={6} xs={12}
-                     sx={{
-                        '.MuiButtonBase-root':{
-                           py:'4%',
-                           pr:'4%',
-                           pl:'0',
-                           borderBottom: '1px solid #ebebeb',
-                           'svg':{
-                              color: style.TEXT_COLOR_GENERAL
-                           }
+            <MUIGrid container>
+               <MUIGrid item md={6} xs={12}
+                  sx={{
+                     '.MuiBox-root .show-content': {
+                        display: 'flex',
+                        p: '4%',
+                        '&:hover': {
+                           cursor: 'pointer',
                         },
-                        'span':{
-                           fontFamily:FONT_FAMILY.MONTSERRAT,
-                           fontWeight: '500',
-                           color: style.TEXT_LIST_EXPAND_COLOR,
-                           fontSize: '16px',
-                           lineHeight: '28px'
-                        },
-                        '.list-title span':{
-                           fontSize: '18px',
+                        borderBottom: '1px solid #ebebeb',
+                        'svg': {
                            color: style.TEXT_COLOR_GENERAL
                         }
-                     }}
-                  >
-                     {listExpandData[1].map((item, index) => {
-                        return (
-                           <MUIBox key={index}>
-                              <MUIListItemButton onClick={() => handleExpand(1, index)}>
-                                 <MUIListItemText className="list-title" primary={item.title} />
-                                 {expandData[1][index] ?  <RemoveRoundedIcon /> : <AddRoundedIcon />}
-                              </MUIListItemButton>
-                              <MUICollapse in={expandData[1][index]} timeout="auto" unmountOnExit>
-                                 <MUIList component="div" disablePadding>
-                                    <MUIListItemText sx={{py: '4%', pr:'4%'}} primary={item.content} />
-                                 </MUIList>
-                              </MUICollapse>
+                     },
+                     'span': {
+                        fontFamily: FONT_FAMILY.MONTSERRAT,
+                        fontWeight: '500',
+                        color: style.TEXT_LIST_EXPAND_COLOR,
+                        fontSize: '16px',
+                        lineHeight: '28px'
+                     },
+                     '.list-title span': {
+                        fontSize: '18px',
+                        color: style.TEXT_COLOR_GENERAL
+                     }
+                  }}
+               >
+                  {listExpandData[1].map((item, index) => {
+                     return (
+                        <MUIBox key={index}>
+                           <MUIBox className='show-content' onClick={() => handleExpand(1, index)}>
+                              <MUIListItemText className="list-title" primary={item.title} />
+                              {expandData[1][index] ? <RemoveRoundedIcon /> : <AddRoundedIcon />}
                            </MUIBox>
-                        )
-                     })}    
-                  </MUIGrid>
-                  <MUIGrid 
-                     item 
-                     md={6} 
-                     xs={12}
-                     sx={{
-                        justifyContent: 'center'
-                     }}
-                  >
-                     <ImageStyled
-                        data-aos="fade-up"
-                        data-aos-duration="3000"
-                        src='/images/aerial-top-view-container-cargo-ship-with-contrail-ocean-ship-carrying-container.jpg' 
-                        alt=''
-                     />
-                  </MUIGrid>
+                           <MUICollapse in={expandData[1][index]} timeout={800} unmountOnExit>
+                              <MUIList component="div" disablePadding>
+                                 <MUIListItemText sx={{ p:'4%'}} primary={item.content} />
+                              </MUIList>
+                           </MUICollapse>
+                        </MUIBox>
+                     )
+                  })}
                </MUIGrid>
+               <MUIGrid
+                  item
+                  md={6}
+                  lg={6}
+                  xs={12}
+                  sx={{
+                     justifyContent: 'center'
+                  }}
+               >
+                  <ImageStyled
+                     data-aos="fade-up"
+                     data-aos-duration="3000"
+                     src='/images/aerial-top-view-container-cargo-ship-with-contrail-ocean-ship-carrying-container.jpg'
+                     alt=''
+                  />
+               </MUIGrid>
+            </MUIGrid>
          </MUIBox>
       </ContentStyled>
    )
