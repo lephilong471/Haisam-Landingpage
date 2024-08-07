@@ -31,10 +31,11 @@ import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 
 
 const ContentStyled = styled(MUIBox)`
+    
     .MuiTypography-root{
         font-family: ${FONT_FAMILY.MONTSERRAT};
         font-weight: 400;
-        color: ${style.TEXT_LIST_EXPAND_COLOR} !important;
+        color: ${style.TEXT_LIST_EXPAND_COLOR};
     }
 
     .MuiPaper-root{
@@ -45,7 +46,8 @@ const ContentStyled = styled(MUIBox)`
     }
 
     .MuiCardContent-root{
-        padding: 1.8em 1.2em;
+        padding-inline: 1.2em;
+        padding-top: 1.8em;
         .card-title{
             color: ${style.TEXT_COLOR_TITLE} !important;
             font-weight: bold;
@@ -77,6 +79,9 @@ const ContentStyled = styled(MUIBox)`
                 display: flex;
                 align-items: center;
                 margin-inline:12px;
+                &:hover{
+                    cursor: pointer;
+                }
             }
 
             .type{
@@ -93,6 +98,9 @@ const ContentStyled = styled(MUIBox)`
             .share{
                 display: flex;
                 align-items: center;
+                &:hover{
+                    cursor: default;
+                }
             }
 
             svg{
@@ -166,12 +174,13 @@ const About = () => {
 
     const [open, setOpen] = useState(false);
 
-    const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
+    
+    const handlePopperOpen = (event: React.MouseEvent<HTMLElement>) => {
       setAnchorEl(event.currentTarget);
       setOpen((previousOpen) => !previousOpen);
     };
   
-    const handlePopoverClose = () => {
+    const handlePopperClose = () => {
       setAnchorEl(null);
       setOpen((previousOpen) => !previousOpen);
 
@@ -229,7 +238,7 @@ const About = () => {
                                                 aria-describedby={`${index}`}
                                                 aria-owns={open ? `mouse-over-popper-${index}` : undefined}
                                                 aria-haspopup="true"
-                                                onMouseEnter={handlePopoverOpen}
+                                                onMouseEnter={handlePopperOpen}
                                                 className='share'>
                                                 <ShareOutlinedIcon />
                                                 Share
@@ -239,7 +248,10 @@ const About = () => {
                                                 id={`mouse-over-popper-${index}`} 
                                                 open={open} 
                                                 anchorEl={anchorEl}
-                                                onMouseLeave={handlePopoverClose}
+                                                onMouseLeave={handlePopperClose}
+                                                sx={{
+                                                    maxHeight:200
+                                                }}
                                             >
                                                 <MUIBox sx={{
                                                     position:'absolute',
@@ -336,7 +348,25 @@ const About = () => {
                                         </MUITypography>
                                     </MUICardContent>
                                     <MUICardActions>
-                                    <MUIButton size="small">Xem thêm</MUIButton>
+                                    <MUILink>
+                                        
+                                    </MUILink>
+                                    <MUIBox sx={{
+                                        borderBottom: '3px solid rgba(0, 0, 0, 0.07)',
+                                        mx:'4%',
+                                        '&:hover':{
+                                            paddingInline: '15px',
+                                            transition: 'all 0.15s ease-in-out'
+                                        }
+                                    }}>
+                                        <MUILink href="#"
+                                            sx={{
+                                            color: `${style.TEXT_LIST_EXPAND_COLOR} !important`,
+                                            fontWeight: '600 !important',
+                                            fontSize: '11px',
+                                            textTransform: 'uppercase',
+                                        }}>Xem thêm</MUILink>
+                                    </MUIBox>
                                     </MUICardActions>
                             </MUICard>
                             </MUIGrid>
