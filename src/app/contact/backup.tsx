@@ -1,19 +1,22 @@
 "use client";
 import React, { useEffect } from "react";
-import { MUIBox, MUITypography, MUIGrid, MUILink, MUITextField, MUIButton } from "@/app/components/MUI";
+import { MUIBox, MUITypography, MUIGrid, MUILink, MUITextField, MUIButton } from "../components/MUI";
 import styled from "styled-components";
 import { style, FONT_FAMILY } from "@/app/config";
-import { Form } from "antd";
+
 import AOS from "aos";
 
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 
+import * as Yup from "yup";
+import { useFormik } from "formik";
+
 import SubFooter from "../components/Layouts/SubFooter";
+import WarningRoundedIcon from "@mui/icons-material/WarningRounded";
 
 import dynamic from "next/dynamic";
-// import { sendContact } from "../api/auth/actions";
 const SplittingText = dynamic(() => import("@/app/components/presentation/SplittingText"), { ssr: false });
 const ContentStyled = styled(MUIBox)`
    p {
@@ -21,38 +24,34 @@ const ContentStyled = styled(MUIBox)`
       color: ${style.TEXT_COLOR_GENERAL};
    }
 `;
-const Contact = () => {
-   const [form] = Form.useForm();
+const ContactBU = () => {
+   const errorMessage = Yup.object().shape({
+      name: Yup.string().required("Trường bắt buộc nhập."),
+      email: Yup.string().email("Vui lòng nhập đúng định dạng email").required("Trường bắt buộc nhập."),
+      content: Yup.string().required("Trường bắt buộc nhập"),
+   });
+
+   const myForm = useFormik({
+      initialValues: {
+         name: "",
+         email: "",
+         content: "",
+         submit: null,
+      },
+
+      validationSchema: errorMessage,
+      onSubmit: (values, helpers) => {
+         console.log(values);
+      },
+   });
 
    useEffect(() => {
       AOS.init();
    }, []);
 
-   const handleSubmit = async (values) => {
-      const body = {
-         message: values.content,
-         name: values.name,
-         email: values.email,
-      };
-
-      // sendContact(body);
-      const response = await fetch("http://haisamlogistics.com:8099/api/v1/admin/request-submit", {
-         method: "POST",
-         headers: {
-            Accept: "*/*",
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify(body),
-      });
-
-      if (!response.ok) {
-         throw new Error("Network response was not ok");
-      }
-   };
-
    return (
       <ContentStyled>
-         <MUIBox className="container mx-auto" mt={10}>
+         <MUIBox className="container mx-auto">
             <MUIGrid
                container
                sx={{
@@ -156,64 +155,70 @@ const Contact = () => {
                         },
                      }}
                   >
-                     <Form form={form} onFinish={handleSubmit}>
-                        <Form.Item
+                     <form onSubmit={myForm.handleSubmit}>
+                        <MUITextField
+                           // variant={formInfo.name.variant === 'standard' ? 'standard' : 'outlined'}
+                           variant="standard"
                            name="name"
-                           rules={[
-                              {
-                                 required: true,
-                                 message: "Trường bắt buộc nhập",
-                              },
-                           ]}
-                        >
-                           <MUITextField
-                              variant="standard"
-                              name="name"
-                              size="small"
-                              placeholder="Họ và tên"
-                              fullWidth
-                           />
-                        </Form.Item>
-                        <Form.Item
+                           // onFocus = {(event) => setFormInfo(prev => ({...prev, [event.target['name']]: {value: formInfo.name.value, variant:'outlined'} }))}
+                           // onBlur = {(event) => setFormInfo(prev => ({...prev, [event.target['name']]: {value: formInfo.name.value, variant:'standard'} }))}
+
+                           onBlur={myForm.handleBlur}
+                           onChange={myForm.handleChange}
+                           error={myForm.touched.name && Boolean(myForm.errors.name)}
+                           helperText={
+                              myForm.touched.name &&
+                              Boolean(myForm.errors.name) && (
+                                 <>
+                                    <WarningRoundedIcon /> {myForm.errors.name}
+                                 </>
+                              )
+                           }
+                           size="small"
+                           placeholder="Họ và tên"
+                           fullWidth
+                        />
+                        <MUITextField
+                           variant="standard"
                            name="email"
-                           rules={[
-                              {
-                                 required: true,
-                                 message: "Trường bắt buộc nhập",
-                              },
-                              {
-                                 type: "email",
-                                 message: "Vui lòng nhập đúng định dạng email",
-                              },
-                           ]}
-                        >
-                           <MUITextField variant="standard" name="email" size="small" placeholder="Email" fullWidth />
-                        </Form.Item>
-                        <Form.Item
+                           onBlur={myForm.handleBlur}
+                           onChange={myForm.handleChange}
+                           error={myForm.touched.email && Boolean(myForm.errors.email)}
+                           helperText={
+                              myForm.touched.email &&
+                              Boolean(myForm.errors.email) && (
+                                 <>
+                                    <WarningRoundedIcon /> {myForm.errors.email}
+                                 </>
+                              )
+                           }
+                           size="small"
+                           placeholder="Email"
+                           fullWidth
+                        />
+                        <MUITextField
+                           variant="standard"
+                           onChange={myForm.handleChange}
+                           error={myForm.touched.content && Boolean(myForm.errors.content)}
+                           helperText={
+                              myForm.touched.content &&
+                              Boolean(myForm.errors.content) && (
+                                 <>
+                                    <WarningRoundedIcon /> {myForm.errors.email}
+                                 </>
+                              )
+                           }
                            name="content"
-                           rules={[
-                              {
-                                 required: true,
-                                 message: "Trường bắt buộc nhập",
-                              },
-                           ]}
-                        >
-                           <MUITextField
-                              variant="standard"
-                              name="content"
-                              multiline
-                              rows="8"
-                              size="small"
-                              placeholder="Nội dung"
-                              fullWidth
-                           />
-                        </Form.Item>
+                           multiline
+                           rows="8"
+                           size="small"
+                           placeholder="Nội dung"
+                           fullWidth
+                        />
 
                         <MUIButton
                            variant="contained"
-                           onClick={() => {
-                              form.submit();
-                           }}
+                           type="submit"
                            sx={{
                               background: style.TEXT_COLOR_GENERAL,
                               borderRadius: "20px",
@@ -223,7 +228,7 @@ const Contact = () => {
                         >
                            Submit
                         </MUIButton>
-                     </Form>
+                     </form>
                   </MUIBox>
                </MUIGrid>
             </MUIGrid>
@@ -233,7 +238,4 @@ const Contact = () => {
    );
 };
 
-export default Contact;
-// export default connect(null, {
-//    login: authActions.adminLoginApi,
-// })(Contact);
+export default ContactBU;

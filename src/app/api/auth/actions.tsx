@@ -7,3 +7,11 @@ export const adminLoginApi = (body) =>
       withToken: false,
       body: body,
    });
+
+export const sendContact = (body) =>
+   FETCH({
+      method: "POST",
+      path: "/admin/request-submit",
+      withToken: false,
+      body: body,
+   });

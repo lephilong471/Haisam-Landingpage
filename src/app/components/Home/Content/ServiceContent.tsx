@@ -207,7 +207,7 @@ const ServiceContent = () => {
                                  index % 2 === 0 ? (
                                     <li key={index}>
                                        <Link
-                                          href={"#"}
+                                          href={PATH.SERVICE}
                                           style={{
                                              textDecoration: "none",
                                              display: "flex",
@@ -236,7 +236,7 @@ const ServiceContent = () => {
                                  index % 2 !== 0 ? (
                                     <li key={index}>
                                        <Link
-                                          href={"#"}
+                                          href={PATH.SERVICE}
                                           style={{
                                              textDecoration: "none",
                                              display: "flex",
