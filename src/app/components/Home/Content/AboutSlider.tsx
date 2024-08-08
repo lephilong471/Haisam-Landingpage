@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 import { MUIBox } from "../../MUI";
+import ImageSvg from "react-inlinesvg";
+import { BREAK_POINT, style } from "@/app/config";
+import dynamic from "next/dynamic";
+
+const WindowWidthWrapper = dynamic(() => import("@/app/config/hooks/useWindowWidthWrapper"), { ssr: false });
 
 // const CarouselWrapper = styled.div`
 //    position: relative;
@@ -17,6 +22,11 @@ const SlideWrapper = styled.div`
    width: 100%;
    height: 100%;
    transition: all 0.5s ease;
+
+   .image-slider_custom {
+      min-width: 100%;
+      width: auto !important;
+   }
 `;
 
 const Slide = styled.div`
@@ -33,7 +43,7 @@ const Slide = styled.div`
 
 const ButtonWrapper = styled.div`
    display: flex;
-   justify-content: center;
+   justify-content: start;
    margin-top: 20px;
 `;
 
@@ -65,56 +75,73 @@ const CustomCarousel = ({ slides }) => {
 
    return (
       <>
-         <MUIBox sx={{ width: "100%", mt: { xs: 5, md: 0 } }}>
-            <MUIBox
-               sx={{
-                  width: "80%",
-                  height: "100%",
-                  position: "relative",
-                  maxHeight: "405px",
-                  minHeight: "375px",
-                  mx: "auti",
-                  possition: "relative",
-               }}
-            >
-               {slides.map((slide, index) => {
-                  let offset = index - currentIndex;
-                  if (offset < 0) offset += slides.length;
+         <WindowWidthWrapper>
+            {(screenWidth) => (
+               <MUIBox sx={{ width: "100%", mt: { xs: 5, md: 0 } }}>
+                  <MUIBox
+                     sx={{
+                        width: "100%",
+                        height:
+                           screenWidth > BREAK_POINT.MD ? "405px" : screenWidth > BREAK_POINT.SM ? "605px" : "300px",
+                        position: "relative",
+                        mx: "auto",
+                     }}
+                  >
+                     {slides.map((slide, index) => {
+                        let offset = index - currentIndex;
+                        if (offset < 0) offset += slides.length;
 
-                  return (
-                     <SlideWrapper
-                        key={index}
-                        style={{
-                           zIndex: slides.length - offset,
-                           transform: `translate(${-(offset * 20)}px, ${-(offset * 20)}px)`,
-                           opacity: offset === 0 ? 1 : 0.7,
-                           left: 0,
-                           bottom: 0,
-                           // left:
-                           //    direction === "next"
-                           //       ? `${offset === 0 ? -100 : 0}%`
-                           //       : `${offset === slides.length - 1 ? 100 : 0}%`,
-                        }}
-                     >
-                        <Slide>
-                           <Image
-                              src={slide.image}
-                              alt={slide.alt}
-                              fill
+                        return (
+                           <SlideWrapper
+                              key={index}
                               style={{
-                                 objectFit: "cover",
+                                 zIndex: slides.length - offset,
+                                 transform: `translate(${-(offset * 10)}px, ${-(offset * 10)}px)`,
+                                 opacity: offset === 0 ? 1 : 0.7,
+                                 left: 0,
+                                 bottom: 0,
+                                 // left:
+                                 //    direction === "next"
+                                 //       ? `${offset === 0 ? -100 : 0}%`
+                                 //       : `${offset === slides.length - 1 ? 100 : 0}%`,
                               }}
-                           />
-                        </Slide>
-                     </SlideWrapper>
-                  );
-               })}
-            </MUIBox>
-            <ButtonWrapper>
-               <Button onClick={goToPrev}>Previous</Button>
-               <Button onClick={goToNext}>Next</Button>
-            </ButtonWrapper>
-         </MUIBox>
+                           >
+                              <Slide>
+                                 <Image
+                                    className="image-slider_custom"
+                                    src={slide.image}
+                                    alt={slide.alt}
+                                    fill
+                                    style={{
+                                       objectFit: "cover",
+                                    }}
+                                 />
+                              </Slide>
+                           </SlideWrapper>
+                        );
+                     })}
+                  </MUIBox>
+                  <ButtonWrapper>
+                     <MUIBox
+                        onClick={goToPrev}
+                        className="custom-prev"
+                        sx={{ cursor: "pointer", color: style.TEXT_COLOR_GENERAL, width: "30px" }}
+                     >
+                        <ImageSvg src="/images/icons/ArrowBackRoundedIcon.svg" />
+                     </MUIBox>
+                     <MUIBox
+                        onClick={goToNext}
+                        className="custom-next"
+                        sx={{ cursor: "pointer", color: style.TEXT_COLOR_GENERAL, width: "30px" }}
+                     >
+                        <ImageSvg src="/images/icons/ArrowForwardRoundedIcon.svg" />
+                     </MUIBox>
+                     {/* <Button onClick={goToPrev}>Previous</Button>
+               <Button onClick={goToNext}>Next</Button> */}
+                  </ButtonWrapper>
+               </MUIBox>
+            )}
+         </WindowWidthWrapper>
       </>
    );
 };

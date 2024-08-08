@@ -52,12 +52,12 @@ const StaffContent = () => {
             data-aos-duration="2000"
             data-aos-once="true"
          >
-            <MUIGrid container spacing={9}>
-               <MUIGrid item xs={12} md={4}>
+            <MUIGrid container spacing={{ xs: 0, sm: 3, md: 9 }}>
+               <MUIGrid item xs={12} sm={4}>
                   <MUIBox
                      sx={{
                         width: "100%",
-                        minHeight: "370px",
+                        minHeight: { xs: "370px", sm: "230px", md: "370px" },
                         position: "relative",
                         overflow: "hidden",
                         ".social-staff": {
@@ -128,14 +128,14 @@ const StaffContent = () => {
                      </MUIBox>
                   </MUIBox>
                </MUIGrid>
-               <MUIGrid item xs={12} md={4}>
+               <MUIGrid item xs={12} sm={4}>
                   <MUIBox
                      sx={{
                         width: "100%",
-                        minHeight: "370px",
+                        minHeight: { xs: "370px", sm: "230px", md: "370px" },
                         position: "relative",
                         overflow: "hidden",
-                        mt: { xs: "0px", md: "-50px" },
+                        mt: { xs: "0px", sm: "-50px" },
                         ".social-staff": {
                            transform: "translateY(100%)",
                            transition: "transform 0.3s ease-in-out",
@@ -204,11 +204,11 @@ const StaffContent = () => {
                      </MUIBox>
                   </MUIBox>
                </MUIGrid>
-               <MUIGrid item xs={12} md={4}>
+               <MUIGrid item xs={12} sm={4}>
                   <MUIBox
                      sx={{
                         width: "100%",
-                        minHeight: "370px",
+                        minHeight: { xs: "370px", sm: "230px", md: "370px" },
                         position: "relative",
                         overflow: "hidden",
                         ".social-staff": {

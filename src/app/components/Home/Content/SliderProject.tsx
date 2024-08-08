@@ -401,13 +401,15 @@ const SliderProject = () => {
                <MUIBox
                   sx={{
                      position: "absolute",
-                     top: {xs: 'auto', sm: "clamp(5.625rem, 8vw, 6.875rem)"},
-                     bottom: {xs: 0, sm: 'auto'},
-                     right: 0,
+                     top: { xs: "auto", sm: "clamp(5.625rem, 8vw, 6.875rem)" },
+                     bottom: { xs: "20px", sm: "auto" },
+                     right: { xs: "auto", sm: 0 },
+                     left: { xs: 0, sm: "auto" },
                      // transform: "translateY(-75%)",
                      zIndex: "99",
                      background: "transparent",
-                     mr: { xs: 0, md: "100px" },
+                     mr: { xs: 0, sm: "100px" },
+                     ml: { xs: "clamp(1.875rem, 15vw, 11.25rem)", sm: 0 },
                   }}
                >
                   <MUIBox
