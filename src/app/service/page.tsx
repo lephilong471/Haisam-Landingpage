@@ -7,8 +7,6 @@ import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
 import styled from "styled-components";
 import { style, FONT_FAMILY } from "../config";
 
-import { Divider } from "@mui/material";
-
 import AOS from "aos";
 import dynamic from "next/dynamic";
 const SplittingText = dynamic(() => import("@/app/components/presentation/SplittingText"), { ssr: false });
