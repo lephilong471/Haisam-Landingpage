@@ -13,7 +13,7 @@ import { PATH } from "@/app/config/routes";
 // import AboutSlider from "./AboutSlider";
 
 import dynamic from "next/dynamic";
-import CustomCarousel from "./AboutSlider";
+import AboutSlider from "./AboutSlider";
 const SplittingText = dynamic(() => import("@/app/components/presentation/SplittingText"), { ssr: false });
 
 // import SliderManger from "@/public/images/slider/manager-engineer-checking.jpg";
@@ -23,7 +23,6 @@ const slides = [
    { image: "/images/slider/manager-engineer-checking.jpg", alt: "Slide 1" },
    { image: "/images/slider/container-cargo-ship-cargo-plane.jpg", alt: "Slide 2" },
    { image: "/images/slider/ship-with-cargo-container-sea.jpg", alt: "Slide 3" },
-   // Thêm các slide khác nếu cần
 ];
 
 const AboutContentStyled = styled("div")`
@@ -203,7 +202,7 @@ const AboutContent = () => {
                fontFamily={FONT_FAMILY.OUTFIT}
                sx={{ fontSize: { xs: "40px", sm: "66px", lg: "116px" } }}
             >
-               <SplittingText>Why choose us</SplittingText>
+               <SplittingText>Why Choose Us</SplittingText>
             </MUITypography>
          </MUIBox>
          <Divider sx={{ mb: "20px" }} />
@@ -265,8 +264,18 @@ const AboutContent = () => {
                      ))}
                   </MUIBox>
                </MUIGrid>
-               <MUIGrid item xs={12} md={5} sx={{ display: "flex", justifyContent: "center" }}>
-                  <CustomCarousel slides={slides} />
+               <MUIGrid
+                  item
+                  xs={12}
+                  md={5}
+                  sx={{ display: "flex", justifyContent: "center" }}
+                  data-aos="fade-left"
+                  data-aos-delay="500"
+                  data-aos-duration="2000"
+                  data-aos-once="true"
+                  data-aos-offset="0"
+               >
+                  <AboutSlider slides={slides} />
                   {/* about silier */}
                </MUIGrid>
             </MUIGrid>
