@@ -114,7 +114,7 @@ const ServiceContent = () => {
                            color={style.TEXT_COLOR_GENERAL}
                            lineHeight={"2em"}
                            sx={{
-                              fontSize: { xs: "16px", md: "20px" },
+                              fontSize: { xs: "16px", sm: "20px" },
                               position: "relative",
                               "&::after": {
                                  content: '""',
@@ -154,7 +154,7 @@ const ServiceContent = () => {
                            lineHeight={"1em"}
                            letterSpacing={"-0.04em"}
                            className="word-holder"
-                           sx={{ fontSize: { xs: "40px", md: "66px", lg: "114px" } }}
+                           sx={{ fontSize: { xs: "40px", sm: "66px", lg: "114px" } }}
                         >
                            <SplittingText>{item}</SplittingText>
                         </MUITypography>
@@ -172,7 +172,7 @@ const ServiceContent = () => {
                         fontSize={"32px"}
                         fontWeight={400}
                         fontFamily={FONT_FAMILY.JOST}
-                        sx={{ mb: "20px", fontSize: { xs: "18px", md: "20px", lg: "32px" } }}
+                        sx={{ mb: "20px", fontSize: { xs: "18px", sm: "20px", lg: "32px" } }}
                      >
                         Delivering Possibilities, On Time
                      </MUITypography>
@@ -184,7 +184,7 @@ const ServiceContent = () => {
                         data-aos-delay="250"
                         data-aos-duration="1500"
                         data-aos-once="true"
-                        sx={{ mb: "20px", fontSize: { xs: "16px", md: "17px" } }}
+                        sx={{ mb: "20px", fontSize: { xs: "16px", sm: "17px" } }}
                      >
                         At Logistica, we are more than just a logistics company – we are the architects of seamless
                         supply chains, the navigators of global trade, and the enablers of business growth.

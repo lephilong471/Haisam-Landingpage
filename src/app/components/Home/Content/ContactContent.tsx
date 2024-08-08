@@ -75,7 +75,7 @@ const ContactContent = () => {
                   letterSpacing={"-0.04em"}
                   textTransform={"capitalize"}
                   fontFamily={FONT_FAMILY.OUTFIT}
-                  sx={{ fontSize: { xs: "40px", md: "66px", lg: "116px" } }}
+                  sx={{ fontSize: { xs: "40px", sm: "66px", lg: "116px" } }}
                >
                   <SplittingText>Connect Today</SplittingText>
                </MUITypography>
@@ -85,7 +85,7 @@ const ContactContent = () => {
                <MUITypography
                   fontFamily={FONT_FAMILY.JOST}
                   color={style.TEXT_COLOR_TITLE}
-                  sx={{ fontSize: { xs: "40px", md: "66px", lg: "114px" } }}
+                  sx={{ fontSize: { xs: "18px", sm: "20px", lg: "32px" } }}
                >
                   Communication in Motion
                </MUITypography>
@@ -141,7 +141,7 @@ const ContactContent = () => {
                   lineHeight={1.2}
                   fontFamily={FONT_FAMILY.OUTFIT}
                   color={"#fff"}
-                  sx={{ textAlign: "center", mb: 2, fontSize: { xs: "28px", md: "52px", lg: "72px" } }}
+                  sx={{ textAlign: "center", mb: 2, fontSize: { xs: "28px", sm: "52px", lg: "72px" } }}
                >
                   Have a project in mind?
                </MUITypography>
@@ -150,7 +150,7 @@ const ContactContent = () => {
                   lineHeight={1.2}
                   fontFamily={FONT_FAMILY.OUTFIT}
                   color={"#fff"}
-                  sx={{ textAlign: "center", mb: 2, fontSize: { xs: "18px", md: "26px" } }}
+                  sx={{ textAlign: "center", mb: 2, fontSize: { xs: "18px", sm: "26px" } }}
                >
                   Do not hesitate to say Zdravstvuyte
                </MUITypography>
@@ -189,7 +189,7 @@ const ContactContent = () => {
                            display: "flex",
                            alignItems: "center",
                            color: "inherit",
-                           fontSize: { xs: "16px", md: "20" },
+                           fontSize: { xs: "16px", sm: "20px" },
                         }}
                      >
                         Let&apos;s talk

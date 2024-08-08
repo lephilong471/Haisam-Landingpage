@@ -15,7 +15,7 @@ const SplittingText = dynamic(() => import("@/app/components/presentation/Splitt
 
 const NewsContentStyled = styled("div")`
    padding-top: 10%;
-   min-height: 100vh;
+   // min-height: 100vh;
    .splitting .char {
       animation: slide-in 1s cubic-bezier(0.5, 0, 0.5, 1) both;
       animation-delay: calc(60ms * var(--char-index));
@@ -62,7 +62,7 @@ const NewsContent = () => {
                      color={style.TEXT_COLOR_GENERAL}
                      lineHeight={"2em"}
                      sx={{
-                        fontSize: { xs: "18px", md: "20px" },
+                        fontSize: { xs: "18px", sm: "20px" },
                         position: "relative",
                         textTransform: "capitalize",
                         "&::after": {
@@ -102,7 +102,7 @@ const NewsContent = () => {
                   letterSpacing={"-0.04em"}
                   textTransform={"capitalize"}
                   fontFamily={FONT_FAMILY.OUTFIT}
-                  sx={{ fontSize: { xs: "40px", md: "66px", lg: "116px" } }}
+                  sx={{ fontSize: { xs: "40px", sm: "66px", lg: "116px" } }}
                >
                   <SplittingText>News Highlights</SplittingText>
                </MUITypography>
@@ -113,7 +113,7 @@ const NewsContent = () => {
                   fontFamily={FONT_FAMILY.JOST}
                   color={style.TEXT_COLOR_TITLE}
                   sx={{
-                     fontSize: { xs: "18px", md: "20px", lg: "32px" },
+                     fontSize: { xs: "18px", sm: "20px", lg: "32px" },
                   }}
                >
                   Beyond Boundaries: Our Project Narratives

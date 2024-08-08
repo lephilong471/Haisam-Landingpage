@@ -19,7 +19,7 @@ const StyledSplittingWrapper = styled.div`
 `;
 
 const SplittingText = forwardRef<HTMLDivElement, { children: React.ReactNode }>(({ children }, forwardedRef) => {
-   const innerRef = useRef<HTMLDivElement>(null);
+   // const innerRef = useRef<HTMLDivElement>(null);
    const targetRef = useRef<HTMLDivElement>(null);
 
    useEffect(() => {

@@ -31,7 +31,7 @@
       "**/*.ts",
       "**/*.tsx",
       ".next/types/**/*.ts",
-      "src/app/config/hooks/useIntersectionObserver.js",
+      "src/app/config/hooks/useIntersectionObserver.ts",
       "src/app/config/hooks/useWindowWidth.ts"
    ],
    "exclude": ["node_modules"]

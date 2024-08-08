@@ -16,15 +16,10 @@ import { BREAK_POINT } from "@/app/config";
 
 import dynamic from "next/dynamic";
 
-const useWindowWidth = dynamic(
-  () => import("@/app/config/hooks/useWindowWidth").then((mod) => mod.default),
-  { ssr: false }
-) as () => number;
+const WindowWidthWrapper = dynamic(() => import("@/app/config/hooks/useWindowWidthWrapper"), { ssr: false });
 
 const SliderCarouselStyled = styled("div")`
    width: 100%;
-   height: 100vh;
-   margin-top: 10%;
    display: flex;
    align-items: center;
 
@@ -78,74 +73,80 @@ const dataCarousel = [
 ];
 
 const SliderCarousel = () => {
-   const screenWidth = useWindowWidth();
-
    useEffect(() => {
       AOS.init();
    }, []);
 
    return (
-      <SliderCarouselStyled //
-         data-aos="fade-up"
-         data-aos-delay="0"
-         data-aos-duration="1000"
-         data-aos-once="true"
-      >
-         <Swiper
-            modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
-            effect="coverflow"
-            loop={true}
-            grabCursor={true}
-            slidesPerView={screenWidth > BREAK_POINT.MD ? 2 : 1}
-            spaceBetween={screenWidth > BREAK_POINT.MD ? 170 : 50}
-            centeredSlides={screenWidth > BREAK_POINT.MD ? true : false}
-            initialSlide={screenWidth > BREAK_POINT.MD ? 2 : 1}
-            // navigation={true}
-            navigation={{
-               nextEl: ".custom-next",
-               prevEl: ".custom-prev",
-            }}
-            speed={600}
-            autoplay={{
-               delay: 2000,
-               disableOnInteraction: false,
-            }}
-            coverflowEffect={{
-               rotate: 0,
-               stretch: 0,
-               depth: 100,
-               modifier: 2,
-               slideShadows: true,
-            }}
-            style={{ position: "relative", height: "352px" }}
-         >
-            {dataCarousel.map((item, index) => (
-               <SwiperSlide key={index}>
-                  <MUIBox
-                     className="bg-hover"
-                     sx={{
-                        backgroundImage: `url(${item?.image.src})`,
-                        height: "352px",
-                        backgroundPosition: "center",
-                        backgroundSize: "cover",
-                        backgroundRepeat: "no-repeat",
-                        zIndex: "1",
-                        width: "100%",
-                        transition: "transform 0.3s ease",
-                     }}
-                  ></MUIBox>
-               </SwiperSlide>
-            ))}
-            <MUIBox className="custom-nav">
-               <MUIBox className="custom-prev" sx={{ cursor: "pointer", color: "#fff", width: "60px" }}>
-                  <ImageSvg src="/images/icons/ArrowBackRoundedIcon.svg" />
-               </MUIBox>
-               <MUIBox className="custom-next" sx={{ cursor: "pointer", color: "#fff", width: "60px" }}>
-                  <ImageSvg src="/images/icons/ArrowForwardRoundedIcon.svg" />
-               </MUIBox>
-            </MUIBox>
-         </Swiper>
-      </SliderCarouselStyled>
+      <WindowWidthWrapper>
+         {(screenWidth) => (
+            <SliderCarouselStyled //
+               data-aos="fade-up"
+               data-aos-delay="0"
+               data-aos-duration="1000"
+               data-aos-once="true"
+               style={{
+                  height: screenWidth > BREAK_POINT.MD ? "100vh" : "352px",
+                  marginTop: screenWidth > BREAK_POINT.MD ? "10%" : "20%",
+               }}
+            >
+               <Swiper
+                  modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+                  effect="coverflow"
+                  loop={true}
+                  grabCursor={true}
+                  slidesPerView={screenWidth > BREAK_POINT.SM ? 2 : 1}
+                  spaceBetween={screenWidth > BREAK_POINT.MD ? 170 : 100}
+                  centeredSlides={screenWidth > BREAK_POINT.SM ? true : false}
+                  initialSlide={screenWidth > BREAK_POINT.SM ? 2 : 1}
+                  // navigation={true}
+                  navigation={{
+                     nextEl: ".custom-next",
+                     prevEl: ".custom-prev",
+                  }}
+                  speed={600}
+                  autoplay={{
+                     delay: 2000,
+                     disableOnInteraction: false,
+                  }}
+                  coverflowEffect={{
+                     rotate: 0,
+                     stretch: 0,
+                     depth: 100,
+                     modifier: 2,
+                     slideShadows: true,
+                  }}
+                  style={{ position: "relative", height: "352px" }}
+               >
+                  {dataCarousel.map((item, index) => (
+                     <SwiperSlide key={index}>
+                        <MUIBox
+                           className="bg-hover"
+                           sx={{
+                              backgroundImage: `url(${item?.image.src})`,
+                              height: "352px",
+                              backgroundPosition: "center",
+                              backgroundSize: "cover",
+                              backgroundRepeat: "no-repeat",
+                              zIndex: "1",
+                              width: "100%",
+                              transition: "transform 0.3s ease",
+                           }}
+                        ></MUIBox>
+                     </SwiperSlide>
+                  ))}
+                  <MUIBox className="custom-nav">
+                     <MUIBox className="custom-prev" sx={{ cursor: "pointer", color: "#fff", width: "60px" }}>
+                        <ImageSvg src="/images/icons/ArrowBackRoundedIcon.svg" />
+                     </MUIBox>
+                     <MUIBox className="custom-next" sx={{ cursor: "pointer", color: "#fff", width: "60px" }}>
+                        <ImageSvg src="/images/icons/ArrowForwardRoundedIcon.svg" />
+                     </MUIBox>
+                  </MUIBox>
+               </Swiper>
+            </SliderCarouselStyled>
+         )}
+      </WindowWidthWrapper>
    );
 };
 

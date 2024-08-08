@@ -160,7 +160,7 @@ const AboutContent = () => {
                   color={style.TEXT_COLOR_GENERAL}
                   lineHeight={"2em"}
                   sx={{
-                     fontSize: { xs: "16px", md: "20px" },
+                     fontSize: { xs: "16px", sm: "20px" },
                      position: "relative",
                      textTransform: "capitalize",
                      "&::after": {
@@ -201,7 +201,7 @@ const AboutContent = () => {
                textTransform={"capitalize"}
                data-splitting="chars"
                fontFamily={FONT_FAMILY.OUTFIT}
-               sx={{ fontSize: { xs: "40px", md: "66px", lg: "116px" } }}
+               sx={{ fontSize: { xs: "40px", sm: "66px", lg: "116px" } }}
             >
                <SplittingText>Why choose us</SplittingText>
             </MUITypography>
@@ -211,12 +211,12 @@ const AboutContent = () => {
             <MUITypography
                data-aos="fade-up"
                data-aos-delay="100"
-               data-aos-duration="2000"
+               data-aos-duration="1500"
                data-aos-once="true"
                fontWeight={400}
                lineHeight={1}
                variant="h2"
-               sx={{ fontSize: { xs: "18px", md: "20px", lg: "32px" } }}
+               sx={{ fontSize: { xs: "18px", sm: "20px", lg: "32px" } }}
             >
                We Bridge Distances, We Deliver Dreams
             </MUITypography>
@@ -224,8 +224,8 @@ const AboutContent = () => {
                <MUIGrid item xs={12} md={7}>
                   <MUIBox
                      data-aos="fade-right"
-                     data-aos-delay="200"
-                     data-aos-duration="1500"
+                     data-aos-delay="500"
+                     data-aos-duration="2000"
                      data-aos-once="true"
                      data-aos-offset="0"
                      mb={2.5}
@@ -242,7 +242,7 @@ const AboutContent = () => {
                                     fontWeight={500}
                                     sx={{
                                        textAlign: "left",
-                                       fontSize: { xs: "17px", md: "21px", lg: "22px" },
+                                       fontSize: { xs: "17px", sm: "21px", lg: "22px" },
                                        lineHeight: { xs: 1.4, md: "40px" },
                                     }}
                                  >

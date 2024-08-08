@@ -61,7 +61,6 @@ const SliderProjectStyled = styled("div")`
       left: clamp(5rem, 14vw, 11.25rem);
       transform: translateY(-50%);
       z-index: 10;
-      display: flex;
       align-items: center;
       justify-content: start;
       bottom: clamp(1rem, 3vw, 3rem);
@@ -402,7 +401,8 @@ const SliderProject = () => {
                <MUIBox
                   sx={{
                      position: "absolute",
-                     top: "clamp(5.625rem, 8vw, 6.875rem)",
+                     top: {xs: 'auto', sm: "clamp(5.625rem, 8vw, 6.875rem)"},
+                     bottom: {xs: 0, sm: 'auto'},
                      right: 0,
                      // transform: "translateY(-75%)",
                      zIndex: "99",
@@ -412,16 +412,16 @@ const SliderProject = () => {
                >
                   <MUIBox
                      className="custom-pagination"
-                     style={{
+                     sx={{
                         display: "flex",
-                        alignItems: "end",
-                        flexDirection: "column",
+                        alignItems: { xs: "center", sm: "end" },
+                        flexDirection: { xs: "row", sm: "column" },
                         justifyContent: "center",
                      }}
                   ></MUIBox>
                </MUIBox>
 
-               <MUIBox className="custom-nav" sx={{display: {xs:'none', sm:'block'}}}>
+               <MUIBox className="custom-nav" sx={{ display: { xs: "none", sm: "flex" } }}>
                   <MUIBox className="custom-prev" sx={styleTransition}>
                      <ImageSvg
                         src="/images/icons/ArrowLeft.svg"

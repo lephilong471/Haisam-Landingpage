@@ -37,7 +37,7 @@ const ProjectContent = () => {
    return (
       <ProjectContentStyled>
          <MUIBox className="container">
-            <MUIBox sx={{ marginTop: { md: "20%", lg: "80px" }, marginBottom: { md: "1%", lg: "50px" } }}>
+            <MUIBox sx={{ marginTop: { xs: "20%", lg: "80px" }, marginBottom: { md: "1%", lg: "50px" } }}>
                <MUITypography
                   pb={3}
                   fontFamily={FONT_FAMILY.OUTFIT}
@@ -46,7 +46,7 @@ const ProjectContent = () => {
                   lineHeight={"1em"}
                   letterSpacing={"-0.04em"}
                   className="word-holder"
-                  sx={{ fontSize: { xs: "40px", md: "66px", lg: "114px" } }}
+                  sx={{ fontSize: { xs: "40px", sm: "66px", lg: "114px" } }}
                >
                   <SplittingText>Logistics Triumphs</SplittingText>
                </MUITypography>
@@ -76,7 +76,7 @@ const ProjectContent = () => {
                         color={style.TEXT_COLOR_GENERAL}
                         lineHeight={"2em"}
                         sx={{
-                           fontSize: { xs: "16px", md: "20px" },
+                           fontSize: { xs: "16px", sm: "20px" },
                            position: "relative",
                            "&::after": {
                               content: '""',
@@ -112,7 +112,7 @@ const ProjectContent = () => {
                      fontFamily={FONT_FAMILY.JOST}
                      color={style.TEXT_COLOR_TITLE}
                      sx={{
-                        fontSize: { xs: "18px", md: "20px",lg: '32px' },
+                        fontSize: { xs: "18px", sm: "20px", lg: "32px" },
                      }}
                   >
                      Beyond Boundaries: Our Project Narratives
@@ -120,7 +120,7 @@ const ProjectContent = () => {
                </MUIBox>
             </MUIBox>
          </MUIBox>
-         <MUIBox>
+         <MUIBox mt={4}>
             <SliderProject />
          </MUIBox>
       </ProjectContentStyled>

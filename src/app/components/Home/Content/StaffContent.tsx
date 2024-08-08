@@ -28,7 +28,7 @@ const StaffContent = () => {
                letterSpacing={"-0.04em"}
                textTransform={"capitalize"}
                fontFamily={FONT_FAMILY.OUTFIT}
-               sx={{ fontSize: { xs: "40px", md: "66px", lg: "116px" } }}
+               sx={{ fontSize: { xs: "40px", sm: "66px", lg: "116px" } }}
             >
                <SplittingText>Meet Our Staff</SplittingText>
             </MUITypography>
@@ -39,7 +39,7 @@ const StaffContent = () => {
                fontFamily={FONT_FAMILY.JOST}
                color={style.TEXT_COLOR_TITLE}
                sx={{
-                  fontSize: { xs: "18px", md: "20px", lg: "32px" },
+                  fontSize: { xs: "18px", sm: "20px", lg: "32px" },
                }}
             >
                Teamwork Beyond Boundaries
@@ -135,7 +135,7 @@ const StaffContent = () => {
                         minHeight: "370px",
                         position: "relative",
                         overflow: "hidden",
-                        mt: "-50px",
+                        mt: { xs: "0px", md: "-50px" },
                         ".social-staff": {
                            transform: "translateY(100%)",
                            transition: "transform 0.3s ease-in-out",
