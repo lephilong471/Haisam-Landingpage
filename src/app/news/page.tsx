@@ -8,9 +8,6 @@ import {
     MUICardActions,
     MUICardContent,
     MUICardMedia,
-    MUIButton,
-    MUIPopover,
-    MUIMenu,
     MUILink
 } from "@/app/components/MUI"
 import Popper from '@mui/material/Popper';
@@ -24,11 +21,6 @@ import { FaTwitter } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaPinterestP } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
-
-import SVG from 'react-inlinesvg';
-
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-
 
 const ContentStyled = styled(MUIBox)`
     
@@ -116,8 +108,10 @@ const displayContent = (text: string) => {
     const textArr: Array<string> = text.split(' ')
     let result: string = ''
 
-    for(let i = 0 ; i <= 22; i++){
-        if(i === 22) result += `${textArr[i]}...`
+    if(textArr.length <= 22) return text
+
+    for(let i = 0 ; i < 22; i++){
+        if(i === 22 - 1) result += `${textArr[i]}...`
         else result += `${textArr[i]} `
     }
     return result
@@ -250,6 +244,7 @@ const About = () => {
                                                 anchorEl={anchorEl}
                                                 onMouseLeave={handlePopperClose}
                                                 sx={{
+                                                    marginTop:'50px',
                                                     maxHeight:200
                                                 }}
                                             >
