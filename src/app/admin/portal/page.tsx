@@ -3,6 +3,8 @@ import { MUIBox, MUIButton } from "@/components/MUI";
 import TableData from "@/components/presentation/TableData";
 import React from "react";
 
+import UploadImage from '@/components/presentation/UploadImage'
+
 const page = () => {
    const columns = [
       {
@@ -49,6 +51,7 @@ const page = () => {
    return (
       <MUIBox mt={10} className="container">
          <TableData columns={columns} data={data} />
+         <UploadImage />
       </MUIBox>
    );
 };
