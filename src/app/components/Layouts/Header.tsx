@@ -11,6 +11,9 @@ import styled from "styled-components";
 import { PATH } from "@/app/config/routes";
 
 const AnimateStyled = styled("div")`
+   display: flex;
+   align-items: center;
+   
    @keyframes search-text-fadein {
       0% {
          opacity: 0;
@@ -207,9 +210,9 @@ const Header = () => {
                                     textAlign: "right",
                                     animation: isSearch ? "search-text-fadein 0.8s" : "search-text-fadeout 0.8s",
                                     "input::placeholder": {
-                                       color: style.TEXT_COLOR_TITLE,
+                                       color: (path == PATH.HOME || path == PATH.CONTACT) ? '#fff' : style.TEXT_COLOR_TITLE,
                                        opacity: "1",
-                                       fontWeight: "500",
+                                       fontWeight: "450",
                                        fontFamily: "Montserrat",
                                        fontSize: "14px",
                                     },
