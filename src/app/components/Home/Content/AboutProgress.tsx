@@ -7,7 +7,7 @@ const AboutProgress = (props) => {
    return (
       <MUIBox
          mb={2.5}
-         sx={{ padding: "0% 7% 0% 17%" }}
+         sx={{ padding: { xs: 0, md: "0% 7% 0% 17%" } }}
          data-aos="fade-up"
          data-aos-delay="100"
          data-aos-duration="2000"

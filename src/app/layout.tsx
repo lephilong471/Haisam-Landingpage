@@ -18,8 +18,7 @@ import "splitting/dist/splitting-cells.css";
 //style aos
 import "aos/dist/aos.css";
 
-import Header from "@/app/components/Home/Header";
-import { Box } from "@mui/material";
+import Header from "@/app/components/Layouts/Header";
 // import Footer from "./components/Home/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -66,21 +65,8 @@ export default function RootLayout({
             ></script>
          </head>
          <body className={inter.className}>
-            <Box
-               style={{
-                  // backgroundImage: `url(${BgImg.src})`,
-                  height: "100vh",
-                  minHeight: "100vh",
-                  maxHeight: "100%",
-                  backgroundPosition: "center",
-                  backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                  backgroundAttachment: "scroll",
-               }}
-            >
-               <Header />
-               {children}
-            </Box>
+            <Header />
+            {children}
             {/* <Footer /> */}
          </body>
       </html>

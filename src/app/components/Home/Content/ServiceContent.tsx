@@ -13,7 +13,7 @@ import { FONT_FAMILY, style } from "@/app/config";
 import { PATH } from "@/app/config/routes";
 
 import dynamic from "next/dynamic";
-const SplittingText = dynamic(() => import('@/app/components/Home/Content/SplittingText'),{ssr:false})
+const SplittingText = dynamic(() => import("@/app/components/presentation/SplittingText"), { ssr: false });
 
 const ServiceContentStyled = styled(Box)`
    background: #fff;
@@ -90,7 +90,7 @@ const ServiceContent = () => {
    return (
       <ServiceContentStyled>
          <Box className="container mx-auto">
-            <Grid container spacing={6}>
+            <Grid container spacing={{ xs: 2, md: 6 }}>
                <Grid item xs={12} md={7.5}>
                   <Box
                      data-aos="fade-up"
@@ -103,18 +103,18 @@ const ServiceContent = () => {
                         alignItems: "center",
                         marginBottom: "35px",
                         "&:hover .icon-service": {
-                           ml: "5px",
+                           transform: "translateX(10px)",
                         },
                      }}
                   >
                      <Link href={PATH.SERVICE} style={{ textDecoration: "none", display: "inline-block" }}>
                         <MUITypography
-                           fontSize={20}
                            fontWeight={500}
                            fontFamily={FONT_FAMILY.JOST}
                            color={style.TEXT_COLOR_GENERAL}
                            lineHeight={"2em"}
                            sx={{
+                              fontSize: { xs: "16px", sm: "20px" },
                               position: "relative",
                               "&::after": {
                                  content: '""',
@@ -122,7 +122,7 @@ const ServiceContent = () => {
                                  bottom: 0,
                                  left: 0,
                                  width: "100%",
-                                 height: "2px",
+                                 height: { xs: "1px", md: "2px" },
                                  backgroundColor: `currentColor`,
                                  transition: `background-color .25s ease-in-out, width .36s cubic-bezier(.51,.5,.07,.99)`,
                                  backfaceVisibility: "hidden",
@@ -133,7 +133,7 @@ const ServiceContent = () => {
                                  bottom: 0,
                                  left: 0,
                                  width: "0%",
-                                 height: "2px",
+                                 height: { xs: "1px", md: "2px" },
                                  backgroundColor: `${style.TEXT_COLOR_GENERAL}`,
                                  transition: `background-color .25s ease-in-out, width .36s cubic-bezier(.51,.5,.07,.99)`,
                                  backfaceVisibility: "hidden",
@@ -145,61 +145,22 @@ const ServiceContent = () => {
                      </Link>
                      <ArrowOutwardRoundedIcon className="icon-service" />
                   </Box>
-                  <SplittingText props={text} />
-                  {/* <Box data-splitting="chars" pb={4}>
+                  <MUIBox mb={3}>
                      {text.map((item, index) => (
                         <MUITypography
                            key={index}
                            variant="h1"
-                           fontSize={114}
                            fontWeight={700}
                            lineHeight={"1em"}
                            letterSpacing={"-0.04em"}
                            className="word-holder"
+                           sx={{ fontSize: { xs: "40px", sm: "66px", lg: "114px" } }}
                         >
-                           {item}
+                           <SplittingText>{item}</SplittingText>
                         </MUITypography>
                      ))}
-                  </Box> */}
-                  {/* <Box pb={4}>
-                     <MUITypography
-                        variant="h1"
-                        fontSize={114}
-                        fontWeight={700}
-                        lineHeight={"1em"}
-                        letterSpacing={"-0.04em"}
-                     >
-                        {text.map((word: any, wordIndex) => {
-                           let index = 1;
-                           if (index !== wordIndex) {
-                              startDelay = word.length * 60 + 60;
-                           }
-                           return (
-                              <span key={wordIndex} className="word-holder" style={{ whiteSpace: "nowrap" }}>
-                                 {word.split("").map((char: any, charIndex: number) => {
-                                    if (charIndex === word.length - 1) {
-                                       index++;
-                                    }
-                                    return (
-                                       <Character
-                                          key={charIndex}
-                                          delay={
-                                             wordIndex === 0
-                                                ? charIndex * 60
-                                                : charIndex === 0
-                                                ? startDelay
-                                                : startDelay + charIndex * 60
-                                          }
-                                       >
-                                          {char}
-                                       </Character>
-                                    );
-                                 })}
-                              </span>
-                           );
-                        })}
-                     </MUITypography>
-                  </Box> */}
+                  </MUIBox>
+
                   <Divider sx={{ mb: "20px" }} />
                   <MUIBox sx={{ mb: "40px" }}>
                      <MUITypography
@@ -211,20 +172,19 @@ const ServiceContent = () => {
                         fontSize={"32px"}
                         fontWeight={400}
                         fontFamily={FONT_FAMILY.JOST}
-                        sx={{ mb: "20px" }}
+                        sx={{ mb: "20px", fontSize: { xs: "18px", sm: "20px", lg: "32px" } }}
                      >
                         Delivering Possibilities, On Time
                      </MUITypography>
                      <MUITypography
-                        fontWeight={500}
                         fontFamily={FONT_FAMILY.JOST}
-                        color={"#56676d"}
-                        letterSpacing={"0.1em"}
+                        color={"rgb(86, 103, 109)"}
+                        lineHeight={1.9}
                         data-aos="fade-up"
                         data-aos-delay="250"
                         data-aos-duration="1500"
                         data-aos-once="true"
-                        sx={{ mb: "20px" }}
+                        sx={{ mb: "20px", fontSize: { xs: "16px", sm: "17px" } }}
                      >
                         At Logistica, we are more than just a logistics company – we are the architects of seamless
                         supply chains, the navigators of global trade, and the enablers of business growth.
@@ -239,7 +199,7 @@ const ServiceContent = () => {
                   >
                      <MUIGrid container>
                         <MUIGrid item xs={12} md={6}>
-                           <ul style={{ padding: 0, listStyleType: "none" }}>
+                           <ul style={{ padding: 0, listStyleType: "none", margin: 0 }}>
                               {dataSection.map((item: any, index: number) =>
                                  index % 2 === 0 ? (
                                     <li key={index}>
@@ -250,10 +210,17 @@ const ServiceContent = () => {
                                              display: "flex",
                                              alignItems: "center",
                                              gap: "5px",
-                                             color: "#56676d",
+                                             color: style.TEXT_COLOR_GENERAL,
                                           }}
                                        >
-                                          <AddIcon /> <MUITypography>{item.title}</MUITypography>
+                                          <AddIcon />{" "}
+                                          <MUITypography
+                                             lineHeight={"30px"}
+                                             fontFamily={FONT_FAMILY.JOST}
+                                             color={style.TEXT_COLOR_GENERAL}
+                                          >
+                                             {item.title}
+                                          </MUITypography>
                                        </Link>
                                     </li>
                                  ) : null
@@ -261,7 +228,7 @@ const ServiceContent = () => {
                            </ul>
                         </MUIGrid>
                         <MUIGrid item xs={12} md={6}>
-                           <ul style={{ padding: 0, listStyleType: "none" }}>
+                           <ul style={{ padding: 0, listStyleType: "none", margin: 0 }}>
                               {dataSection.map((item: any, index: number) =>
                                  index % 2 !== 0 ? (
                                     <li key={index}>
@@ -271,11 +238,18 @@ const ServiceContent = () => {
                                              textDecoration: "none",
                                              display: "flex",
                                              alignItems: "center",
-                                             color: "#56676d",
+                                             color: style.TEXT_COLOR_GENERAL,
                                              gap: "5px",
                                           }}
                                        >
-                                          <AddIcon /> <MUITypography>{item.title}</MUITypography>
+                                          <AddIcon />{" "}
+                                          <MUITypography
+                                             lineHeight={"30px"}
+                                             fontFamily={FONT_FAMILY.JOST}
+                                             color={style.TEXT_COLOR_GENERAL}
+                                          >
+                                             {item.title}
+                                          </MUITypography>
                                        </Link>
                                     </li>
                                  ) : null
