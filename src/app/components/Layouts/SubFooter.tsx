@@ -2,7 +2,7 @@
 import { FONT_FAMILY, style } from "@/app/config";
 import { MUIBox, MUITypography } from "../MUI";
 import { usePathname } from "next/navigation";
-import subFooterBackground from "@/public/images/stack-containers-cargo-ship-import-export-harbor-port.jpg";
+import subFooterBackground from "@/public/images/basic/stack-containers-cargo-ship-import-export-harbor-port.jpg";
 import { PATH } from "@/app/config/routes";
 
 const SubFooter = () => {
