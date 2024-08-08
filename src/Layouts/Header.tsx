@@ -9,7 +9,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { usePathname } from "next/navigation";
 import styled from "styled-components";
 import { PATH } from "@/config/routes";
-import { Divider, IconButton } from "@mui/material";
+import { Divider } from "@mui/material";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { Input, Form, Button } from "antd";

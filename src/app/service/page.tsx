@@ -92,16 +92,16 @@ const Service = () => {
       });
    };
 
-   const listServiceData = [
-      "Dịch vụ cho thuê kho",
-      "Dịch vụ cho thuê xe tải",
-      "Dịch vụ vận tải",
-      "Dịch vụ bốc xếp hàng hóa",
-      "Dịch vụ xuất nhập khẩu",
-      "Dịch vụ ghép hàng đi tỉnh",
-      "Dịch vụ giao hàng",
-      "Đại lý hải quan",
-   ];
+   // const listServiceData = [
+   //    "Dịch vụ cho thuê kho",
+   //    "Dịch vụ cho thuê xe tải",
+   //    "Dịch vụ vận tải",
+   //    "Dịch vụ bốc xếp hàng hóa",
+   //    "Dịch vụ xuất nhập khẩu",
+   //    "Dịch vụ ghép hàng đi tỉnh",
+   //    "Dịch vụ giao hàng",
+   //    "Đại lý hải quan",
+   // ];
    // const listExpandData = [
    //    [
    //       {

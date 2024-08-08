@@ -1,10 +1,12 @@
 "use client";
-import { MUIBox, MUIButton } from "@/components/MUI";
+import { MUIBox } from "@/components/MUI";
 import TableData from "@/components/presentation/TableData";
 import { Button } from "antd";
 import React from "react";
 import { useRouter } from "next/navigation";
 import { PATH } from "@/config/routes";
+
+import UploadImage from "@/components/presentation/UploadImage";
 
 const Portal = () => {
    const router = useRouter();
@@ -56,6 +58,7 @@ const Portal = () => {
             <Button onClick={() => router.push(PATH.POST_NEW)}>Thêm tin tức</Button>
          </MUIBox>
          <TableData columns={columns} data={data} />
+         <UploadImage />
       </MUIBox>
    );
 };
