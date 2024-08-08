@@ -52,6 +52,7 @@ const HeaderStyled = styled("div")`
       border: none;
       box-shadow: none;
       margin-right: 20px;
+      background: transparent;
    }
 `;
 const Header = () => {
@@ -137,11 +138,12 @@ const Header = () => {
                                  expand ? (
                                     <CloseRoundedIcon
                                        style={{
-                                          color: expand
-                                             ? style.TEXT_COLOR_NORMAL
-                                             : !isScrolled && (path == PATH.HOME || path == PATH.CONTACT)
-                                             ? "#fff"
-                                             : style.TEXT_COLOR_NORMAL,
+                                          color:
+                                             screenWidth < BREAK_POINT.MD && expand
+                                                ? style.TEXT_COLOR_NORMAL
+                                                : !isScrolled && (path == PATH.HOME || path == PATH.CONTACT)
+                                                ? "#fff"
+                                                : style.TEXT_COLOR_NORMAL,
                                        }}
                                     />
                                  ) : (
@@ -320,7 +322,7 @@ const Header = () => {
                                     textTransform="uppercase"
                                     fontFamily={FONT_FAMILY.JOST}
                                     sx={{ fontSize: "18px" }}
-                                    color={"#222222"}
+                                    color={style.TEXT_COLOR_NORMAL}
                                  >
                                     {item.name}
                                  </MUITypography>
@@ -351,7 +353,11 @@ const Header = () => {
                               <Form.Item name={"search"}>
                                  <Input
                                     type="search"
-                                    style={{ textAlign: "center", color: "#222", padding: "1em 1.2em" }}
+                                    style={{
+                                       textAlign: "center",
+                                       color: style.TEXT_COLOR_NORMAL,
+                                       padding: "1em 1.2em",
+                                    }}
                                     variant="borderless"
                                     placeholder="nhập thông tin"
                                  />

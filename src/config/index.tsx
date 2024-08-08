@@ -3,6 +3,9 @@ import { PATH } from "./routes";
 export const JWT = "accessToken";
 export const API_URL = process.env.NEXT_PUBLIC_API_URL;
 export const LANG = "lang";
+export const CKEDITOR_URL_IMG = API_URL + "admin/upload";
+export const BASE_URL_IMG = API_URL + "admin/upload";
+export const BASE_URL_IMG_WITHOUT_TOKEN = API_URL + "admin/upload";
 
 export const style = {
    TEXT_COLOR_NORMAL: "#222222",

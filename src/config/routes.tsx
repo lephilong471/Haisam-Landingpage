@@ -4,4 +4,6 @@ export const PATH = {
    SERVICE: "/service",
    NEWS: "/news",
    CONTACT: "/contact",
+   PORTAL: "/admin/portal",
+   POST_NEW: "/admin/post",
 };

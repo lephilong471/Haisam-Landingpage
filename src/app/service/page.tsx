@@ -6,7 +6,7 @@ import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
 import styled from "styled-components";
 import { style, FONT_FAMILY } from "../../config";
-
+import ShipFlying from "@/public/images/basic/earth-surrounded-by-cardboard-boxes-cargo-container-ship-flying-plan-car-van-truck.jpg";
 import AOS from "aos";
 import dynamic from "next/dynamic";
 const SplittingText = dynamic(() => import("@/components/presentation/SplittingText"), { ssr: false });
@@ -179,7 +179,7 @@ const Service = () => {
                         đến vận chuyển và giao nhận hàng hóa một cách chuyên nghiệp và đáng tin cậy.",
          },
          {
-            title: "Dịch vụ xuất nhập khẩu",
+            title: "Dịch vụ ủy thác nhập hàng",
             content:
                "Công ty Hải Sâm cung cấp dịch vụ xuất nhập khẩu chuyên nghiệp, \
                         giúp doanh nghiệp tối ưu hóa quá trình giao thương quốc tế. \
@@ -261,22 +261,35 @@ const Service = () => {
    ];
 
    return (
-      <ContentStyled>
-         <MUIBox className="container mx-auto">
-            <MUIGrid container sx={{ my: "4%" }}>
-               <MUIGrid item md={12} lg={6} xs={12}>
-                  <MUITypography
-                     variant="h1"
-                     fontWeight={700}
-                     lineHeight={"1em"}
-                     letterSpacing={"-0.04em"}
-                     className="word-holder"
-                     sx={{ fontSize: { xs: "40px", sm: "66px", lg: "114px" } }}
-                  >
-                     <SplittingText>Logistics</SplittingText>
-                  </MUITypography>
-               </MUIGrid>
-               {/* <MUIGrid
+      <>
+         <MUIBox
+            sx={{
+               position: "relative",
+               marginTop: "-51px",
+               width: "100%",
+               minHeight: "545px",
+               backgroundImage: `url(${ShipFlying.src})`,
+               backgroundPosition: "center center",
+               backgroundRepeat: "no-repeat",
+               backgroundSize: "cover",
+            }}
+         />
+         <ContentStyled>
+            <MUIBox className="container mx-auto">
+               <MUIGrid container sx={{ my: "4%" }}>
+                  <MUIGrid item md={12} lg={6} xs={12}>
+                     <MUITypography
+                        variant="h1"
+                        fontWeight={700}
+                        lineHeight={"1em"}
+                        letterSpacing={"-0.04em"}
+                        className="word-holder"
+                        sx={{ fontSize: { xs: "40px", sm: "66px", lg: "114px" } }}
+                     >
+                        <SplittingText>Logistics</SplittingText>
+                     </MUITypography>
+                  </MUIGrid>
+                  {/* <MUIGrid
                   item
                   md={12}
                   lg={6}
@@ -335,165 +348,166 @@ const Service = () => {
                      </MUIGrid>
                   </MUIGrid>
                </MUIGrid> */}
-            </MUIGrid>
-            <MUITypography
-               data-aos="fade-up"
-               data-aos-delay="300"
-               data-aos-duration="2000"
-               fontSize="32px"
-               color={style.TEXT_COLOR_TITLE}
-               fontWeight="500"
-               fontFamily={FONT_FAMILY.MONTSERRAT}
-               paddingInline="10px"
-            >
-               Dịch vụ
-            </MUITypography>
-
-            <MUIGrid container>
-               <MUIGrid item lg={6} md={6} sx={{ justifyContent: "center" }} id="grid-container-1">
-                  <ImageStyled
-                     data-aos="none"
-                     data-aos-duration="none"
-                     src="/images/basic/loaded-container-cargo-ship-is-seen-front-as-it-speeds-ocean-generative-ai-1300x1097.jpg"
-                     alt=""
-                     id="image-1"
-                     ref={imageRef}
-                  />
                </MUIGrid>
+               <MUITypography
+                  data-aos="fade-up"
+                  data-aos-delay="300"
+                  data-aos-duration="2000"
+                  fontSize="32px"
+                  color={style.TEXT_COLOR_TITLE}
+                  fontWeight="500"
+                  fontFamily={FONT_FAMILY.MONTSERRAT}
+                  paddingInline="10px"
+               >
+                  Dịch vụ
+               </MUITypography>
 
-               <MUIGrid
-                  item
-                  md={6}
-                  xs={12}
-                  sx={{
-                     ".MuiCollapse-root": {
-                        transition: "height 1000ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
-                     },
-                     ".MuiBox-root .show-content": {
-                        p: "4%",
-                        borderBottom: "1px solid #ebebeb",
-                        display: "flex",
-                        "&:hover": {
-                           cursor: "pointer",
+               <MUIGrid container>
+                  <MUIGrid item lg={6} md={6} sx={{ justifyContent: "center" }} id="grid-container-1">
+                     <ImageStyled
+                        data-aos="none"
+                        data-aos-duration="none"
+                        src="/images/basic/loaded-container-cargo-ship-is-seen-front-as-it-speeds-ocean-generative-ai-1300x1097.jpg"
+                        alt=""
+                        id="image-1"
+                        ref={imageRef}
+                     />
+                  </MUIGrid>
+
+                  <MUIGrid
+                     item
+                     md={6}
+                     xs={12}
+                     sx={{
+                        ".MuiCollapse-root": {
+                           transition: "height 1000ms cubic-bezier(0.4, 0, 0.2, 1) 0ms",
                         },
-                        svg: {
+                        ".MuiBox-root .show-content": {
+                           p: "4%",
+                           borderBottom: "1px solid #ebebeb",
+                           display: "flex",
+                           "&:hover": {
+                              cursor: "pointer",
+                           },
+                           svg: {
+                              color: style.TEXT_COLOR_GENERAL,
+                           },
+                        },
+                        span: {
+                           fontFamily: FONT_FAMILY.MONTSERRAT,
+                           fontWeight: "500",
+                           color: style.TEXT_LIST_EXPAND_COLOR,
+                           fontSize: "16px",
+                           lineHeight: "28px",
+                        },
+                        ".list-title span": {
+                           fontSize: "18px",
                            color: style.TEXT_COLOR_GENERAL,
                         },
-                     },
-                     span: {
-                        fontFamily: FONT_FAMILY.MONTSERRAT,
-                        fontWeight: "500",
-                        color: style.TEXT_LIST_EXPAND_COLOR,
-                        fontSize: "16px",
-                        lineHeight: "28px",
-                     },
-                     ".list-title span": {
-                        fontSize: "18px",
-                        color: style.TEXT_COLOR_GENERAL,
-                     },
-                  }}
-               >
-                  {listExpandData[0].map((item, index) => {
-                     return (
-                        <MUIBox key={index}>
-                           <MUIBox className="show-content" onClick={() => handleExpand(0, index)}>
-                              {/* <MUIListItemIcon>
+                     }}
+                  >
+                     {listExpandData[0].map((item, index) => {
+                        return (
+                           <MUIBox key={index}>
+                              <MUIBox className="show-content" onClick={() => handleExpand(0, index)}>
+                                 {/* <MUIListItemIcon>
                                  <InboxIcon />
                               </MUIListItemIcon> */}
-                              <MUIListItemText className="list-title" primary={item.title} />
-                              {expandData[0][index] ? <RemoveRoundedIcon /> : <AddRoundedIcon />}
+                                 <MUIListItemText className="list-title" primary={item.title} />
+                                 {expandData[0][index] ? <RemoveRoundedIcon /> : <AddRoundedIcon />}
+                              </MUIBox>
+                              <MUICollapse in={expandData[0][index]} timeout={800} unmountOnExit>
+                                 <MUIList component="div" disablePadding>
+                                    <MUIListItemText sx={{ px: "4%", pt: "4%" }} primary={item.content} />
+                                 </MUIList>
+                              </MUICollapse>
                            </MUIBox>
-                           <MUICollapse in={expandData[0][index]} timeout={800} unmountOnExit>
-                              <MUIList component="div" disablePadding>
-                                 <MUIListItemText sx={{ px: "4%", pt: "4%" }} primary={item.content} />
-                              </MUIList>
-                           </MUICollapse>
-                        </MUIBox>
-                     );
-                  })}
+                        );
+                     })}
+                  </MUIGrid>
                </MUIGrid>
-            </MUIGrid>
-            <MUIGrid container sx={{ mt: "4%" }}>
-               <MUIGrid item xs={12} md={6} paddingInline="4%">
-                  <MUITypography
-                     fontSize="32px"
-                     fontFamily={FONT_FAMILY.MONTSERRAT}
-                     color={style.TEXT_COLOR_TITLE}
-                     fontWeight="500"
-                  >
-                     Dịch vụ khác
-                  </MUITypography>
+               <MUIGrid container sx={{ mt: "4%" }}>
+                  <MUIGrid item xs={12} md={6} paddingInline="4%">
+                     <MUITypography
+                        fontSize="32px"
+                        fontFamily={FONT_FAMILY.MONTSERRAT}
+                        color={style.TEXT_COLOR_TITLE}
+                        fontWeight="500"
+                     >
+                        Dịch vụ khác
+                     </MUITypography>
+                  </MUIGrid>
                </MUIGrid>
-            </MUIGrid>
 
-            <MUIGrid container>
-               <MUIGrid
-                  item
-                  md={6}
-                  xs={12}
-                  sx={{
-                     ".MuiBox-root .show-content": {
-                        display: "flex",
-                        p: "4%",
-                        "&:hover": {
-                           cursor: "pointer",
+               <MUIGrid container>
+                  <MUIGrid
+                     item
+                     md={6}
+                     xs={12}
+                     sx={{
+                        ".MuiBox-root .show-content": {
+                           display: "flex",
+                           p: "4%",
+                           "&:hover": {
+                              cursor: "pointer",
+                           },
+                           borderBottom: "1px solid #ebebeb",
+                           svg: {
+                              color: style.TEXT_COLOR_GENERAL,
+                           },
                         },
-                        borderBottom: "1px solid #ebebeb",
-                        svg: {
+                        span: {
+                           fontFamily: FONT_FAMILY.MONTSERRAT,
+                           fontWeight: "500",
+                           color: style.TEXT_LIST_EXPAND_COLOR,
+                           fontSize: "16px",
+                           lineHeight: "28px",
+                        },
+                        ".list-title span": {
+                           fontSize: "18px",
                            color: style.TEXT_COLOR_GENERAL,
                         },
-                     },
-                     span: {
-                        fontFamily: FONT_FAMILY.MONTSERRAT,
-                        fontWeight: "500",
-                        color: style.TEXT_LIST_EXPAND_COLOR,
-                        fontSize: "16px",
-                        lineHeight: "28px",
-                     },
-                     ".list-title span": {
-                        fontSize: "18px",
-                        color: style.TEXT_COLOR_GENERAL,
-                     },
-                  }}
-               >
-                  {listExpandData[1].map((item, index) => {
-                     return (
-                        <MUIBox key={index}>
-                           <MUIBox className="show-content" onClick={() => handleExpand(1, index)}>
-                              <MUIListItemText className="list-title" primary={item.title} />
-                              {expandData[1][index] ? <RemoveRoundedIcon /> : <AddRoundedIcon />}
+                     }}
+                  >
+                     {listExpandData[1].map((item, index) => {
+                        return (
+                           <MUIBox key={index}>
+                              <MUIBox className="show-content" onClick={() => handleExpand(1, index)}>
+                                 <MUIListItemText className="list-title" primary={item.title} />
+                                 {expandData[1][index] ? <RemoveRoundedIcon /> : <AddRoundedIcon />}
+                              </MUIBox>
+                              <MUICollapse in={expandData[1][index]} timeout={800} unmountOnExit>
+                                 <MUIList component="div" disablePadding>
+                                    <MUIListItemText sx={{ p: "4%" }} primary={item.content} />
+                                 </MUIList>
+                              </MUICollapse>
                            </MUIBox>
-                           <MUICollapse in={expandData[1][index]} timeout={800} unmountOnExit>
-                              <MUIList component="div" disablePadding>
-                                 <MUIListItemText sx={{ p: "4%" }} primary={item.content} />
-                              </MUIList>
-                           </MUICollapse>
-                        </MUIBox>
-                     );
-                  })}
+                        );
+                     })}
+                  </MUIGrid>
+                  <MUIGrid
+                     item
+                     md={6}
+                     lg={6}
+                     xs={12}
+                     // sx={{
+                     //    justifyContent: "center",
+                     // }}
+                     id="grid-container-2"
+                  >
+                     <ImageStyled
+                        // data-aos="fade-up"
+                        // data-aos-duration="3000"
+                        src="/images/basic/aerial-top-view-container-cargo-ship-with-contrail-ocean-ship-carrying-container.jpg"
+                        alt=""
+                        id="image-2"
+                     />
+                  </MUIGrid>
                </MUIGrid>
-               <MUIGrid
-                  item
-                  md={6}
-                  lg={6}
-                  xs={12}
-                  // sx={{
-                  //    justifyContent: "center",
-                  // }}
-                  id="grid-container-2"
-               >
-                  <ImageStyled
-                     // data-aos="fade-up"
-                     // data-aos-duration="3000"
-                     src="/images/basic/aerial-top-view-container-cargo-ship-with-contrail-ocean-ship-carrying-container.jpg"
-                     alt=""
-                     id="image-2"
-                  />
-               </MUIGrid>
-            </MUIGrid>
-            <StaffContent />
-         </MUIBox>
-      </ContentStyled>
+               <StaffContent />
+            </MUIBox>
+         </ContentStyled>
+      </>
    );
 };
 
