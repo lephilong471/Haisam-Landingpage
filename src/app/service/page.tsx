@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { MUIBox, MUIListItemText, MUICollapse, MUIList, MUIGrid, MUITypography } from "@/app/components/MUI";
 
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
@@ -10,7 +10,7 @@ import { style, FONT_FAMILY } from "../config";
 import AOS from "aos";
 import dynamic from "next/dynamic";
 const SplittingText = dynamic(() => import("@/app/components/presentation/SplittingText"), { ssr: false });
-
+import StaffContent from "../components/Home/Content/StaffContent";
 // import Image from "next/image";
 const ContentStyled = styled(MUIBox)``;
 
@@ -18,6 +18,8 @@ const ImageStyled = styled.img`
    max-width: 100%;
    padding: 10px;
    width: 100%;
+   transform: translateY(0px);
+   transition: transform 5s !important;
    // @keyframes image-animation{
    //    0%{
    //       transform: translate3d(0px, 100px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scaleX(1) scaleY(1) scaleZ(1)
@@ -32,8 +34,39 @@ const ImageStyled = styled.img`
 `;
 
 const Service = () => {
+   const imageRef = useRef(null)
    useEffect(() => {
       AOS.init();
+
+      const gridContainer1: HTMLElement = document.querySelector('#grid-container-1')
+      const rectGridContainer1: DOMRect = gridContainer1.getBoundingClientRect()
+
+      const image1: HTMLElement = document.querySelector("#image-1")
+      const rectGridImage1: DOMRect = image1.getBoundingClientRect()
+
+      const gridContainer2: HTMLElement = document.querySelector('#grid-container-2')
+      const rectGridContainer2: DOMRect = gridContainer2.getBoundingClientRect()
+
+      const image2: HTMLElement = document.querySelector("#image-2")
+      const rectGridImage2: DOMRect = image2.getBoundingClientRect()
+
+      const handleScroll = () => { 
+            if(window.innerWidth > 900){
+               if(rectGridImage1.top + window.scrollY + image1.clientHeight < rectGridContainer1.top + gridContainer1.clientHeight){
+                  image1.style.transform = `translateY(${window.scrollY}px)`;
+               }
+               if(rectGridImage2.top + window.scrollY + image2.clientHeight < rectGridContainer2.top + gridContainer2.clientHeight){
+                  image2.style.transform = `translateY(${window.scrollY * 0.5}px)`;
+               }
+            }
+            else{
+               image1.style.transform = 'translateY(0px)'
+               image2.style.transform = 'translateY(0px)'
+            }
+      }
+      window.addEventListener('scroll', handleScroll)
+
+      return () => window.removeEventListener('scroll', handleScroll)
    }, []);
    const [expandData, setExpandData] = useState<Array<object>>([
       [true, false, false],
@@ -238,7 +271,7 @@ const Service = () => {
                      <SplittingText>Logistics</SplittingText>
                   </MUITypography>
                </MUIGrid>
-               <MUIGrid
+               {/* <MUIGrid
                   item
                   md={12}
                   lg={6}
@@ -296,7 +329,7 @@ const Service = () => {
                         })}
                      </MUIGrid>
                   </MUIGrid>
-               </MUIGrid>
+               </MUIGrid> */}
             </MUIGrid>
             <MUITypography
                data-aos="fade-up"
@@ -312,12 +345,14 @@ const Service = () => {
             </MUITypography>
 
             <MUIGrid container>
-               <MUIGrid item lg={6} md={6} sx={{ justifyContent: "center" }}>
+               <MUIGrid item lg={6} md={6} sx={{ justifyContent: "center" }} id="grid-container-1">
                   <ImageStyled
-                     data-aos="fade-up"
-                     data-aos-duration="3000"
+                     data-aos="none"
+                     data-aos-duration="none"
                      src='/images/basic/loaded-container-cargo-ship-is-seen-front-as-it-speeds-ocean-generative-ai-1300x1097.jpg'
                      alt=''
+                     id="image-1"
+                     ref={imageRef}
                   />
                </MUIGrid>
 
@@ -443,18 +478,21 @@ const Service = () => {
                   md={6}
                   lg={6}
                   xs={12}
-                  sx={{
-                     justifyContent: "center",
-                  }}
+                  // sx={{
+                  //    justifyContent: "center",
+                  // }}
+                  id="grid-container-2"
                >
                   <ImageStyled
-                     data-aos="fade-up"
-                     data-aos-duration="3000"
+                     // data-aos="fade-up"
+                     // data-aos-duration="3000"
                      src='/images/basic/aerial-top-view-container-cargo-ship-with-contrail-ocean-ship-carrying-container.jpg'
                      alt=''
+                     id="image-2"
                   />
                </MUIGrid>
             </MUIGrid>
+            <StaffContent />
          </MUIBox>
       </ContentStyled>
    );
