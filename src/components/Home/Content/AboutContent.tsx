@@ -269,11 +269,11 @@ const AboutContent = () => {
                   xs={12}
                   md={5}
                   sx={{ display: "flex", justifyContent: "center" }}
-                  data-aos="fade-left"
-                  data-aos-delay="500"
-                  data-aos-duration="2000"
-                  data-aos-once="true"
-                  data-aos-offset="0"
+                  // data-aos="fade-left"
+                  // data-aos-delay="500"
+                  // data-aos-duration="2000"
+                  // data-aos-once="true"
+                  // data-aos-offset="0"
                >
                   <AboutSlider slides={slides} />
                   {/* about silier */}

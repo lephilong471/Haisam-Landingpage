@@ -9,8 +9,8 @@ const App: React.FC<{
    columns: any[];
    data: any[];
 }> = ({ columns, data }) => {
-   const [searchText, setSearchText] = useState("");
-   const [searchedColumn, setSearchedColumn] = useState<string>("");
+   const [_searchText, setSearchText] = useState("");
+   const [_searchedColumn, setSearchedColumn] = useState<string>("");
    const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
    const searchInput = useRef<InputRef>(null);
 

@@ -52,7 +52,7 @@ const StaffContent = () => {
             data-aos-duration="2000"
             data-aos-once="true"
          >
-            <MUIGrid container spacing={{ xs: 0, sm: 3, md: 9 }}>
+            <MUIGrid container spacing={{ xs: 1.5, sm: 3, md: 9 }}>
                <MUIGrid item xs={12} sm={4}>
                   <MUIBox
                      sx={{
