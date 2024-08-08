@@ -16,11 +16,10 @@ import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
 import styled from "styled-components";
 import { style, FONT_FAMILY } from "../config";
 
-import { Divider } from "@mui/material";
 
 import AOS from "aos";
 import dynamic from "next/dynamic";
-const SplittingText = dynamic(() => import("@/app/components/presentation/SplittingText"), { ssr: false });
+const SplittingText = dynamic(() => import('@/app/components/Home/Content/SplittingText'), { ssr: false })
 
 // import Image from "next/image";
 const ContentStyled = styled(MUIBox)`
@@ -215,16 +214,7 @@ const Service = () => {
          <MUIBox className='container mx-auto'>
             <MUIGrid container sx={{ my: '4%' }}>
                <MUIGrid item md={12} lg={6} xs={12}>
-                  <MUITypography
-                     variant="h1"
-                     fontWeight={700}
-                     lineHeight={"1em"}
-                     letterSpacing={"-0.04em"}
-                     className="word-holder"
-                     sx={{ fontSize: { xs: "40px", sm: "66px", lg: "114px" } }}
-                  >
-                     <SplittingText>Logistics</SplittingText>
-                  </MUITypography>
+                  <SplittingText props={['Logistics']} />
                </MUIGrid>
                <MUIGrid
                   item
@@ -250,11 +240,11 @@ const Service = () => {
                         },
                      }}
                   >
-                     <MUIGrid item md={6} xs={12} sx={{ p: "10px" }}>
+                     <MUIGrid item md={6} xs={12} sx={{p:"10px"}}>
                         {listServiceData.map((item, index) => {
                            return (
                               index % 2 === 0 && (
-                                 <MUIBox
+                                 <MUIBox 
                                     key={index}
                                     data-aos="fade-up"
                                     data-aos-delay="300"
@@ -267,11 +257,11 @@ const Service = () => {
                            )
                         })}
                      </MUIGrid>
-                     <MUIGrid item md={6} xs={12} sx={{ p: "10px" }}>
+                     <MUIGrid item md={6} xs={12} sx={{p:"10px"}}>
                         {listServiceData.map((item, index) => {
                            return (
                               index % 2 !== 0 && (
-                                 <MUIBox
+                                 <MUIBox 
                                     key={index}
                                     data-aos="fade-up"
                                     data-aos-delay="300"
@@ -309,7 +299,7 @@ const Service = () => {
                   <ImageStyled
                      data-aos="fade-up"
                      data-aos-duration="3000"
-                     src='/images/basic/loaded-container-cargo-ship-is-seen-front-as-it-speeds-ocean-generative-ai-1300x1097.jpg'
+                     src='/images/loaded-container-cargo-ship-is-seen-front-as-it-speeds-ocean-generative-ai-1300x1097.jpg'
                      alt=''
                   />
                </MUIGrid>
@@ -371,7 +361,7 @@ const Service = () => {
                container
                sx={{ mt: '4%' }}
             >
-               <MUIGrid
+               <MUIGrid 
                   item xs={12} md={6}
                   paddingInline='4%'
                >
@@ -422,7 +412,7 @@ const Service = () => {
                            </MUIBox>
                            <MUICollapse in={expandData[1][index]} timeout={800} unmountOnExit>
                               <MUIList component="div" disablePadding>
-                                 <MUIListItemText sx={{ p: '4%' }} primary={item.content} />
+                                 <MUIListItemText sx={{ p:'4%'}} primary={item.content} />
                               </MUIList>
                            </MUICollapse>
                         </MUIBox>
@@ -441,7 +431,7 @@ const Service = () => {
                   <ImageStyled
                      data-aos="fade-up"
                      data-aos-duration="3000"
-                     src='/images/basic/aerial-top-view-container-cargo-ship-with-contrail-ocean-ship-carrying-container.jpg'
+                     src='/images/aerial-top-view-container-cargo-ship-with-contrail-ocean-ship-carrying-container.jpg'
                      alt=''
                   />
                </MUIGrid>

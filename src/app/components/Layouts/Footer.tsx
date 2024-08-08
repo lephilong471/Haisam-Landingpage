@@ -8,7 +8,7 @@ const Footer = () => {
             alignItems:'center',
             justifyContent:'center',
             width:'100%',
-            position:'relative',
+            position:'fixed',
             bottom:'0px',
         }}>
             <MUITypography sx={{

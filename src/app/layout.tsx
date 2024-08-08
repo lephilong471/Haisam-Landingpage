@@ -19,7 +19,7 @@ import "splitting/dist/splitting-cells.css";
 import "aos/dist/aos.css";
 
 import Header from "@/app/components/Layouts/Header";
-import Footer from "@/app/components/Layouts/Footer";
+// import Footer from "./components/Home/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -67,7 +67,7 @@ export default function RootLayout({
          <body className={inter.className}>
             <Header />
             {children}
-            <Footer />
+            {/* <Footer /> */}
          </body>
       </html>
    );
