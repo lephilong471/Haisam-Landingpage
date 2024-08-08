@@ -8,9 +8,6 @@ import {
     MUICardActions,
     MUICardContent,
     MUICardMedia,
-    MUIButton,
-    MUIPopover,
-    MUIMenu,
     MUILink
 } from "@/app/components/MUI"
 import Popper from '@mui/material/Popper';
@@ -24,11 +21,6 @@ import { FaTwitter } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { FaPinterestP } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
-
-import SVG from 'react-inlinesvg';
-
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
-
 
 const ContentStyled = styled(MUIBox)`
     
