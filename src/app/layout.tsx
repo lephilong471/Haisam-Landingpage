@@ -18,8 +18,8 @@ import "splitting/dist/splitting-cells.css";
 //style aos
 import "aos/dist/aos.css";
 
-import Header from "@/app/components/Layouts/Header";
-import Footer from "@/app/components/Layouts/Footer";
+import Header from "@/Layouts/Header";
+import Footer from "@/Layouts/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 

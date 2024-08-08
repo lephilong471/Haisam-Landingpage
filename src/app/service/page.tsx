@@ -1,16 +1,16 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import { MUIBox, MUIListItemText, MUICollapse, MUIList, MUIGrid, MUITypography } from "@/app/components/MUI";
+import { MUIBox, MUIListItemText, MUICollapse, MUIList, MUIGrid, MUITypography } from "@/components/MUI";
 
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
 import styled from "styled-components";
-import { style, FONT_FAMILY } from "../config";
+import { style, FONT_FAMILY } from "../../config";
 
 import AOS from "aos";
 import dynamic from "next/dynamic";
-const SplittingText = dynamic(() => import("@/app/components/presentation/SplittingText"), { ssr: false });
-import StaffContent from "../components/Home/Content/StaffContent";
+const SplittingText = dynamic(() => import("@/components/presentation/SplittingText"), { ssr: false });
+import StaffContent from "../../components/Home/Content/StaffContent";
 // import Image from "next/image";
 const ContentStyled = styled(MUIBox)``;
 
@@ -34,39 +34,44 @@ const ImageStyled = styled.img`
 `;
 
 const Service = () => {
-   const imageRef = useRef(null)
+   const imageRef = useRef(null);
    useEffect(() => {
       AOS.init();
 
-      const gridContainer1: HTMLElement = document.querySelector('#grid-container-1')
-      const rectGridContainer1: DOMRect = gridContainer1.getBoundingClientRect()
+      const gridContainer1: HTMLElement = document.querySelector("#grid-container-1");
+      const rectGridContainer1: DOMRect = gridContainer1.getBoundingClientRect();
 
-      const image1: HTMLElement = document.querySelector("#image-1")
-      const rectGridImage1: DOMRect = image1.getBoundingClientRect()
+      const image1: HTMLElement = document.querySelector("#image-1");
+      const rectGridImage1: DOMRect = image1.getBoundingClientRect();
 
-      const gridContainer2: HTMLElement = document.querySelector('#grid-container-2')
-      const rectGridContainer2: DOMRect = gridContainer2.getBoundingClientRect()
+      const gridContainer2: HTMLElement = document.querySelector("#grid-container-2");
+      const rectGridContainer2: DOMRect = gridContainer2.getBoundingClientRect();
 
-      const image2: HTMLElement = document.querySelector("#image-2")
-      const rectGridImage2: DOMRect = image2.getBoundingClientRect()
+      const image2: HTMLElement = document.querySelector("#image-2");
+      const rectGridImage2: DOMRect = image2.getBoundingClientRect();
 
-      const handleScroll = () => { 
-            if(window.innerWidth > 900){
-               if(rectGridImage1.top + window.scrollY + image1.clientHeight < rectGridContainer1.top + gridContainer1.clientHeight){
-                  image1.style.transform = `translateY(${window.scrollY}px)`;
-               }
-               if(rectGridImage2.top + window.scrollY + image2.clientHeight < rectGridContainer2.top + gridContainer2.clientHeight){
-                  image2.style.transform = `translateY(${window.scrollY * 0.5}px)`;
-               }
+      const handleScroll = () => {
+         if (window.innerWidth > 900) {
+            if (
+               rectGridImage1.top + window.scrollY + image1.clientHeight <
+               rectGridContainer1.top + gridContainer1.clientHeight
+            ) {
+               image1.style.transform = `translateY(${window.scrollY}px)`;
             }
-            else{
-               image1.style.transform = 'translateY(0px)'
-               image2.style.transform = 'translateY(0px)'
+            if (
+               rectGridImage2.top + window.scrollY + image2.clientHeight <
+               rectGridContainer2.top + gridContainer2.clientHeight
+            ) {
+               image2.style.transform = `translateY(${window.scrollY * 0.5}px)`;
             }
-      }
-      window.addEventListener('scroll', handleScroll)
+         } else {
+            image1.style.transform = "translateY(0px)";
+            image2.style.transform = "translateY(0px)";
+         }
+      };
+      window.addEventListener("scroll", handleScroll);
 
-      return () => window.removeEventListener('scroll', handleScroll)
+      return () => window.removeEventListener("scroll", handleScroll);
    }, []);
    const [expandData, setExpandData] = useState<Array<object>>([
       [true, false, false],
@@ -277,7 +282,7 @@ const Service = () => {
                   lg={6}
                   xs={12}
                   sx={{
-                     display: "flex",
+                     display: "none",
                      alignItems: "center",
                   }}
                >
@@ -349,8 +354,8 @@ const Service = () => {
                   <ImageStyled
                      data-aos="none"
                      data-aos-duration="none"
-                     src='/images/basic/loaded-container-cargo-ship-is-seen-front-as-it-speeds-ocean-generative-ai-1300x1097.jpg'
-                     alt=''
+                     src="/images/basic/loaded-container-cargo-ship-is-seen-front-as-it-speeds-ocean-generative-ai-1300x1097.jpg"
+                     alt=""
                      id="image-1"
                      ref={imageRef}
                   />
@@ -408,14 +413,8 @@ const Service = () => {
                   })}
                </MUIGrid>
             </MUIGrid>
-            <MUIGrid
-               container
-               sx={{ mt: '4%' }}
-            >
-               <MUIGrid
-                  item xs={12} md={6}
-                  paddingInline='4%'
-               >
+            <MUIGrid container sx={{ mt: "4%" }}>
+               <MUIGrid item xs={12} md={6} paddingInline="4%">
                   <MUITypography
                      fontSize="32px"
                      fontFamily={FONT_FAMILY.MONTSERRAT}
@@ -466,7 +465,7 @@ const Service = () => {
                            </MUIBox>
                            <MUICollapse in={expandData[1][index]} timeout={800} unmountOnExit>
                               <MUIList component="div" disablePadding>
-                                 <MUIListItemText sx={{ p: '4%' }} primary={item.content} />
+                                 <MUIListItemText sx={{ p: "4%" }} primary={item.content} />
                               </MUIList>
                            </MUICollapse>
                         </MUIBox>
@@ -486,8 +485,8 @@ const Service = () => {
                   <ImageStyled
                      // data-aos="fade-up"
                      // data-aos-duration="3000"
-                     src='/images/basic/aerial-top-view-container-cargo-ship-with-contrail-ocean-ship-carrying-container.jpg'
-                     alt=''
+                     src="/images/basic/aerial-top-view-container-cargo-ship-with-contrail-ocean-ship-carrying-container.jpg"
+                     alt=""
                      id="image-2"
                   />
                </MUIGrid>
