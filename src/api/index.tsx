@@ -1,4 +1,4 @@
-import { JWT, LANG } from "@/app/config"; //
+import { JWT, LANG } from "@/config"; //
 import { isNil, isString } from "lodash-es";
 import dayjs from "dayjs";
 

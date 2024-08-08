@@ -1,7 +1,7 @@
 "use client";
 
 import { MUIBox, MUITypography, MUILink, MUITextField } from "../MUI";
-import { headerData, style } from "@/app/config";
+import { headerData, style } from "@/config";
 import { useState } from "react";
 
 import SearchIcon from "@mui/icons-material/Search";

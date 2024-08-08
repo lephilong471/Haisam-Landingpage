@@ -1,14 +1,14 @@
 "use client";
 
-import { MUIBox, MUITypography, MUILink, MUITextField } from "../MUI";
-import { BREAK_POINT, FONT_FAMILY, headerData, style } from "@/app/config";
+import { MUIBox, MUITypography, MUILink, MUITextField } from "../components/MUI";
+import { BREAK_POINT, FONT_FAMILY, headerData, style } from "@/config";
 import React, { useEffect, useState } from "react";
 
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import { usePathname } from "next/navigation";
 import styled from "styled-components";
-import { PATH } from "@/app/config/routes";
+import { PATH } from "@/config/routes";
 import { Divider, IconButton } from "@mui/material";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
@@ -16,7 +16,7 @@ import { Input, Form, Button } from "antd";
 
 import dynamic from "next/dynamic";
 
-const WindowWidthWrapper = dynamic(() => import("@/app/config/hooks/useWindowWidthWrapper"), { ssr: false });
+const WindowWidthWrapper = dynamic(() => import("@/config/hooks/useWindowWidthWrapper"), { ssr: false });
 
 const AnimateStyled = styled("div")`
    display: flex;
@@ -48,6 +48,11 @@ const HeaderStyled = styled("div")`
    left: 0;
    right: 0;
    z-index: 100;
+   .icon-toggle {
+      border: none;
+      box-shadow: none;
+      margin-right: 20px;
+   }
 `;
 const Header = () => {
    const path = usePathname();
@@ -126,16 +131,21 @@ const Header = () => {
                      >
                         {screenWidth < BREAK_POINT.MD && (
                            <Button
+                              className="icon-toggle"
                               onClick={() => setExpand(!expand)}
                               icon={
                                  expand ? (
                                     <CloseRoundedIcon
-                                       style={{ color: expand ? "#000" : !isScrolled ? "#fff" : "#000" }}
+                                       style={{
+                                          color: expand
+                                             ? style.TEXT_COLOR_NORMAL
+                                             : !isScrolled && (path == PATH.HOME || path == PATH.CONTACT)
+                                             ? "#fff"
+                                             : style.TEXT_COLOR_NORMAL,
+                                       }}
                                     />
                                  ) : (
-                                    <MenuRoundedIcon
-                                       style={{ color: expand ? "#000" : !isScrolled ? "#fff" : "#000" }}
-                                    />
+                                    <MenuRoundedIcon style={{ color: "#000" }} />
                                  )
                               }
                            ></Button>

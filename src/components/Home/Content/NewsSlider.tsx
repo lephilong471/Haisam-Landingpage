@@ -4,13 +4,13 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import { Pagination, Navigation } from "swiper/modules";
-import { MUIBox, MUITypography } from "@/app/components/MUI";
-import { BREAK_POINT, FONT_FAMILY, style } from "@/app/config";
+import { MUIBox, MUITypography } from "@/components/MUI";
+import { BREAK_POINT, FONT_FAMILY, style } from "@/config";
 import Link from "next/link";
 
 import dynamic from "next/dynamic";
 
-const WindowWidthWrapper = dynamic(() => import("@/app/config/hooks/useWindowWidthWrapper"), { ssr: false });
+const WindowWidthWrapper = dynamic(() => import("@/config/hooks/useWindowWidthWrapper"), { ssr: false });
 
 export default function NewsSlider() {
    return (

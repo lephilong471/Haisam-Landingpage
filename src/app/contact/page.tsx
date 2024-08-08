@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect } from "react";
-import { MUIBox, MUITypography, MUIGrid, MUILink, MUITextField, MUIButton } from "@/app/components/MUI";
+import { MUIBox, MUITypography, MUIGrid, MUILink, MUITextField, MUIButton } from "@/components/MUI";
 import styled from "styled-components";
-import { style, FONT_FAMILY } from "@/app/config";
+import { style, FONT_FAMILY } from "@/config";
 import { Form } from "antd";
 import AOS from "aos";
 
@@ -10,11 +10,14 @@ import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 
-import SubFooter from "../components/Layouts/SubFooter";
+import SubFooter from "../../Layouts/SubFooter";
 
 import dynamic from "next/dynamic";
 // import { sendContact } from "../api/auth/actions";
-const SplittingText = dynamic(() => import("@/app/components/presentation/SplittingText"), { ssr: false });
+const SplittingText = dynamic(() => import("@/components/presentation/SplittingText"), { ssr: false });
+import subFooterBackground from "@/public/images/basic/stack-containers-cargo-ship-import-export-harbor-port.jpg";
+import { Divider } from "@mui/material";
+
 const ContentStyled = styled(MUIBox)`
    p {
       font-family: ${FONT_FAMILY.MONTSERRAT};
@@ -52,6 +55,16 @@ const Contact = () => {
 
    return (
       <ContentStyled>
+         <MUIBox
+            sx={{
+               backgroundImage: `url(${subFooterBackground.src})`,
+               backgroundPosition: "top center",
+               backgroundRepeat: "no-repeat",
+               backgroundSize: "cover",
+               width: "100%",
+               height: "420px",
+            }}
+         ></MUIBox>
          <MUIBox className="container mx-auto" mt={10}>
             <MUIGrid
                container
@@ -62,15 +75,14 @@ const Contact = () => {
                <MUIGrid item md={7} xs={12}>
                   <MUITypography
                      variant="h1"
-                     fontSize={116}
                      fontWeight={700}
                      lineHeight={"1em"}
-                     letterSpacing={"-0.04em"}
-                     className="word-holder"
                      color={style.TEXT_COLOR_TITLE}
+                     sx={{ fontSize: { xs: "40px", sm: "66px", lg: "116px" } }}
                   >
                      <SplittingText>Liên hệ</SplittingText>
                   </MUITypography>
+                  <Divider sx={{ mb: 3 }} />
                   <MUIBox
                      data-aos="fade-up"
                      data-aos-delay="300"
@@ -81,7 +93,7 @@ const Contact = () => {
                         alignItems: "center",
                      }}
                   >
-                     <MUITypography sx={{ fontWeight: "500", fontSize: "28px" }}>
+                     <MUITypography sx={{ fontWeight: "500", fontSize: { xs: "18px", sm: "20px", lg: "28px" } }}>
                         Bạn muốn liên hệ với Hải Sâm? Hãy điền thông tin ngay tại đây!
                      </MUITypography>
                   </MUIBox>

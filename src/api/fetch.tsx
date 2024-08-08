@@ -1,4 +1,4 @@
-import { API_URL } from "@/app/config";
+import { API_URL } from "@/config";
 import { requestHeaders } from "./index";
 import { getAuthorizedUser } from "./session";
 

@@ -1,5 +1,5 @@
 "use client";
-import useIntersectionObserver from "@/app/config/hooks/useIntersectionObserver";
+import useIntersectionObserver from "@/config/hooks/useIntersectionObserver";
 import React, { useEffect, useRef, forwardRef } from "react";
 import Splitting from "splitting";
 import styled from "styled-components";

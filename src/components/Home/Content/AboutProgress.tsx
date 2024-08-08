@@ -1,6 +1,6 @@
 import React from "react";
-import { MUIBox, MUITypography } from "@/app/components/MUI";
-import { FONT_FAMILY, style } from "@/app/config";
+import { MUIBox, MUITypography } from "@/components/MUI";
+import { FONT_FAMILY, style } from "@/config";
 import CountUp from "react-countup";
 
 const AboutProgress = (props) => {

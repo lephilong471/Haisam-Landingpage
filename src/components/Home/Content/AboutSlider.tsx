@@ -3,10 +3,10 @@ import styled from "styled-components";
 import Image from "next/image";
 import { MUIBox } from "../../MUI";
 import ImageSvg from "react-inlinesvg";
-import { BREAK_POINT, style } from "@/app/config";
+import { BREAK_POINT, style } from "@/config";
 import dynamic from "next/dynamic";
 
-const WindowWidthWrapper = dynamic(() => import("@/app/config/hooks/useWindowWidthWrapper"), { ssr: false });
+const WindowWidthWrapper = dynamic(() => import("@/config/hooks/useWindowWidthWrapper"), { ssr: false });
 
 // const CarouselWrapper = styled.div`
 //    position: relative;

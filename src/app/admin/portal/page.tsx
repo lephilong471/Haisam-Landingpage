@@ -1,6 +1,6 @@
 "use client";
-import { MUIBox, MUIButton } from "@/app/components/MUI";
-import TableData from "@/app/components/presentation/TableData";
+import { MUIBox, MUIButton } from "@/components/MUI";
+import TableData from "@/components/presentation/TableData";
 import React from "react";
 
 const page = () => {

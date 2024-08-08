@@ -1,6 +1,6 @@
 "use client";
-import { MUIBox, MUITextField, MUIButton, MUITypography } from "@/app/components/MUI";
-import { style } from "@/app/config";
+import { MUIBox, MUITextField, MUIButton, MUITypography } from "@/components/MUI";
+import { style } from "@/config";
 import { Form } from "antd";
 
 const AdminLogin = () => {

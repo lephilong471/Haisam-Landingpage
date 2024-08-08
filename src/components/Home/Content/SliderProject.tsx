@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay, EffectFade, Parallax } from "swiper/modules";
-import { MUIBox, MUITypography } from "@/app/components/MUI";
+import { MUIBox, MUITypography } from "@/components/MUI";
 import styled from "styled-components";
 import CarouselManagerAI from "@/public/images/slider/manager-engineer-checking-ai.jpg";
 import CarouselManager from "@/public/images/slider/manager-engineer-checking.jpg";
@@ -12,7 +12,7 @@ import CarouselFuturistic from "@/public/images/slider/futuristic-truck.jpg";
 import CarouselGlobal from "@/public/images/slider/global-logistic-airplane.jpg";
 import ImageSvg from "react-inlinesvg";
 // import Image from "next/image";
-import { FONT_FAMILY, style } from "@/app/config";
+import { FONT_FAMILY, style } from "@/config";
 import Link from "next/link";
 import AOS from "aos";
 import { keyframes } from "@mui/material";

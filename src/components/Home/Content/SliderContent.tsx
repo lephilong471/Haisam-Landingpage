@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation, Parallax, EffectFade } from "swiper/modules";
 import { Box, styled } from "@mui/material";
-import { MUIBox, MUITypography } from "@/app/components/MUI";
+import { MUIBox, MUITypography } from "@/components/MUI";
 import SliderPlane from "@/public/images/slider/transportation-logistics-container-cargo-ship-.jpg";
 import SliderShipPlane from "@/public/images/slider/aerial-view-top.jpg";
 import SliderTruck from "@/public/images/slider/truck.jpg";
@@ -11,7 +11,7 @@ import SliderTrain from "@/public/images/slider/containers-train-railway-station
 import MaskOverlay from "@/public/images/slider/side-round-mask.svg";
 import AOS from "aos";
 import Link from "next/link";
-import { FONT_FAMILY } from "@/app/config";
+import { FONT_FAMILY } from "@/config";
 
 const DataSlider = [
    {

@@ -1,9 +1,9 @@
 "use client";
-import { FONT_FAMILY, style } from "@/app/config";
-import { MUIBox, MUITypography } from "../MUI";
+import { FONT_FAMILY, style } from "@/config";
+import { MUIBox, MUITypography } from "../components/MUI";
 import { usePathname } from "next/navigation";
 import subFooterBackground from "@/public/images/basic/stack-containers-cargo-ship-import-export-harbor-port.jpg";
-import { PATH } from "@/app/config/routes";
+import { PATH } from "@/config/routes";
 import AOS from "aos";
 import React, { useEffect } from "react";
 
@@ -16,10 +16,6 @@ const SubFooter = () => {
 
    return (
       <MUIBox
-         data-aos="fade-right"
-         data-aos-delay="500"
-         data-aos-duration="2000"
-         data-aos-once="true"
          className={`${path === PATH.CONTACT ? "bg-contact" : "contact"}`}
          sx={{
             position: "relative",
@@ -53,24 +49,38 @@ const SubFooter = () => {
             }}
          >
             <MUITypography
-               color={style.TEXT_COLOR_SUB_FOOTER}
                fontSize={20}
                fontWeight={700}
                fontFamily={FONT_FAMILY.MONTSERRAT}
-               sx={{ mb: 2.8 }}
+               sx={{ mb: 2.8, color: path == PATH.CONTACT ? "#fff !important" : style.TEXT_COLOR_SUB_FOOTER }}
             >
                CÔNG TY TNHH THƯƠNG MẠI VÀ XUẤT NHẬP KHẨU HẢI SÂM
             </MUITypography>
 
-            <MUITypography fontFamily={FONT_FAMILY.MONTSERRAT} fontWeight={500} fontSize={17}>
-               Địa chỉ: Lô 13- LK5 Khu đô thị Green Park- Móng Cái- Quảng Ninh
+            <MUITypography
+               color={path == PATH.CONTACT ? "#fff !important" : style.TEXT_COLOR_SUB_FOOTER}
+               fontFamily={FONT_FAMILY.MONTSERRAT}
+               fontWeight={500}
+               fontSize={17}
+            >
+               Địa chỉ: Lô 13- LK5 Khu đô thị Green Park - Móng Cái - Quảng Ninh
             </MUITypography>
 
-            <MUITypography fontFamily={FONT_FAMILY.MONTSERRAT} fontWeight={500} fontSize={17}>
+            <MUITypography
+               color={path == PATH.CONTACT ? "#fff !important" : style.TEXT_COLOR_SUB_FOOTER}
+               fontFamily={FONT_FAMILY.MONTSERRAT}
+               fontWeight={500}
+               fontSize={17}
+            >
                Email: Haisamlogistics@gmail.com
             </MUITypography>
 
-            <MUITypography fontFamily={FONT_FAMILY.MONTSERRAT} fontWeight={500} fontSize={17}>
+            <MUITypography
+               color={path == PATH.CONTACT ? "#fff !important" : style.TEXT_COLOR_SUB_FOOTER}
+               fontFamily={FONT_FAMILY.MONTSERRAT}
+               fontWeight={500}
+               fontSize={17}
+            >
                SĐT: 0777020707
             </MUITypography>
          </MUIBox>

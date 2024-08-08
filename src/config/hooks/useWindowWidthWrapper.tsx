@@ -1,4 +1,4 @@
-import useWindowWidth from "@/app/config/hooks/useWindowWidth";
+import useWindowWidth from "@/config/hooks/useWindowWidth";
 
 const WindowWidthWrapper = ({ children }: { children: (width: number) => React.ReactNode }) => {
    const width = useWindowWidth();

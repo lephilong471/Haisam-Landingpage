@@ -3,14 +3,14 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { MUIBox, MUIGrid, MUITypography } from "../../MUI";
 import dynamic from "next/dynamic";
-import { FONT_FAMILY, style } from "@/app/config";
+import { FONT_FAMILY, style } from "@/config";
 import { Divider } from "@mui/material";
 import Image from "next/image";
 import ImageSvg from "react-inlinesvg";
 import Link from "next/link";
 import AOS from "aos";
 
-const SplittingText = dynamic(() => import("@/app/components/presentation/SplittingText"), { ssr: false });
+const SplittingText = dynamic(() => import("@/components/presentation/SplittingText"), { ssr: false });
 
 const StaffContentStyled = styled("div")``;
 const StaffContent = () => {

@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination, Navigation, Autoplay } from "swiper/modules";
-import { MUIBox } from "@/app/components/MUI";
+import { MUIBox } from "@/components/MUI";
 import styled from "styled-components";
 import CarouselContainerShipPlane from "@/public/images/slider/carousel-container-cargo-ship-cargo-plane-3d.jpg";
 import CarouselContainerShip from "@/public/images/slider/carousel-container-cargo-ship-cargo-plane.jpg";
@@ -12,11 +12,11 @@ import CarouselTransportation from "@/public/images/slider/carousel-transportati
 import ImageSvg from "react-inlinesvg";
 import AOS from "aos";
 
-import { BREAK_POINT } from "@/app/config";
+import { BREAK_POINT } from "@/config";
 
 import dynamic from "next/dynamic";
 
-const WindowWidthWrapper = dynamic(() => import("@/app/config/hooks/useWindowWidthWrapper"), { ssr: false });
+const WindowWidthWrapper = dynamic(() => import("@/config/hooks/useWindowWidthWrapper"), { ssr: false });
 
 const SliderCarouselStyled = styled("div")`
    width: 100%;

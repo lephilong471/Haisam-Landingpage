@@ -3,7 +3,7 @@ import React from "react";
 import { MUIBox, MUITypography } from "../../MUI";
 import { Divider } from "@mui/material";
 import CountUp from "react-countup";
-import { FONT_FAMILY } from "@/app/config";
+import { FONT_FAMILY } from "@/config";
 
 const CardItem = (props) => {
    return (

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { MUIBox, MUIGrid, MUITypography } from "@/app/components/MUI";
+import { MUIBox, MUIGrid, MUITypography } from "@/components/MUI";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import Link from "next/link";
 import AOS from "aos";
@@ -8,13 +8,13 @@ import AOS from "aos";
 import styled from "styled-components";
 import { Divider, Tab, Tabs } from "@mui/material";
 import AboutProgress from "./AboutProgress";
-import { FONT_FAMILY, style } from "@/app/config";
-import { PATH } from "@/app/config/routes";
+import { FONT_FAMILY, style } from "@/config";
+import { PATH } from "@/config/routes";
 // import AboutSlider from "./AboutSlider";
 
 import dynamic from "next/dynamic";
 import AboutSlider from "./AboutSlider";
-const SplittingText = dynamic(() => import("@/app/components/presentation/SplittingText"), { ssr: false });
+const SplittingText = dynamic(() => import("@/components/presentation/SplittingText"), { ssr: false });
 
 // import SliderManger from "@/public/images/slider/manager-engineer-checking.jpg";
 // import SliderContainerPlane from "@/public/images/slider/container-cargo-ship-cargo-plane.jpg";

@@ -1,17 +1,17 @@
 "use client";
 import React, { useEffect } from "react";
-import { MUIBox, MUITypography } from "@/app/components/MUI";
+import { MUIBox, MUITypography } from "@/components/MUI";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import Link from "next/link";
 import AOS from "aos";
 import styled from "styled-components";
 import { Divider } from "@mui/material";
-import { FONT_FAMILY, style } from "@/app/config";
-import { PATH } from "@/app/config/routes";
+import { FONT_FAMILY, style } from "@/config";
+import { PATH } from "@/config/routes";
 import NewsSlider from "./NewsSlider";
 import dynamic from "next/dynamic";
 
-const SplittingText = dynamic(() => import("@/app/components/presentation/SplittingText"), { ssr: false });
+const SplittingText = dynamic(() => import("@/components/presentation/SplittingText"), { ssr: false });
 
 const NewsContentStyled = styled("div")`
    padding-top: 10%;

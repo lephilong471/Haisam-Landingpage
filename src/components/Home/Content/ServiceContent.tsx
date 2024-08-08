@@ -1,7 +1,7 @@
 "use client";
 import { Box, Divider, Grid, styled } from "@mui/material";
 import React, { useEffect } from "react";
-import { MUIBox, MUIGrid, MUITypography } from "@/app/components/MUI";
+import { MUIBox, MUIGrid, MUITypography } from "@/components/MUI";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import Link from "next/link";
 import AddIcon from "@mui/icons-material/Add";
@@ -9,11 +9,11 @@ import AddIcon from "@mui/icons-material/Add";
 // import Splitting from "splitting";
 import AOS from "aos";
 import CardItem from "./CardItem";
-import { FONT_FAMILY, style } from "@/app/config";
-import { PATH } from "@/app/config/routes";
+import { FONT_FAMILY, style } from "@/config";
+import { PATH } from "@/config/routes";
 
 import dynamic from "next/dynamic";
-const SplittingText = dynamic(() => import("@/app/components/presentation/SplittingText"), { ssr: false });
+const SplittingText = dynamic(() => import("@/components/presentation/SplittingText"), { ssr: false });
 
 const ServiceContentStyled = styled(Box)`
    background: #fff;

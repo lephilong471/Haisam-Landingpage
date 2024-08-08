@@ -1,13 +1,13 @@
 import React from "react";
 import { MUIBox, MUITypography } from "../../MUI";
 import Link from "next/link";
-import { PATH } from "@/app/config/routes";
-import { FONT_FAMILY, style } from "@/app/config";
+import { PATH } from "@/config/routes";
+import { FONT_FAMILY, style } from "@/config";
 import ArrowOutwardRoundedIcon from "@mui/icons-material/ArrowOutwardRounded";
 import { Divider } from "@mui/material";
 import BackgroundImage from "@/public/static/bg-image.jpg";
 import dynamic from "next/dynamic";
-const SplittingText = dynamic(() => import("@/app/components/presentation/SplittingText"), { ssr: false });
+const SplittingText = dynamic(() => import("@/components/presentation/SplittingText"), { ssr: false });
 
 const ContactContent = () => {
    return (
