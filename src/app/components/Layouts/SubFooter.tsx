@@ -4,12 +4,22 @@ import { MUIBox, MUITypography } from "../MUI";
 import { usePathname } from "next/navigation";
 import subFooterBackground from "@/public/images/stack-containers-cargo-ship-import-export-harbor-port.jpg";
 import { PATH } from "@/app/config/routes";
+import AOS from "aos";
+import React, { useEffect } from "react";
 
 const SubFooter = () => {
    const path = usePathname();
 
+   useEffect(() => {
+      AOS.init();
+   }, []);
+
    return (
       <MUIBox
+         data-aos="fade-right"
+         data-aos-delay="500"
+         data-aos-duration="2000"
+         data-aos-once="true"
          className={`${path === PATH.CONTACT ? "bg-contact" : "contact"}`}
          sx={{
             position: "relative",

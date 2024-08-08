@@ -47,21 +47,9 @@ const ButtonWrapper = styled.div`
    margin-top: 20px;
 `;
 
-const Button = styled.button`
-   background: white;
-   border: 1px solid #ddd;
-   padding: 10px 20px;
-   margin: 0 10px;
-   font-size: 16px;
-   cursor: pointer;
-   &:hover {
-      background: #f0f0f0;
-   }
-`;
-
-const CustomCarousel = ({ slides }) => {
+const AboutSlider = ({ slides }) => {
    const [currentIndex, setCurrentIndex] = useState(0);
-   const [direction, setDirection] = useState("next");
+   const [_direction, setDirection] = useState("next");
 
    const goToNext = () => {
       setDirection("next");
@@ -146,4 +134,4 @@ const CustomCarousel = ({ slides }) => {
    );
 };
 
-export default CustomCarousel;
+export default AboutSlider;
