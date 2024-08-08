@@ -116,8 +116,10 @@ const displayContent = (text: string) => {
     const textArr: Array<string> = text.split(' ')
     let result: string = ''
 
-    for(let i = 0 ; i <= 22; i++){
-        if(i === 22) result += `${textArr[i]}...`
+    if(textArr.length <= 22) return text
+
+    for(let i = 0 ; i < 22; i++){
+        if(i === 22 - 1) result += `${textArr[i]}...`
         else result += `${textArr[i]} `
     }
     return result
@@ -250,6 +252,7 @@ const About = () => {
                                                 anchorEl={anchorEl}
                                                 onMouseLeave={handlePopperClose}
                                                 sx={{
+                                                    marginTop:'50px',
                                                     maxHeight:200
                                                 }}
                                             >

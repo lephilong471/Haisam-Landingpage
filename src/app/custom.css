@@ -17,3 +17,20 @@ a {
   animation: slide-in 1s cubic-bezier(0.5, 0, 0.5, 1) both;
   animation-delay: calc(60ms * var(--char-index));
 }
+
+.word-holder {
+  display: inline-flex;
+  margin-right: 10px;
+  font-family: "Outfit";
+}
+
+.word-holder span {
+  display: inline-block;
+}
+
+@keyframes slide-in {
+  from {
+     transform: translateX(100px);
+     opacity: 0;
+  }
+}

@@ -5,7 +5,9 @@ import { MUIBox, MUIListItemText, MUICollapse, MUIList, MUIGrid, MUITypography }
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import RemoveRoundedIcon from "@mui/icons-material/RemoveRounded";
 import styled from "styled-components";
-import { style, FONT_FAMILY } from "@/app/config";
+import { style, FONT_FAMILY } from "../config";
+
+import { Divider } from "@mui/material";
 
 import AOS from "aos";
 import dynamic from "next/dynamic";
@@ -232,10 +234,8 @@ const Service = () => {
                      fontWeight={700}
                      lineHeight={"1em"}
                      letterSpacing={"-0.04em"}
-                     textTransform={"capitalize"}
-                     data-splitting="chars"
-                     fontFamily={FONT_FAMILY.OUTFIT}
-                     sx={{ fontSize: { xs: "40px", sm: "66px", lg: "116px" } }}
+                     className="word-holder"
+                     sx={{ fontSize: { xs: "40px", sm: "66px", lg: "114px" } }}
                   >
                      <SplittingText>Logistics</SplittingText>
                   </MUITypography>
@@ -268,7 +268,12 @@ const Service = () => {
                         {listServiceData.map((item, index) => {
                            return (
                               index % 2 === 0 && (
-                                 <MUIBox key={index} data-aos="fade-up" data-aos-delay="300" data-aos-duration="2000">
+                                 <MUIBox
+                                    key={index}
+                                    data-aos="fade-up"
+                                    data-aos-delay="300"
+                                    data-aos-duration="2000"
+                                 >
                                     <AddRoundedIcon sx={{ color: style.TEXT_COLOR_GENERAL }} />
                                     <MUITypography color={style.TEXT_COLOR_GENERAL}>{item}</MUITypography>
                                  </MUIBox>
@@ -280,9 +285,13 @@ const Service = () => {
                         {listServiceData.map((item, index) => {
                            return (
                               index % 2 !== 0 && (
-                                 <MUIBox key={index} data-aos="fade-up" data-aos-delay="300" data-aos-duration="2000">
-                                    <AddRoundedIcon sx={{ color: "#202020" }} />
-                                    <MUITypography color="#0E0E0E">{item}</MUITypography>
+                                 <MUIBox
+                                    key={index}
+                                    data-aos="fade-up"
+                                    data-aos-delay="300"
+                                    data-aos-duration="2000"
+                                 >
+                                    <AddRoundedIcon sx={{ color: '#202020' }} /><MUITypography color='#0E0E0E'>{item}</MUITypography>
                                  </MUIBox>
                               )
                            );
@@ -309,8 +318,8 @@ const Service = () => {
                   <ImageStyled
                      data-aos="fade-up"
                      data-aos-duration="3000"
-                     src="/images/loaded-container-cargo-ship-is-seen-front-as-it-speeds-ocean-generative-ai-1300x1097.jpg"
-                     alt=""
+                     src='/images/basic/loaded-container-cargo-ship-is-seen-front-as-it-speeds-ocean-generative-ai-1300x1097.jpg'
+                     alt=''
                   />
                </MUIGrid>
 
@@ -366,8 +375,14 @@ const Service = () => {
                   })}
                </MUIGrid>
             </MUIGrid>
-            <MUIGrid container sx={{ mt: "4%" }}>
-               <MUIGrid item xs={12} md={6} paddingInline="4%">
+            <MUIGrid
+               container
+               sx={{ mt: '4%' }}
+            >
+               <MUIGrid
+                  item xs={12} md={6}
+                  paddingInline='4%'
+               >
                   <MUITypography
                      fontSize="32px"
                      fontFamily={FONT_FAMILY.MONTSERRAT}
@@ -418,7 +433,7 @@ const Service = () => {
                            </MUIBox>
                            <MUICollapse in={expandData[1][index]} timeout={800} unmountOnExit>
                               <MUIList component="div" disablePadding>
-                                 <MUIListItemText sx={{ p: "4%" }} primary={item.content} />
+                                 <MUIListItemText sx={{ p: '4%' }} primary={item.content} />
                               </MUIList>
                            </MUICollapse>
                         </MUIBox>
@@ -437,8 +452,8 @@ const Service = () => {
                   <ImageStyled
                      data-aos="fade-up"
                      data-aos-duration="3000"
-                     src="/images/aerial-top-view-container-cargo-ship-with-contrail-ocean-ship-carrying-container.jpg"
-                     alt=""
+                     src='/images/basic/aerial-top-view-container-cargo-ship-with-contrail-ocean-ship-carrying-container.jpg'
+                     alt=''
                   />
                </MUIGrid>
             </MUIGrid>
