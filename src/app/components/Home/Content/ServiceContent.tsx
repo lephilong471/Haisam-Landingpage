@@ -45,24 +45,27 @@ const ServiceContentStyled = styled(Box)`
 const text = ["Logistic", "Capabilities"];
 const dataSection: any = [
    {
-      title: "Warehousing and Distribution",
+      title: "Dịch vụ cho thuê xe tải",
    },
    {
-      title: "E-commerce Logistics",
-   },
-
-   {
-      title: "Freight Forwarding",
-   },
-   {
-      title: "Last-Mile Delivery",
-   },
-   {
-      title: "Supply Chain Management",
+      title: "Dịch vụ vận tải",
    },
 
    {
-      title: "Cold Chain Logistics",
+      title: "Dịch vụ bốc xếp hàng hóa",
+   },
+   {
+      title: "Dịch vụ xuất nhập khẩu",
+   },
+   {
+      title: "Dịch vụ giao hàng",
+   },
+
+   {
+      title: "Đại lý hải quan",
+   },
+   {
+      title: "Dịch vụ ghép hàng đi tỉnh",
    },
 ];
 

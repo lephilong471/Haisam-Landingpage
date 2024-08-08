@@ -246,7 +246,7 @@ const Service = () => {
                   lg={6}
                   xs={12}
                   sx={{
-                     display: "flex",
+                     display: "none",
                      alignItems: "center",
                   }}
                >
