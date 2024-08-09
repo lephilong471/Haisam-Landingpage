@@ -20,12 +20,25 @@ import "aos/dist/aos.css";
 
 import Header from "@/Layouts/Header";
 import Footer from "@/Layouts/Footer";
+import MetaImage from "@/public/images/basic/earth-surrounded-by-cardboard-boxes-cargo-container-ship-flying-plan-car-van-truck.jpg"
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
    title: "Hải Sâm Logistics",
    description: "Công ty TNHH Logistics Hải Sâm",
+   openGraph: {
+      title: 'Hải Sâm Logistics',
+      description: 'Công ty TNHH Logistics Hải Sâm',
+      images: [
+        {
+          url: MetaImage.src,
+          width: 800,
+          height: 600,
+          alt: 'Hình nền',
+        },
+      ],
+    }
 };
 
 export default function RootLayout({
