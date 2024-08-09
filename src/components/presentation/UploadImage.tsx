@@ -48,23 +48,23 @@ export const UploadImage = () => {
         }
     };
 
-    const handleUpload = (file) => {
-        const formData = new FormData()
-        formData.append("file", file)
+    // const handleUpload = (file) => {
+    //     const formData = new FormData()
+    //     formData.append("file", file)
 
-        fetch('http://haisamlogistics.com:8099/api/v1/admin/upload',{
-            method:'POST',
-            body: formData,
-            headers:{
-                "Authorization": 'Bearer ' + localStorage.getItem('Access-Token')
-            }
-        }).then(function(response){
-            if(response.status === 200){
-                console.log(response)
-                setLoading(false)
-            }
-        })
-    }
+    //     fetch('http://haisamlogistics.com:8099/api/v1/admin/upload',{
+    //         method:'POST',
+    //         body: formData,
+    //         headers:{
+    //             "Authorization": 'Bearer ' + localStorage.getItem('Access-Token')
+    //         }
+    //     }).then(function(response){
+    //         if(response.status === 200){
+    //             console.log(response)
+    //             setLoading(false)
+    //         }
+    //     })
+    // }
 
     const uploadButton = (
         <div>
@@ -82,7 +82,7 @@ export const UploadImage = () => {
                     listType="picture-card"
                     className="avatar-uploader"
                     showUploadList={false}
-                    action={handleUpload}
+                    // action={handleUpload}
                     beforeUpload={beforeUpload}
                     onChange={handleChange}
                 >
