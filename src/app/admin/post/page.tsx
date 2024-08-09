@@ -1,6 +1,10 @@
 "use client";
 import { MUIBox } from "@/components/MUI";
-import MCKEditor from "@/components/presentation/MCKEditor";
+import dynamic from "next/dynamic";
+
+const MCKEditor = dynamic(() => import("@/components/presentation/MCKEditor"),{ssr: false})
+// import MCKEditor from "@/components/presentation/MCKEditor";
+
 import { Form, Input, Select } from "antd";
 import React from "react";
 const Post = () => {
