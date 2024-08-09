@@ -27,7 +27,6 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
    title: "Hải Sâm Logistics",
    description: "Công ty TNHH Logistics Hải Sâm",
-   metadataBase: new URL('https://haisam.netlify.app'),
    openGraph: {
       title: 'Hải Sâm Logistics',
       description: 'Công ty TNHH Logistics Hải Sâm',
